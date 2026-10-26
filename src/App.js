@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import { Toaster } from "sonner";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/navbar";
 import { Footer } from "./components/Footer";
 import { WhatsAppFloat } from "./components/WhatsAppFloat";
 import Collections from "./pages/Collections";
