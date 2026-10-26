@@ -1,55 +1,16 @@
-<<<<<<< HEAD
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import "./index.css";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import App from './App';
+import './index.css';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 60_000,
-      refetchOnWindowFocus: false,
-    },
-  },
-});
+const queryClient = new QueryClient();
 
-const rootEl = document.getElementById("root");
-if (!window.__STOREFRONT__ && rootEl) {
-  const root = ReactDOM.createRoot(rootEl);
-  root.render(
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-    </React.StrictMode>,
-  );
-}
-=======
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import "@/index.css";
-import App from "@/App";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 60_000,
-      refetchOnWindowFocus: false,
-    },
-  },
-});
-
-const rootEl = document.getElementById("root");
-if (!window.__STOREFRONT__ && rootEl) {
-  const root = ReactDOM.createRoot(rootEl);
-  root.render(
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-    </React.StrictMode>,
-  );
-}
->>>>>>> f11b15d36381317611b4defa6eb2e736862a9403
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <QueryClientProvider client="{queryClient}">
+      <App/>
+    </QueryClientProvider>
+  </React.StrictMode>
+);
