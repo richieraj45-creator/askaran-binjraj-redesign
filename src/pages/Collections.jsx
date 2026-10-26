@@ -1,4 +1,4 @@
-import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
+import { Reveal, Stagger, StaggerItem } from "../components/reveal";
 import { CategoryCard } from "../components/CategoryCard";
 import { CATEGORIES } from "../data/siteData";
 

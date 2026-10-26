@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import { MapPin, Phone, Mail, Clock, ArrowUpRight, Send } from "lucide-react";
-import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
+import { Reveal, Stagger, StaggerItem } from "../components/reveal";
 import { CONTACT, CONTACT_LOCATION_IMG } from "../data/siteData";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;

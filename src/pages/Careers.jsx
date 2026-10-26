@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import { ArrowUpRight, Monitor, Store, Receipt, Warehouse, Mail, MapPin, Upload, FileCheck } from "lucide-react";
-import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
+import { Reveal, Stagger, StaggerItem } from "../components/reveal";
 import { CAREER_DEPARTMENTS, CONTACT } from "../data/siteData";
 
 const ICONS = { monitor: Monitor, store: Store, receipt: Receipt, warehouse: Warehouse };
