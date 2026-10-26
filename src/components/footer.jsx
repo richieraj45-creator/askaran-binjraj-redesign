@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, ArrowUpRight } from "lucide-react";
 import { CONTACT } from "../data/siteData";
@@ -66,7 +65,7 @@ export const Footer = () => (
     </div>
   </footer>
 );
-=======
+
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, ArrowUpRight } from "lucide-react";
 import { CONTACT } from "../data/siteData";
@@ -134,4 +133,3 @@ export const Footer = () => (
     </div>
   </footer>
 );
->>>>>>> f11b15d36381317611b4defa6eb2e736862a9403
