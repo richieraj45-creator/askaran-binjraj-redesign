@@ -10,7 +10,7 @@ import Collections from "./pages/Collections";
 import CategoryDetail from "./pages/CategoryDetail";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
-import Contact from "./pages/Contact";
+import Contact from "./pages/contact";
 
 const ScrollManager = () => {
   const { pathname } = useLocation();
