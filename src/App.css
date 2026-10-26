@@ -1,13 +1,69 @@
-// Imports
-import ___CSS_LOADER_API_SOURCEMAP_IMPORT___ from "../node_modules/css-loader/dist/runtime/sourceMaps.js";
-import ___CSS_LOADER_API_IMPORT___ from "../node_modules/css-loader/dist/runtime/api.js";
-var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, `.App {
+.App {
   min-height: 100vh;
   background: #fafaf8;
+  color: #111111;
+  font-family: Outfit, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-`, "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,mBAAmB;AACrB","sourcesContent":[".App {\n  min-height: 100vh;\n  background: #fafaf8;\n}\n"],"sourceRoot":""}]);
-// Exports
-___CSS_LOADER_EXPORT___.locals = {};
-export default ___CSS_LOADER_EXPORT___;
+
+/* Lenis smooth scrolling integration */
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Custom UI Utilities & Animations */
+.eyebrow {
+  font-family: Outfit, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: #8b1512;
+}
+
+.eyebrow-light {
+  font-family: Outfit, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.125rem;
+  height: 1px;
+  width: 0;
+  background-color: currentColor;
+  transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+.img-frame {
+  border: 1px solid #e5e0d8;
+  background-color: #f4f0ea;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  scrollbar-width: none;
+}
