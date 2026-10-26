@@ -499,7 +499,6 @@ export const BRANDS = [
 }));
 
 import { motion } from "framer-motion";
-import { CONTACT } from "../data/siteData";
 
 export const WhatsAppFloat = () => (
   <motion.a
