@@ -5,7 +5,7 @@ import Lenis from "lenis";
 import { Toaster } from "sonner";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
-import { WhatsAppFloat } from "./components/WhatsAppFloat";
+import { WhatsAppFloat } from "./components/whatsappfloat";
 import Collections from "./pages/Collections";
 import CategoryDetail from "./pages/CategoryDetail";
 import About from "./pages/About";
