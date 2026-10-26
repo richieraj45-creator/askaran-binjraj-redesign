@@ -1,5 +1,5 @@
 import { Reveal, Stagger, StaggerItem } from "../components/reveal";
-import { CategoryCard } from "../components/CategoryCard";
+import { CategoryCard } from "../components/categorycard";
 import { CATEGORIES } from "../Data/sitedata";
 
 export default function Collections() {
