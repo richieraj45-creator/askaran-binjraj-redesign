@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
@@ -114,7 +113,7 @@ export default function About() {
     </main>
   );
 }
-=======
+
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
@@ -230,4 +229,3 @@ export default function About() {
     </main>
   );
 }
->>>>>>> f11b15d36381317611b4defa6eb2e736862a9403

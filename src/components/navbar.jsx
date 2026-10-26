@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -97,7 +96,7 @@ export const Navbar = () => {
     </header>
   );
 };
-=======
+
 import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -196,4 +195,3 @@ export const Navbar = () => {
     </header>
   );
 };
->>>>>>> f11b15d36381317611b4defa6eb2e736862a9403

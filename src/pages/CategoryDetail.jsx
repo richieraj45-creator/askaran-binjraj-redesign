@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
@@ -129,7 +128,7 @@ export default function CategoryDetail() {
     </main>
   );
 }
-=======
+
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
@@ -260,4 +259,3 @@ export default function CategoryDetail() {
     </main>
   );
 }
->>>>>>> f11b15d36381317611b4defa6eb2e736862a9403

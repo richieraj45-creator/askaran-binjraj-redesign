@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { motion } from "framer-motion";
 import { CONTACT } from "../data/siteData";
 
@@ -20,7 +19,7 @@ export const WhatsAppFloat = () => (
     </svg>
   </motion.a>
 );
-=======
+
 import { motion } from "framer-motion";
 import { CONTACT } from "../data/siteData";
 
@@ -42,4 +41,3 @@ export const WhatsAppFloat = () => (
     </svg>
   </motion.a>
 );
->>>>>>> f11b15d36381317611b4defa6eb2e736862a9403

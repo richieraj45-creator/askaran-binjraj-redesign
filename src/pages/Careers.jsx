@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useRef, useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
@@ -200,7 +199,7 @@ export default function Careers() {
     </main>
   );
 }
-=======
+
 import { useRef, useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
@@ -402,4 +401,3 @@ export default function Careers() {
     </main>
   );
 }
->>>>>>> f11b15d36381317611b4defa6eb2e736862a9403

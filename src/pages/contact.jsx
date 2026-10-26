@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
@@ -166,7 +165,7 @@ export default function Contact() {
     </main>
   );
 }
-=======
+
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
@@ -334,4 +333,3 @@ export default function Contact() {
     </main>
   );
 }
->>>>>>> f11b15d36381317611b4defa6eb2e736862a9403

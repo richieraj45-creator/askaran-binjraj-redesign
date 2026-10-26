@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import { CategoryCard } from "../components/CategoryCard";
 import { CATEGORIES } from "../data/siteData";
@@ -31,7 +30,7 @@ export default function Collections() {
     </main>
   );
 }
-=======
+
 import { Reveal, Stagger, StaggerItem } from "../components/Reveal";
 import { CategoryCard } from "../components/CategoryCard";
 import { CATEGORIES } from "../data/siteData";
@@ -64,4 +63,3 @@ export default function Collections() {
     </main>
   );
 }
->>>>>>> f11b15d36381317611b4defa6eb2e736862a9403

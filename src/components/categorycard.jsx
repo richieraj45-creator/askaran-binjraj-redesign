@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 
@@ -31,7 +30,7 @@ export const CategoryCard = ({ category, className = "", tall = false }) => (
     </div>
   </Link>
 );
-=======
+
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 
@@ -64,4 +63,3 @@ export const CategoryCard = ({ category, className = "", tall = false }) => (
     </div>
   </Link>
 );
->>>>>>> f11b15d36381317611b4defa6eb2e736862a9403

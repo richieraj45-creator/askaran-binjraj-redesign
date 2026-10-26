@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const IMG = "https://askaranbinjraj.com/wp-content/uploads";
 
 export const CONTACT = {
@@ -498,7 +497,7 @@ export const BRANDS = [
   name: file.replace(/(-1|_edited)?\.(jpg|jpeg|webp|png)$/i, "").replace(/20/g, " ").replace(/-/g, " "),
   src: `${IMG}/2025/11/${file}`,
 }));
-=======
+
 import { motion } from "framer-motion";
 import { CONTACT } from "../data/siteData";
 
@@ -520,4 +519,3 @@ export const WhatsAppFloat = () => (
     </svg>
   </motion.a>
 );
->>>>>>> f11b15d36381317611b4defa6eb2e736862a9403
