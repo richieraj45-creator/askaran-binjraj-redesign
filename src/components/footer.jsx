@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, ArrowUpRight } from "lucide-react";
-import { CONTACT } from "../data/siteData";
+import { CONTACT } from "../Data/sitedata";
 
 export const Footer = () => (
   <footer className="bg-brand-ink text-brand-paper" data-testid="site-footer">
