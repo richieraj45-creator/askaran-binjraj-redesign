@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
@@ -71,20 +70,20 @@ function App() {
 }
 
 export default App;
-=======
+
 import { useEffect } from "react";
-import "@/App.css";
+import "./App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import { Toaster } from "sonner";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
-import Collections from "@/pages/Collections";
-import CategoryDetail from "@/pages/CategoryDetail";
-import About from "@/pages/About";
-import Careers from "@/pages/Careers";
-import Contact from "@/pages/Contact";
+import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
+import { WhatsAppFloat } from "./components/WhatsAppFloat";
+import Collections from "./pages/Collections";
+import CategoryDetail from "./pages/CategoryDetail";
+import About from "./pages/About";
+import Careers from "./pages/Careers";
+import Contact from "./pages/Contact";
 
 const ScrollManager = () => {
   const { pathname } = useLocation();
@@ -142,6 +141,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
->>>>>>> f11b15d36381317611b4defa6eb2e736862a9403
