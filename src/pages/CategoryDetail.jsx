@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "../components/reveal";
-import { CATEGORIES, CONTACT } from "../data/siteData";
+import { CATEGORIES, CONTACT } from "../Data/sitedata";
 
 export default function CategoryDetail() {
   const { slug } = useParams();

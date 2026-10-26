@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "../components/reveal";
-import { MALL_EXTERIOR, MALL_INTERIOR } from "../data/siteData";
+import { MALL_EXTERIOR, MALL_INTERIOR } from "../Data/sitedata";
 
 const STATS = [
   { value: "1980", label: "Serving Since" },
