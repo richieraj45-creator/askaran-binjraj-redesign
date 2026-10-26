@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import { Toaster } from "sonner";
 import { Navbar } from "./components/navbar";
-import { Footer } from "./components/Footer";
+import { Footer } from "./components/footer";
 import { WhatsAppFloat } from "./components/WhatsAppFloat";
 import Collections from "./pages/Collections";
 import CategoryDetail from "./pages/CategoryDetail";
