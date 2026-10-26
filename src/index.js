@@ -6,11 +6,18 @@ import './index.css';
 
 const queryClient = new QueryClient();
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const container = document.getElementById('root');
+
+if (!container) {
+  throw new Error("Fatal Error: Could not find root element with ID 'root' in index.html.");
+}
+
+const root = ReactDOM.createRoot(container);
+
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client="{queryClient}">
-      <App/>
+    <QueryClientProvider client={queryClient}>
+      <App />
     </QueryClientProvider>
   </React.StrictMode>
 );
