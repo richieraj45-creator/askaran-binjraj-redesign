@@ -3,16 +3,18 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Lenis from "lenis";
 import { Toaster } from "sonner";
-import { Navbar } from "./components/Navbar";
-import { Footer } from "./components/Footer";
-import { WhatsAppFloat } from "./components/WhatsAppFloat";
 
-// 🚀 Page Imports (Matching exact Linux filesystem casing on disk)
+// 🚀 Component Imports (Matching lowercase Linux filesystem casing)
+import { Navbar } from "./components/navbar";
+import { Footer } from "./components/footer";
+import { WhatsAppFloat } from "./components/whatsappFloat";
+
+// 🚀 Page Imports
 import Collections from "./pages/Collections";
 import CategoryDetail from "./pages/CategoryDetail";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
-import Contact from "./pages/contact"; // Lowercase 'c' to match contact.jsx
+import Contact from "./pages/contact";
 
 // 🛡️ Error Boundary to catch any runtime glitches
 class AppErrorBoundary extends React.Component {
