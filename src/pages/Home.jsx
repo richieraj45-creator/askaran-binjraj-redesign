@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-// Crisp high-definition hero slides with automatic web fallbacks
+// Stunner High-Definition Hero Slides with Updated First 3 Banners
 const SLIDES = [
   {
-    eyebrow: "Heritage Collection",
+    eyebrow: "Royal Heritage & Weaves",
     title: "Six generations of<br><em>artisan craft.</em>",
-    sub: "Authentic Banarasi sarees sourced directly from Varanasi weavers across six generations.",
-    localImg: "/assets/Banarasi.jpg",
-    fallbackImg: "https://askaranbinjraj.com/wp-content/uploads/2025/11/Banarasi.jpg"
-  },
-  {
-    eyebrow: "Ready-to-Wear",
-    title: "Move through the world<br><em>unforgettably.</em>",
-    sub: "Curated apparel, tailored suits, and authentic ethnic wear for men and women at Askaran Binjraj.",
-    localImg: "/assets/4237-768x427.jpg",
-    fallbackImg: "https://askaranbinjraj.com/wp-content/uploads/2025/11/4237-768x427.jpg"
+    sub: "Authentic Banarasi sarees sourced directly from Varanasi weavers across six generations of uncompromised trust.",
+    localImg: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=1600",
+    fallbackImg: "/assets/Banarasi.jpg"
   },
   {
     eyebrow: "The Wedding Studio",
-    title: "Designer bridal<br><em>lehengas & weaves.</em>",
-    sub: "Raw silk zardozi, hand-embroidered velvet bridal sets, and festive celebratory wear.",
-    localImg: "/assets/Morni_Banner_600x600.webp",
-    fallbackImg: "https://askaranbinjraj.com/wp-content/uploads/2025/11/Morni_Banner_600x600.webp"
+    title: "Designer bridal<br><em>lehengas & celebrations.</em>",
+    sub: "Raw silk zardozi, hand-embroidered velvet bridal sets, and festive celebratory wear curated for every milestone.",
+    localImg: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=1600",
+    fallbackImg: "/assets/Morni_Banner_600x600.webp"
+  },
+  {
+    eyebrow: "Kids & Family Wear",
+    title: "Joyful style for<br><em>the little ones.</em>",
+    sub: "Adorable festive ethnic wear, party frocks, smart tailoring, and comfortable everyday clothing for kids.",
+    localImg: "https://images.unsplash.com/photo-1503944583267-73c7326d45e5?auto=format&fit=crop&q=80&w=1600",
+    fallbackImg: "/assets/4237-768x427.jpg"
   },
   {
     eyebrow: "Travel & Style",
@@ -154,17 +154,17 @@ export default function Home() {
           <div className="sp-bottom-nav">
             <span onClick={() => scrollToSection("fashion")}>FASHION</span>
             <span onClick={() => scrollToSection("ethnic")}>ETHNIC WEAR</span>
-            <span className="active" onClick={() => scrollToSection("travel")}>TRAVEL GEAR</span>
-            <span onClick={() => scrollToSection("cosmetics")}>COSMETICS</span>
+            <span className="active" onClick={() => scrollToSection("kids")}>KIDS</span>
+            <span onClick={() => scrollToSection("home")}>HOME & LIVING</span>
+            <span onClick={() => scrollToSection("travel")}>TRAVEL</span>
             <span onClick={() => scrollToSection("jewelry")}>JEWELLERY</span>
-            <span onClick={() => scrollToSection("accessories")}>ACCESSORIES</span>
           </div>
         </div>
       )}
 
       {/* Top Red Announcement Bar */}
       <div className="sf-announce">
-        SAME-DAY & 1-DAY DELIVERY AVAILABLE · NEW ETHNIC COLLECTION JUST DROPPED · 
+        SAME-DAY & 1-DAY DELIVERY AVAILABLE · NEW ETHNIC & FESTIVE COLLECTION JUST DROPPED · 
         <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">SHOP ONLINE &gt;</a>
       </div>
 
@@ -182,13 +182,12 @@ export default function Home() {
           <nav className="sf-nav">
             <a onClick={() => scrollToSection("fashion")}>FASHION</a>
             <a onClick={() => scrollToSection("ethnic")}>ETHNIC WEAR</a>
+            <a onClick={() => scrollToSection("kids")}>KIDS WEAR</a>
+            <a onClick={() => scrollToSection("home")}>HOME & LIVING</a>
             <a onClick={() => scrollToSection("travel")}>TRAVEL GEAR</a>
             <a onClick={() => scrollToSection("cosmetics")}>COSMETICS</a>
             <a onClick={() => scrollToSection("jewelry")}>JEWELLERY</a>
-            <a onClick={() => scrollToSection("accessories")}>ACCESSORIES</a>
             <a onClick={() => scrollToSection("stores")}>VISIT US</a>
-            <a onClick={() => scrollToSection("about")}>ABOUT</a>
-            <a onClick={() => scrollToSection("stores")}>IN STORE</a>
             <Link to="/careers">CAREERS</Link>
           </nav>
           <div className="sf-header-actions" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -203,17 +202,18 @@ export default function Home() {
         <nav className={`sf-mobile-nav ${mobileMenuOpen ? "open" : ""}`}>
           <a onClick={() => scrollToSection("fashion")}>FASHION</a>
           <a onClick={() => scrollToSection("ethnic")}>ETHNIC WEAR</a>
+          <a onClick={() => scrollToSection("kids")}>KIDS WEAR</a>
+          <a onClick={() => scrollToSection("home")}>HOME & LIVING</a>
           <a onClick={() => scrollToSection("travel")}>TRAVEL GEAR</a>
           <a onClick={() => scrollToSection("cosmetics")}>COSMETICS</a>
           <a onClick={() => scrollToSection("jewelry")}>JEWELLERY</a>
-          <a onClick={() => scrollToSection("accessories")}>ACCESSORIES</a>
           <a onClick={() => scrollToSection("stores")}>VISIT US</a>
           <Link to="/careers" onClick={() => setMobileMenuOpen(false)}>CAREERS</Link>
           <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">SHOP ONLINE ↗</a>
         </nav>
       </header>
 
-      {/* Hero Banner Carousel (Matching Screenshot 155911.jpg) */}
+      {/* Hero Banner Carousel with Stunning New First 3 Images */}
       <section id="hero" className="sf-hero">
         {SLIDES.map((slide, idx) => (
           <div key={idx} className={`sf-slide ${idx === currentSlide ? "active" : ""}`}>
@@ -271,14 +271,120 @@ export default function Home() {
           <span><span>◆</span> Dhekiajuli Flagship Mall</span>
           <span><span>◆</span> Six Generations of Trust</span>
           <span><span>◆</span> Authentic Banarasi Sarees</span>
-          <span><span>◆</span> Premium Suitings & Formals</span>
-          <span><span>◆</span> Luxury Travel Gear</span>
+          <span><span>◆</span> Premium Kids & Family Wear</span>
+          <span><span>◆</span> Home Furnishing & Improvements</span>
           <span><span>◆</span> Same-Day Delivery Available</span>
         </div>
       </div>
 
+      {/* Ethnic Wear Section */}
+      <section id="ethnic" className="sf-section bg-paper">
+        <div className="sf-wrap">
+          <div className="reveal">
+            <div className="sf-head">
+              <div className="sf-head-text">
+                <div className="sf-eyebrow-s green"><p>Ethnic & Heritage Wears</p></div>
+                <h2 className="sf-h2"><em>Roots,</em><br />reimagined.</h2>
+                <p className="sf-sub">Authentic Banarasi sarees, Muga and Assam silk, Mekhela Chador and bridal weaves — sourced directly from Varanasi weavers across six generations.</p>
+              </div>
+              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Ethnic Wear ↗</a>
+            </div>
+          </div>
+          <div className="sf-vertical-stack reveal">
+            <div className="sf-og-card">
+              <img 
+                src="/assets/Banarasi.jpg" 
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1200&auto=format&fit=crop&q=80"; }} 
+                alt="Authentic Banarsi Sarees" 
+                className="card-img-full" 
+              />
+              <div className="card-body-pad">
+                <span className="sf-badge">Bestseller</span>
+                <h3>Authentic Banarsi Sarees</h3>
+                <p>3rd Floor · Royal Handlooms sourced directly from Varanasi</p>
+                <span className="sf-link-arrow">Explore Sarees →</span>
+              </div>
+            </div>
+            <div className="sf-og-card">
+              <img 
+                src="/assets/assam-silk.jpg" 
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=1200&auto=format&fit=crop&q=80"; }} 
+                alt="Traditional Assam Silk" 
+                className="card-img-full" 
+              />
+              <div className="card-body-pad">
+                <h3>Traditional Assam Silk & Mekhela Chador</h3>
+                <p>3rd Floor · Pure Muga silk and exquisite celebratory ethnic wear</p>
+                <span className="sf-link-arrow">Explore Silk →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Kids Section */}
+      <section id="kids" className="sf-section bg-alt">
+        <div className="sf-wrap">
+          <div className="reveal">
+            <div className="sf-head">
+              <div className="sf-head-text">
+                <div className="sf-eyebrow-s"><p>Kids & Family Section</p></div>
+                <h2 className="sf-h2">Joyful style for<br /><em>the little ones.</em></h2>
+                <p className="sf-sub">Festive ethnic outfits, party wear frocks, smart formals, and comfortable everyday clothing for children of all ages.</p>
+              </div>
+              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Kids Wear ↗</a>
+            </div>
+          </div>
+          <div className="sf-vertical-stack reveal">
+            <div className="sf-og-card">
+              <img 
+                src="https://images.unsplash.com/photo-1503944583267-73c7326d45e5?w=1200&auto=format&fit=crop&q=80" 
+                alt="Kids Festive & Casual Wear" 
+                className="card-img-full" 
+              />
+              <div className="card-body-pad">
+                <span className="sf-badge" style={{ background: "var(--green)" }}>Kids Department</span>
+                <h3>Kids Fashion & Festive Wear</h3>
+                <p>2nd Floor · Comfortable daily wear, ethnic sets & party frocks</p>
+                <span className="sf-link-arrow">Explore Kids Collection →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Home Furnishing & Home Improvements Section */}
+      <section id="home" className="sf-section bg-paper">
+        <div className="sf-wrap">
+          <div className="reveal">
+            <div className="sf-head">
+              <div className="sf-head-text">
+                <div className="sf-eyebrow-s"><p>Home Furnishing & Improvements</p></div>
+                <h2 className="sf-h2">Elevate your<br /><em>living spaces.</em></h2>
+                <p className="sf-sub">Premium bedsheets, luxurious curtains, cushion covers, home decor, and essential home improvement items crafted for elegance and durability.</p>
+              </div>
+              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Home & Living ↗</a>
+            </div>
+          </div>
+          <div className="sf-grid-4 reveal" style={{ marginTop: "36px" }}>
+            <div className="sf-acc-tile">
+              <div className="tile-img"><img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop&q=80" alt="Bedsheets & Linen" /></div>
+              <div className="tile-body"><p>Bedsheets & Linen</p><p>Home Furnishing Floor</p></div>
+            </div>
+            <div className="sf-acc-tile">
+              <div className="tile-img"><img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&auto=format&fit=crop&q=80" alt="Curtains & Drapes" /></div>
+              <div className="tile-body"><p>Curtains & Drapes</p><p>Interior Decor Studio</p></div>
+            </div>
+            <div className="sf-acc-tile">
+              <div className="tile-img"><img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&auto=format&fit=crop&q=80" alt="Home Improvements" /></div>
+              <div className="tile-body"><p>Home Improvements</p><p>Utility & Hardware</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Fashion Section */}
-      <section id="fashion" className="sf-section bg-paper">
+      <section id="fashion" className="sf-section bg-alt">
         <div className="sf-wrap">
           <div className="reveal">
             <div className="sf-head">
@@ -315,64 +421,6 @@ export default function Home() {
                 <h3>Mens Suiting & Shirts</h3>
                 <p>Branded formals, trousers & casual wear</p>
                 <span className="sf-link-arrow">Explore Mens →</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Ethnic Section */}
-      <section id="ethnic" className="sf-section bg-alt">
-        <div className="sf-wrap">
-          <div className="reveal">
-            <div className="sf-head">
-              <div className="sf-head-text">
-                <div className="sf-eyebrow-s green"><p>Ethnic & Heritage</p></div>
-                <h2 className="sf-h2"><em>Roots,</em><br />reimagined.</h2>
-                <p className="sf-sub">Authentic Banarasi sarees, Muga and Assam silk, Mekhela Chador and bridal weaves — sourced directly from Varanasi weavers across six generations.</p>
-              </div>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Ethnic Wear ↗</a>
-            </div>
-          </div>
-          <div className="sf-vertical-stack reveal">
-            <div className="sf-og-card">
-              <img 
-                src="/assets/Banarasi.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/Banarasi.jpg"; }} 
-                alt="Authentic Banarsi Sarees" 
-                className="card-img-full" 
-              />
-              <div className="card-body-pad">
-                <span className="sf-badge">Bestseller</span>
-                <h3>Authentic Banarsi Sarees</h3>
-                <p>3rd Floor · Royal Handlooms sourced directly from Varanasi</p>
-                <span className="sf-link-arrow">Explore Sarees →</span>
-              </div>
-            </div>
-            <div className="sf-og-card">
-              <img 
-                src="/assets/assam-silk.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1200&auto=format&fit=crop&q=80"; }} 
-                alt="Traditional Assam Silk" 
-                className="card-img-full" 
-              />
-              <div className="card-body-pad">
-                <h3>Traditional Assam Silk</h3>
-                <p>3rd Floor · Pure Muga & Silk Mekhela Chador</p>
-                <span className="sf-link-arrow">Explore Silk →</span>
-              </div>
-            </div>
-            <div className="sf-og-card">
-              <img 
-                src="/assets/Morni_Banner_600x600.webp" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/Morni_Banner_600x600.webp"; }} 
-                alt="Designer Bridal Lehengas" 
-                className="card-img-full" 
-              />
-              <div className="card-body-pad">
-                <h3>Designer Bridal Lehengas</h3>
-                <p>The Wedding Studio · Hand-embroidered bridal wear</p>
-                <span className="sf-link-arrow">Explore Lehengas →</span>
               </div>
             </div>
           </div>
@@ -468,50 +516,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Accessories Section */}
-      <section id="accessories" className="sf-section bg-paper">
-        <div className="sf-wrap">
-          <div className="reveal">
-            <div className="sf-head">
-              <div className="sf-head-text">
-                <div className="sf-eyebrow-s"><p>Bags, Shoes & More</p></div>
-                <h2 className="sf-h2">The finishing<br /><em>touch.</em></h2>
-                <p className="sf-sub">Footwear, jewellery, cosmetics, bags & home products — finishing touches for every look, all under one roof at Askaran Binjraj.</p>
-              </div>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Accessories ↗</a>
-            </div>
-          </div>
-          <div className="sf-grid-4 reveal">
-            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80" alt="Handbags" /></div>
-              <div className="tile-body"><p>Handbags</p><p>4th Floor · Bag Boutique</p></div>
-            </a>
-            <a href="/collections/footwear" className="sf-acc-tile">
-              <div className="tile-img"><img src="/assets/footwear-display.jpg" onError={(e)=>{e.target.onerror=null; e.target.src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&auto=format&fit=crop&q=80";}} alt="Footwear" /></div>
-              <div className="tile-body"><p>Footwear</p><p>Men · Women · Kids</p></div>
-            </a>
-            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&auto=format&fit=crop&q=80" alt="Sunglasses" /></div>
-              <div className="tile-body"><p>Sunglasses</p><p>Ground Floor · Eyewear Studio</p></div>
-            </a>
-            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=600&auto=format&fit=crop&q=80" alt="Belts & Wallets" /></div>
-              <div className="tile-body"><p>Belts & Wallets</p><p>Ground Floor · Leather Lounge</p></div>
-            </a>
-            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=600&auto=format&fit=crop&q=80" alt="Smartwatches" /></div>
-              <div className="tile-body"><p>Smartwatches</p><p>Ground Floor · Smart Tech</p></div>
-            </a>
-            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop&q=80" alt="Fragrances" /></div>
-              <div className="tile-body"><p>Fragrances</p><p>Ground Floor · Fragrance Bar</p></div>
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Flagship Store & Interactive Map Destination Section */}
-      <section id="stores" className="sf-section bg-alt">
+      <section id="stores" className="sf-section bg-paper">
         <div className="sf-wrap">
           <div className="reveal" style={{ marginBottom: "36px" }}>
             <div className="sf-eyebrow-s"><p>Visit Us</p></div>
@@ -559,19 +565,19 @@ export default function Home() {
                   alt="Askaran Binjraj" 
                 />
               </Link>
-              <p className="f-desc">Fashion · Ethnic Wear · Travel Gear · Cosmetics · Jewellery · Accessories — all in one place.</p>
+              <p className="f-desc">Fashion · Ethnic Wear · Kids Wear · Home Furnishing · Travel Gear · Cosmetics · Jewellery — all in one place.</p>
               <p className="f-motto">Quality. Variety. Trust.</p>
               <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="f-shop">Shop Online ↗</a>
             </div>
             <div>
               <h4>Departments</h4>
               <ul>
-                <li><a onClick={() => scrollToSection("fashion")}>Fashion</a></li>
                 <li><a onClick={() => scrollToSection("ethnic")}>Ethnic Wear</a></li>
+                <li><a onClick={() => scrollToSection("kids")}>Kids Wear</a></li>
+                <li><a onClick={() => scrollToSection("home")}>Home & Living</a></li>
+                <li><a onClick={() => scrollToSection("fashion")}>Fashion</a></li>
                 <li><a onClick={() => scrollToSection("travel")}>Travel Gear</a></li>
-                <li><a onClick={() => scrollToSection("cosmetics")}>Cosmetics</a></li>
                 <li><a onClick={() => scrollToSection("jewelry")}>Jewellery</a></li>
-                <li><a onClick={() => scrollToSection("accessories")}>Accessories</a></li>
               </ul>
             </div>
             <div>
@@ -579,16 +585,15 @@ export default function Home() {
               <ul>
                 <li><a href="/collections/sarees">Sarees</a></li>
                 <li><a href="/collections/lehengas">Bridal Lehengas</a></li>
-                <li><a href="/collections/womens">Womens</a></li>
-                <li><a href="/collections/mens">Mens</a></li>
-                <li><a href="/collections/footwear">Footwear</a></li>
+                <li><a href="/collections/kids">Kids Festive</a></li>
+                <li><a href="/collections/furnishing">Home Furnishing</a></li>
               </ul>
             </div>
             <div>
               <h4>Company</h4>
               <ul>
                 <li><a onClick={() => scrollToSection("stores")}>Visit Us</a></li>
-                <li><Link to="/careers" style={{ color: "var(--red)" }}>Careers</Link></li>
+                <li><Link to="/careers">Careers</Link></li>
                 <li><a href="/contact">Contact Us</a></li>
               </ul>
             </div>
