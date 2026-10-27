@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import { Toaster } from "sonner";
 
@@ -9,14 +9,15 @@ import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { WhatsAppFloat } from "./components/whatsappfloat";
 
-// 🚀 Page Imports
+// 🚀 Page Imports (Matching exact casing on disk)
+import Home from "./pages/Home"; // Your full homepage with hero & splash elements
 import Collections from "./pages/Collections";
 import CategoryDetail from "./pages/CategoryDetail";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
 import Contact from "./pages/contact";
 
-// 🛡️ Error Boundary to catch any runtime glitches
+// 🛡️ Error Boundary to catch any runtime glitches gracefully
 class AppErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -48,23 +49,6 @@ const ScrollManager = () => {
   return null;
 };
 
-const SplashRedirect = () => {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="h-screen w-full flex items-center justify-center bg-[#FAFAF8]">
-        <h1 className="text-2xl font-serif text-[#C41E3A] animate-pulse">Loading Askaran Binjraj...</h1>
-      </div>
-    );
-  }
-  return <Navigate to="/collections" replace />;
-};
-
 function App() {
   useEffect(() => {
     let lenis = null;
@@ -93,7 +77,7 @@ function App() {
           <ScrollManager />
           <Navbar />
           <Routes>
-            <Route path="/" element={<SplashRedirect />} />
+            <Route path="/" element={<Home />} />
             <Route path="/collections" element={<Collections />} />
             <Route path="/collections/:slug" element={<CategoryDetail />} />
             <Route path="/about" element={<About />} />
@@ -109,4 +93,4 @@ function App() {
   );
 }
 
-export default App;
+default export App;
