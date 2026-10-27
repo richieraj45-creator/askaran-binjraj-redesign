@@ -10,7 +10,7 @@ import { Footer } from "./components/footer";
 import { WhatsAppFloat } from "./components/whatsappfloat";
 
 // 🚀 Page Imports (Matching exact casing on disk)
-import Home from "./pages/Home"; // Your full homepage with hero & splash elements
+import Home from "./pages/Home"; 
 import Collections from "./pages/Collections";
 import CategoryDetail from "./pages/CategoryDetail";
 import About from "./pages/About";
@@ -93,4 +93,4 @@ function App() {
   );
 }
 
-default export App;
+export default App;
