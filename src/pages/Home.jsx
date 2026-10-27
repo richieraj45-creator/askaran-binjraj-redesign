@@ -24,25 +24,25 @@ const SLIDES = [
     fallbackImg: "/assets/4237-768x427.jpg"
   },
   {
-    eyebrow: "Travel & Style",
+    eyebrow: "Travel & Luggage",
     title: "Travel light,<br><em>arrive brilliantly.</em>",
-    sub: "Luxury luggage and travel accessories on the 4th Floor — suitcases, duffle bags, rucksacks, laptop bags.",
-    localImg: "/assets/BEST-GEAR-FOR-TRAVEL-8125-2x1-1-768x384.webp",
-    fallbackImg: "https://askaranbinjraj.com/wp-content/uploads/2025/11/BEST-GEAR-FOR-TRAVEL-8125-2x1-1-768x384.webp"
+    sub: "Luxury hardside trolley luggage, travel duffles, rucksacks, and premium travel accessories on the 4th Floor.",
+    localImg: "https://images.unsplash.com/photo-1581553680321-4fffae59fccd?auto=format&fit=crop&q=80&w=1600",
+    fallbackImg: "/assets/BEST-GEAR-FOR-TRAVEL-8125-2x1-1-768x384.webp"
   },
   {
     eyebrow: "Fine Jewellery",
     title: "Adorned in<br><em>pure elegance.</em>",
     sub: "Stunning jewellery styled for weddings, festive pujas, engagements and celebrations.",
-    localImg: "/assets/jewelry.jpg",
-    fallbackImg: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600"
+    localImg: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600",
+    fallbackImg: "/assets/jewelry.jpg"
   },
   {
     eyebrow: "Beauty & Wellness",
     title: "Your best self,<br><em>every single day.</em>",
     sub: "Lakmé, Mamaearth, Pond's, Sugar, Elle 18 and more trusted beauty brands in-store.",
-    localImg: "/assets/cosmetics.jpg",
-    fallbackImg: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1600"
+    localImg: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1600",
+    fallbackImg: "/assets/cosmetics.jpg"
   }
 ];
 
@@ -294,7 +294,7 @@ export default function Home() {
               <img 
                 src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1200&auto=format&fit=crop&q=80" 
                 alt="Authentic Banarsi Sarees" 
-                className="card-img-full" 
+                style={{ width: "100%", height: "420px", objectFit: "cover", display: "block", borderRadius: "12px 12px 0 0" }} 
               />
               <div className="card-body-pad">
                 <span className="sf-badge">Bestseller</span>
@@ -307,7 +307,7 @@ export default function Home() {
               <img 
                 src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=1200&auto=format&fit=crop&q=80" 
                 alt="Traditional Assam Silk" 
-                className="card-img-full" 
+                style={{ width: "100%", height: "420px", objectFit: "cover", display: "block", borderRadius: "12px 12px 0 0" }} 
               />
               <div className="card-body-pad">
                 <h3>Traditional Assam Silk & Mekhela Chador</h3>
@@ -319,7 +319,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Kids Section (Fixed Image & High Aesthetic) */}
+      {/* Kids Section */}
       <section id="kids" className="sf-section bg-alt">
         <div className="sf-wrap">
           <div className="reveal">
@@ -337,7 +337,7 @@ export default function Home() {
               <img 
                 src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=1200&auto=format&fit=crop&q=80" 
                 alt="Kids Festive & Casual Wear" 
-                className="card-img-full" 
+                style={{ width: "100%", height: "420px", objectFit: "cover", display: "block", borderRadius: "12px 12px 0 0" }} 
               />
               <div className="card-body-pad">
                 <span className="sf-badge" style={{ background: "var(--green)" }}>Kids Department</span>
@@ -365,15 +365,15 @@ export default function Home() {
           </div>
           <div className="sf-grid-4 reveal" style={{ marginTop: "36px" }}>
             <div className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop&q=80" alt="Bedsheets & Linen" /></div>
+              <div className="tile-img"><img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop&q=80" alt="Bedsheets & Linen" style={{ width: "100%", height: "280px", objectFit: "cover" }} /></div>
               <div className="tile-body"><p>Bedsheets & Linen</p><p>Home Furnishing Floor</p></div>
             </div>
             <div className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&auto=format&fit=crop&q=80" alt="Curtains & Drapes" /></div>
+              <div className="tile-img"><img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&auto=format&fit=crop&q=80" alt="Curtains & Drapes" style={{ width: "100%", height: "280px", objectFit: "cover" }} /></div>
               <div className="tile-body"><p>Curtains & Drapes</p><p>Interior Decor Studio</p></div>
             </div>
             <div className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&auto=format&fit=crop&q=80" alt="Home Improvements" /></div>
+              <div className="tile-img"><img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&auto=format&fit=crop&q=80" alt="Home Improvements" style={{ width: "100%", height: "280px", objectFit: "cover" }} /></div>
               <div className="tile-body"><p>Home Improvements</p><p>Utility & Hardware</p></div>
             </div>
           </div>
@@ -398,7 +398,7 @@ export default function Home() {
               <img 
                 src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&auto=format&fit=crop&q=80" 
                 alt="Womens Collection" 
-                className="card-img-full" 
+                style={{ width: "100%", height: "420px", objectFit: "cover", display: "block", borderRadius: "12px 12px 0 0" }} 
               />
               <div className="card-body-pad">
                 <h3>Womens Collection</h3>
@@ -410,7 +410,7 @@ export default function Home() {
               <img 
                 src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=1200&auto=format&fit=crop&q=80" 
                 alt="Mens Suiting & Shirts" 
-                className="card-img-full" 
+                style={{ width: "100%", height: "420px", objectFit: "cover", display: "block", borderRadius: "12px 12px 0 0" }} 
               />
               <div className="card-body-pad">
                 <h3>Mens Suiting & Shirts</h3>
@@ -422,15 +422,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Travel Gear Section */}
+      {/* Travel Gear Section (Fixed with Luxury Trolley Bags) */}
       <section id="travel" className="sf-section bg-white">
         <div className="sf-wrap">
           <div className="reveal">
             <div className="sf-head">
               <div className="sf-head-text">
-                <div className="sf-eyebrow-s"><p>4th Floor · Travel Gear</p></div>
+                <div className="sf-eyebrow-s"><p>4th Floor · Travel Gear & Luggage</p></div>
                 <h2 className="sf-h2">Pack smart,<br /><em>travel far.</em></h2>
-                <p className="sf-sub">Elevate your journey with luxury luggage and travel accessories — suitcases, duffle bags, rucksacks, and laptop bags on the 4th Floor.</p>
+                <p className="sf-sub">Elevate your journey with luxury hardside luggage, trolley bags, rucksacks, and premium travel gear on the 4th Floor.</p>
               </div>
               <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Travel Gear ↗</a>
             </div>
@@ -438,14 +438,14 @@ export default function Home() {
           <div className="sf-vertical-stack reveal">
             <div className="sf-og-card">
               <img 
-                src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=1200&auto=format&fit=crop&q=80" 
-                alt="Travel Gear in Dhekiajuli" 
-                className="card-img-full" 
+                src="https://images.unsplash.com/photo-1581553680321-4fffae59fccd?w=1200&auto=format&fit=crop&q=80" 
+                alt="Luxury Luggage & Trolley Bags" 
+                style={{ width: "100%", height: "420px", objectFit: "cover", display: "block", borderRadius: "12px 12px 0 0" }} 
               />
               <div className="card-body-pad">
                 <span className="sf-badge">4th Floor</span>
-                <h3>Travel Gear in Dhekiajuli</h3>
-                <p>Suitcases, duffle bags, rucksacks & laptop bags</p>
+                <h3>Luxury Luggage & Trolley Sets</h3>
+                <p>Durable hardside suitcases, travel duffles & premium rucksacks</p>
                 <span className="sf-link-arrow">Explore Travel Gear →</span>
               </div>
             </div>
@@ -468,7 +468,7 @@ export default function Home() {
           </div>
           <div className="sf-vertical-stack reveal">
             <div className="sf-og-card">
-              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&auto=format&fit=crop&q=80" alt="Beauty & Skincare Counter" className="card-img-full" />
+              <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200&auto=format&fit=crop&q=80" alt="Beauty & Skincare Counter" style={{ width: "100%", height: "420px", objectFit: "cover", display: "block", borderRadius: "12px 12px 0 0" }} />
               <div className="card-body-pad">
                 <h3>Beauty & Skincare Counter</h3>
                 <p>Ground Floor · Lakmé, Mamaearth, Sugar, Elle 18</p>
@@ -495,9 +495,9 @@ export default function Home() {
           <div className="sf-vertical-stack reveal">
             <div className="sf-og-card">
               <img 
-                src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&auto=format&fit=crop&q=80" 
+                src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1200&auto=format&fit=crop&q=80" 
                 alt="Gold & Fine Jewellery Counter" 
-                className="card-img-full" 
+                style={{ width: "100%", height: "420px", objectFit: "cover", display: "block", borderRadius: "12px 12px 0 0" }} 
               />
               <div className="card-body-pad">
                 <h3>Gold & Fine Jewellery Counter</h3>

@@ -186,7 +186,7 @@ export default function Careers() {
           <div style={{ textAlign: "center", marginBottom: "36px" }}>
             <span className="sf-badge" style={{ marginBottom: "12px" }}>Direct HR Submission</span>
             <h3 style={{ fontFamily: "var(--serif)", fontSize: "2rem", margin: "0 0 8px" }}>Apply to Askaran Binjraj</h3>
-            <p style={{ fontSize: "0.88rem", color: "var(--muted)", margin: 0 }}>All applications route securely to <strong>hr@crpl.co.in</strong></p>
+            <p style={{ fontSize: "0.88rem", color: "var(--muted)", margin: 0 }}>All applications route securely to <strong>hr@crpl.co.in</strong>[cite: 5, 16]</p>
           </div>
 
           {submitted ? (
@@ -283,7 +283,7 @@ export default function Careers() {
                 className="sf-btn-red" 
                 style={{ width: "100%", justifyContent: "center", padding: "14px", marginTop: "10px", fontSize: "0.75rem", letterSpacing: "0.2em", cursor: "pointer", border: "none" }}
               >
-                Send Application to hr@crpl.co.in ↗[cite: 5, 16]
+                Submit
               </button>
             </form>
           )}
