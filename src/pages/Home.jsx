@@ -1,613 +1,789 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+/* Askaran Binjraj — Standalone Master Storefront & Splash CSS */
+:root {
+  --red: #C8251E;
+  --red-dark: #8B1512;
+  --green: #2E7D32;
+  --ink: #111111;
+  --paper: #FAFAF8;
+  --alt: #F4F0EA;
+  --border: #E5E0D8;
+  --muted: #9A9590;
+  --mid: #6B6560;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-// Hero Banner Carousel mapping directly to public/assets/ with Web Fallbacks
-const SLIDES = [
-  {
-    eyebrow: "Heritage Collection",
-    title: "Six generations of<br><em>artisan craft.</em>",
-    sub: "Authentic Banarasi sarees sourced directly from Varanasi weavers across six generations.",
-    localImg: "/assets/Banarasi.jpg",
-    fallbackImg: "https://askaranbinjraj.com/wp-content/uploads/2025/11/Banarasi.jpg"
-  },
-  {
-    eyebrow: "Ready-to-Wear",
-    title: "Move through the world<br><em>unforgettably.</em>",
-    sub: "Curated apparel, tailored suits, and authentic ethnic wear for men and women at Askaran Binjraj.",
-    localImg: "/assets/4237-768x427.jpg",
-    fallbackImg: "https://askaranbinjraj.com/wp-content/uploads/2025/11/4237-768x427.jpg"
-  },
-  {
-    eyebrow: "The Wedding Studio",
-    title: "Designer bridal<br><em>lehengas & weaves.</em>",
-    sub: "Raw silk zardozi, hand-embroidered velvet bridal sets, and festive celebratory wear.",
-    localImg: "/assets/Morni_Banner_600x600.webp",
-    fallbackImg: "https://askaranbinjraj.com/wp-content/uploads/2025/11/Morni_Banner_600x600.webp"
-  },
-  {
-    eyebrow: "Travel & Style",
-    title: "Travel light,<br><em>arrive brilliantly.</em>",
-    sub: "Luxury luggage and travel accessories on the 4th Floor — suitcases, duffle bags, rucksacks, laptop bags.",
-    localImg: "/assets/BEST-GEAR-FOR-TRAVEL-8125-2x1-1-768x384.webp",
-    fallbackImg: "https://askaranbinjraj.com/wp-content/uploads/2025/11/BEST-GEAR-FOR-TRAVEL-8125-2x1-1-768x384.webp"
-  },
-  {
-    eyebrow: "Fine Jewellery",
-    title: "Adorned in<br><em>pure elegance.</em>",
-    sub: "Stunning jewellery styled for weddings, festive pujas, engagements and celebrations.",
-    localImg: "/assets/jewelry.jpg",
-    fallbackImg: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600"
-  },
-  {
-    eyebrow: "Beauty & Wellness",
-    title: "Your best self,<br><em>every single day.</em>",
-    sub: "Lakmé, Mamaearth, Pond's, Sugar, Elle 18 and more trusted beauty brands in-store.",
-    localImg: "/assets/cosmetics.jpg",
-    fallbackImg: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1600"
+html {
+  scroll-behavior: smooth;
+}
+
+body.storefront {
+  margin: 0;
+  padding: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.storefront.lock {
+  overflow: hidden;
+}
+
+body.storefront * {
+  box-sizing: border-box;
+}
+
+/* AUTHENTIC OG SPLASH SCREEN GATE (1:1 with Screenshot 150410.png) */
+.splash {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 36px;
+  transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.splash.done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Corner bracket tick marks */
+.sp-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: #D6D0C7;
+  border-style: solid;
+  pointer-events: none;
+}
+.sp-corner.top-left { top: 16px; left: 16px; border-width: 1.5px 0 0 1.5px; }
+.sp-corner.top-right { top: 16px; right: 16px; border-width: 1.5px 1.5px 0 0; }
+.sp-corner.bottom-left { bottom: 16px; left: 16px; border-width: 0 0 1.5px 1.5px; }
+.sp-corner.bottom-right { bottom: 16px; right: 16px; border-width: 0 1.5px 1.5px 0; }
+
+.sp-top-meta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: #B5AEA4;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.sp-center-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 460px;
+  height: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sp-circle-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid #E5DFD6;
+  pointer-events: none;
+}
+
+.sp-center-line {
+  position: absolute;
+  top: 50%;
+  left: -200px;
+  right: -200px;
+  height: 1px;
+  background: var(--red);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.sp-logo-img {
+  height: 110px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 5;
+}
+
+.sp-motto-green {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--green);
+  margin: 12px 0 8px;
+  position: relative;
+  z-index: 5;
+}
+
+.sp-dots-trio {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 5;
+}
+
+.sp-dots-trio span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #D86B67;
+}
+
+.sp-sub-meta {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--ink);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 5;
+}
+
+.sp-brand-name {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  color: #8C867E;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 5;
+}
+
+.sp-bottom-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  border-top: 1px solid #EAE6DF;
+  padding-top: 16px;
+  z-index: 10;
+  flex-wrap: wrap;
+}
+
+.sp-bottom-nav span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #A39B90;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 6px;
+  cursor: pointer;
+}
+
+.sp-bottom-nav span.active {
+  color: var(--red);
+}
+
+.sp-bottom-nav span.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--red);
+}
+
+.sp-floating-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--red);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* HEADER & NAVBAR STYLES */
+.sf-announce {
+  background: var(--red);
+  color: #ffffff;
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+.sf-header {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.sf-header-in {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sf-nav {
+  display: none;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (min-width: 1024px) {
+  .sf-nav {
+    display: flex;
   }
-];
+}
 
-export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [splashDone, setSplashDone] = useState(false);
-  const [splashRemoved, setSplashRemoved] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+.sf-nav a {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #5A5550;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
 
-  useEffect(() => {
-    const slideTimer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
-    }, 6000);
-    return () => clearInterval(slideTimer);
-  }, []);
+.sf-nav a:hover {
+  color: var(--red);
+}
 
-  useEffect(() => {
-    document.body.classList.add("lock");
-    const t1 = setTimeout(() => {
-      setSplashDone(true);
-      document.body.classList.remove("lock");
-      const t2 = setTimeout(() => {
-        setSplashRemoved(true);
-      }, 950);
-      return () => clearTimeout(t2);
-    }, 3800);
-    return () => {
-      document.body.classList.remove("lock");
-      clearTimeout(t1);
-    };
-  }, []);
+.sf-shop-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
 
-  useEffect(() => {
-    const revealEls = document.querySelectorAll(".reveal");
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("in");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12 }
-      );
-      revealEls.forEach((el) => observer.observe(el));
-      return () => observer.disconnect();
-    } else {
-      revealEls.forEach((el) => el.classList.add("in"));
-    }
-  }, []);
+.sf-shop-btn:hover {
+  background: var(--red-dark);
+}
 
-  return (
-    <div className="storefront">
-      
-      {/* AUTHENTIC OG SPLASH SCREEN GATE (1:1 with Screenshot 150410.png) */}
-      {!splashRemoved && (
-        <div className={`splash ${splashDone ? "done" : ""}`} id="splash">
-          {/* Corner tick marks */}
-          <div className="sp-corner top-left"></div>
-          <div className="sp-corner top-right"></div>
-          <div className="sp-corner bottom-left"></div>
-          <div className="sp-corner bottom-right"></div>
+/* HAMBURGER BUTTON & MOBILE DRAWER */
+.sf-burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 600;
+}
 
-          {/* Floating subtle red dots */}
-          <div className="sp-floating-dot" style={{ top: "8%", left: "12%" }}></div>
-          <div className="sp-floating-dot" style={{ top: "22%", left: "34%" }}></div>
-          <div className="sp-floating-dot" style={{ top: "14%", right: "20%" }}></div>
-          <div className="sp-floating-dot" style={{ top: "30%", right: "8%" }}></div>
-          <div className="sp-floating-dot" style={{ bottom: "36%", left: "21%" }}></div>
-          <div className="sp-floating-dot" style={{ bottom: "24%", right: "32%" }}></div>
-          <div className="sp-floating-dot" style={{ bottom: "12%", left: "14%" }}></div>
-          <div className="sp-floating-dot" style={{ bottom: "18%", right: "18%" }}></div>
+@media (min-width: 1024px) {
+  .sf-burger { display: none; }
+}
 
-          {/* Top header meta */}
-          <div className="sp-top-meta">
-            <span>EST. 1980</span>
-            <span>6TH GENERATION</span>
-          </div>
+.sf-burger span {
+  width: 100%;
+  height: 2px;
+  background: var(--ink);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
 
-          {/* Center Circular Stage with Logo */}
-          <div className="sp-center-stage">
-            <div className="sp-circle-ring"></div>
-            <div className="sp-center-line"></div>
-            
-            <img 
-              src="/assets/logo-stacked.png" 
-              onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-wide.png"; }} 
-              alt="Askaran Binjraj" 
-              className="sp-logo-img"
-            />
-            
-            <div className="sp-motto-green">Quality. Variety. Trust.</div>
-            
-            <div className="sp-dots-trio">
-              <span></span><span></span><span></span>
-            </div>
-            
-            <div className="sp-sub-meta">SINCE 1980 · SIX GENERATIONS OF TRUST</div>
-            <div className="sp-brand-name">ASKARAN BINJRAJ</div>
-          </div>
+.sf-mobile-nav {
+  display: none;
+  position: absolute;
+  top: 68px;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 24px;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  z-index: 550;
+}
 
-          {/* Bottom navigation categories bar */}
-          <div className="sp-bottom-nav">
-            <span className="active">FASHION</span>
-            <span>ETHNIC WEAR</span>
-            <span>TRAVEL GEAR</span>
-            <span>COSMETICS</span>
-            <span>JEWELLERY</span>
-            <span>ACCESSORIES</span>
-          </div>
-        </div>
-      )}
+.sf-mobile-nav.open {
+  display: flex;
+}
 
-      {/* Announcement Bar */}
-      <div className="sf-announce">
-        Same-Day & 1-Day Delivery Available · New Ethnic Collection Just Dropped
-      </div>
+.sf-mobile-nav a {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
 
-      {/* Primary Header Navbar */}
-      <header id="site-header" className="sf-header">
-        <div className="sf-header-in">
-          <Link to="/" className="sf-logo">
-            <img 
-              src="/assets/logo-wide.png" 
-              onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
-              alt="Askaran Binjraj" 
-              style={{ height: "42px", width: "auto", objectFit: "contain" }}
-            />
-          </Link>
-          <nav className="sf-nav">
-            <a href="#fashion">Fashion</a>
-            <a href="#ethnic">Ethnic Wear</a>
-            <a href="#travel">Travel Gear</a>
-            <a href="#cosmetics">Cosmetics</a>
-            <a href="#jewelry">Jewellery</a>
-            <a href="#accessories">Accessories</a>
-            <a href="#about">About</a>
-          </nav>
-          <div className="sf-header-actions" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-shop-btn">
-              Shop Online ↗
-            </a>
-            <button className="sf-burger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle Menu">
-              <span></span><span></span><span></span>
-            </button>
-          </div>
-        </div>
-        {mobileMenuOpen && (
-          <div className="sf-mobile-nav open">
-            <a href="#fashion" onClick={() => setMobileMenuOpen(false)}>Fashion</a>
-            <a href="#ethnic" onClick={() => setMobileMenuOpen(false)}>Ethnic Wear</a>
-            <a href="#travel" onClick={() => setMobileMenuOpen(false)}>Travel Gear</a>
-            <a href="#cosmetics" onClick={() => setMobileMenuOpen(false)}>Cosmetics</a>
-            <a href="#jewelry" onClick={() => setMobileMenuOpen(false)}>Jewellery</a>
-            <a href="#accessories" onClick={() => setMobileMenuOpen(false)}>Accessories</a>
-            <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">Shop Online ↗</a>
-          </div>
-        )}
-      </header>
+/* LAYOUT & CONTAINERS */
+.sf-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
-      {/* Hero 6-Slide Carousel */}
-      <section id="hero" className="sf-hero">
-        {SLIDES.map((slide, idx) => (
-          <div key={idx} className={`sf-slide ${idx === currentSlide ? "active" : ""}`}>
-            <img 
-              src={slide.localImg} 
-              onError={(e) => { e.target.onerror = null; e.target.src = slide.fallbackImg; }} 
-              alt={slide.eyebrow} 
-            />
-          </div>
-        ))}
+.sf-section {
+  padding: 80px 0;
+  scroll-margin-top: 70px;
+}
 
-        <div className="sf-hero-shade"></div>
+.bg-paper { background: var(--paper); }
+.bg-alt { background: var(--alt); }
+.bg-white { background: #ffffff; }
 
-        <button 
-          className="sf-arrow prev" 
-          onClick={() => setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length)}
-          aria-label="Previous Slide"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button 
-          className="sf-arrow next" 
-          onClick={() => setCurrentSlide((prev) => (prev + 1) % SLIDES.length)}
-          aria-label="Next Slide"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
+/* HERO CAROUSEL */
+.sf-hero {
+  position: relative;
+  overflow: hidden;
+  height: 85vh;
+  min-height: 560px;
+  background: #0a0806;
+}
 
-        <div className="sf-counter">
-          <span>0{currentSlide + 1}<small>/ 06</small></span>
-        </div>
+.sf-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1000ms ease-in-out;
+  z-index: 0;
+}
 
-        <div className="sf-dots">
-          {SLIDES.map((_, idx) => (
-            <button
-              key={idx}
-              className={idx === currentSlide ? "active" : ""}
-              onClick={() => setCurrentSlide(idx)}
-            />
-          ))}
-        </div>
+.sf-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
 
-        <div className="sf-hero-content">
-          <div className="sf-hero-inner">
-            <div className="sf-eyebrow">
-              <p>{SLIDES[currentSlide].eyebrow}</p>
-            </div>
-            <h1 dangerouslySetInnerHTML={{ __html: SLIDES[currentSlide].title }} />
-            <p className="sf-hero-sub">{SLIDES[currentSlide].sub}</p>
-            <div className="sf-cta-row">
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Online ↗</a>
-              <a href="#ethnic" className="sf-btn-ghost-w">Explore Departments</a>
-            </div>
-          </div>
-        </div>
-      </section>
+.sf-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.58;
+}
 
-      {/* Marquee Ticker */}
-      <div className="sf-ticker">
-        <div className="sf-ticker-track">
-          <span><span>◆</span> Dhekiajuli Flagship</span>
-          <span><span>◆</span> Six Generations of Trust</span>
-          <span><span>◆</span> Authentic Banarasi Sarees</span>
-          <span><span>◆</span> Premium Suitings & Formals</span>
-          <span><span>◆</span> Luxury Travel Gear</span>
-          <span><span>◆</span> Same-Day Delivery Available</span>
-        </div>
-      </div>
+.sf-hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  background: linear-gradient(108deg, rgba(10, 8, 6, 0.88) 28%, rgba(10, 8, 6, 0.4) 62%, rgba(10, 8, 6, 0.5) 100%);
+}
 
-      {/* Fashion Section (Matches Layout in OG Screenshot) */}
-      <section id="fashion" className="sf-section bg-paper">
-        <div className="sf-wrap">
-          <div className="reveal">
-            <div className="sf-head">
-              <div className="sf-head-text">
-                <div className="sf-eyebrow-s"><p>1st Floor · Fashion & Apparel</p></div>
-                <h2 className="sf-h2">Latest fashion<br /><em>under one roof.</em></h2>
-                <p className="sf-sub">Branded shirts, tailored trousers, midi dresses, frocks and everyday style for men and women at Askaran Binjraj Shopping Mall.</p>
-              </div>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Fashion ↗</a>
-            </div>
-          </div>
-          <div className="sf-vertical-stack reveal">
-            <div className="sf-og-card">
-              <img 
-                src="/assets/womens.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/4237-768x427.jpg"; }} 
-                alt="Womens Collection" 
-                className="card-img-full" 
-              />
-              <div className="card-body-pad">
-                <h3>Womens Collection</h3>
-                <p>1st & 2nd Floor · Latest styles and seasonal picks</p>
-                <span className="sf-link-arrow">Explore Womens →</span>
-              </div>
-            </div>
-            <div className="sf-og-card">
-              <img 
-                src="/assets/mens.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/2148401436-768x768.jpg"; }} 
-                alt="Mens Suiting & Shirts" 
-                className="card-img-full" 
-              />
-              <div className="card-body-pad">
-                <h3>Mens Suiting & Shirts</h3>
-                <p>Branded formals, trousers & casual wear</p>
-                <span className="sf-link-arrow">Explore Mens →</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+.sf-hero-content {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
 
-      {/* Ethnic Section (Vertical Card Stack 1:1 with OG Screenshot) */}
-      <section id="ethnic" className="sf-section bg-alt">
-        <div className="sf-wrap">
-          <div className="reveal">
-            <div className="sf-head">
-              <div className="sf-head-text">
-                <div className="sf-eyebrow-s green"><p>Ethnic & Heritage</p></div>
-                <h2 className="sf-h2"><em>Roots,</em><br />reimagined.</h2>
-                <p className="sf-sub">Authentic Banarasi sarees, Muga and Assam silk, Mekhela Chador and bridal weaves — sourced directly from Varanasi weavers across six generations.</p>
-              </div>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Ethnic Wear ↗</a>
-            </div>
-          </div>
-          <div className="sf-vertical-stack reveal">
-            <div className="sf-og-card">
-              <img 
-                src="/assets/Banarasi.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/Banarasi.jpg"; }} 
-                alt="Authentic Banarsi Sarees" 
-                className="card-img-full" 
-              />
-              <div className="card-body-pad">
-                <span className="sf-badge">Bestseller</span>
-                <h3>Authentic Banarsi Sarees</h3>
-                <p>3rd Floor · Royal Handlooms sourced directly from Varanasi</p>
-                <span className="sf-link-arrow">Explore Sarees →</span>
-              </div>
-            </div>
-            <div className="sf-og-card">
-              <img 
-                src="/assets/assam-silk.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&auto=format&fit=crop&q=80"; }} 
-                alt="Traditional Assam Silk" 
-                className="card-img-full" 
-              />
-              <div className="card-body-pad">
-                <h3>Traditional Assam Silk</h3>
-                <p>3rd Floor · Pure Muga & Silk Mekhela Chador</p>
-                <span className="sf-link-arrow">Explore Silk →</span>
-              </div>
-            </div>
-            <div className="sf-og-card">
-              <img 
-                src="/assets/Morni_Banner_600x600.webp" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/Morni_Banner_600x600.webp"; }} 
-                alt="Designer Bridal Lehengas" 
-                className="card-img-full" 
-              />
-              <div className="card-body-pad">
-                <h3>Designer Bridal Lehengas</h3>
-                <p>The Wedding Studio · Hand-embroidered bridal wear</p>
-                <span className="sf-link-arrow">Explore Lehengas →</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+.sf-eyebrow p {
+  margin: 0 0 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: var(--red);
+}
 
-      {/* Travel Gear Section */}
-      <section id="travel" className="sf-section bg-white">
-        <div className="sf-wrap">
-          <div className="reveal">
-            <div className="sf-head">
-              <div className="sf-head-text">
-                <div className="sf-eyebrow-s"><p>4th Floor · Travel Gear</p></div>
-                <h2 className="sf-h2">Pack smart,<br /><em>travel far.</em></h2>
-                <p className="sf-sub">Elevate your journey with luxury luggage and travel accessories — suitcases, duffle bags, rucksacks, and laptop bags on the 4th Floor.</p>
-              </div>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Travel Gear ↗</a>
-            </div>
-          </div>
-          <div className="sf-feature-grid reveal">
-            <div className="sf-feature-main">
-              <img 
-                src="/assets/BEST-GEAR-FOR-TRAVEL-8125-2x1-1-768x384.webp" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/BEST-GEAR-FOR-TRAVEL-8125-2x1-1-768x384.webp"; }} 
-                alt="Travel Gear" 
-              />
-              <div className="sf-feature-label">
-                <span className="sf-badge">4th Floor</span>
-                <h3>Travel Gear in Dhekiajuli</h3>
-                <p>Suitcases, duffle bags, rucksacks & laptop bags.</p>
-                <span className="sf-link-arrow">Explore Travel Gear →</span>
-              </div>
-            </div>
-            <div className="sf-mini-tiles">
-              <div className="sf-mini-tile">
-                <div className="tile-img"><img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=500&auto=format&fit=crop&q=80" alt="Luggage" /></div>
-                <div className="tile-body"><p>Luggage & Cases</p><p>Suitcases & trolley bags</p></div>
-              </div>
-              <div className="sf-mini-tile">
-                <div className="tile-img"><img src="https://images.unsplash.com/photo-1546938576-6e6a64f3175d?w=500&auto=format&fit=crop&q=80" alt="Rucksacks" /></div>
-                <div className="tile-body"><p>Rucksacks</p><p>Trek & travel packs</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+.sf-hero h1 {
+  margin: 0 0 16px;
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+  font-weight: 400;
+  line-height: 1.08;
+  color: var(--paper);
+}
 
-      {/* Jewellery & Lifestyle Store Section (1:1 with OG Screenshot Interior Cards) */}
-      <section id="jewelry" className="sf-section bg-alt">
-        <div className="sf-wrap">
-          <div className="reveal">
-            <div className="sf-head">
-              <div className="sf-head-text">
-                <div className="sf-eyebrow-s"><p>2nd Floor · Jewellery & Lifestyle</p></div>
-                <h2 className="sf-h2">Adorned in<br /><em>pure elegance.</em></h2>
-                <p className="sf-sub">Stunning jewellery styled for weddings, festive pujas, engagements and celebrations. Traditional gold, silver and fashion jewellery on the 2nd Floor.</p>
-              </div>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Jewellery ↗</a>
-            </div>
-          </div>
-          <div className="sf-vertical-stack reveal">
-            <div className="sf-og-card">
-              <img 
-                src="/assets/jewellery-store-1.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&auto=format&fit=crop&q=80"; }} 
-                alt="Gold & Diamond Display" 
-                className="card-img-full" 
-              />
-              <div className="card-body-pad">
-                <h3>Gold & Fine Jewellery Counter</h3>
-                <p>2nd Floor · Curated bridal sets, gold bangles & necklaces</p>
-                <span className="sf-link-arrow">Explore Jewellery →</span>
-              </div>
-            </div>
-            <div className="sf-og-card">
-              <img 
-                src="/assets/jewellery-store-2.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80"; }} 
-                alt="Boutique Showroom Interior" 
-                className="card-img-full" 
-              />
-              <div className="card-body-pad">
-                <h3>Boutique Showroom Interior</h3>
-                <p>Exclusive engagement rings and fine silver ornaments</p>
-                <span className="sf-link-arrow">View Showroom →</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+.sf-hero-sub {
+  margin: 0 0 36px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  max-width: 440px;
+  color: rgba(250, 250, 248, 0.65);
+}
 
-      {/* Accessories Section */}
-      <section id="accessories" className="sf-section bg-paper">
-        <div className="sf-wrap">
-          <div className="reveal">
-            <div className="sf-head">
-              <div className="sf-head-text">
-                <div className="sf-eyebrow-s"><p>Bags, Shoes & More</p></div>
-                <h2 className="sf-h2">The finishing<br /><em>touch.</em></h2>
-                <p className="sf-sub">Footwear, jewellery, cosmetics, bags & home products — finishing touches for every look, all under one roof at Askaran Binjraj.</p>
-              </div>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Accessories ↗</a>
-            </div>
-          </div>
-          <div className="sf-grid-4 reveal">
-            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80" alt="Handbags" /></div>
-              <div className="tile-body"><p>Handbags</p><p>4th Floor · Bag Boutique</p></div>
-            </a>
-            <a href="/collections/footwear" className="sf-acc-tile">
-              <div className="tile-img"><img src="/assets/footwear-display.jpg" onError={(e)=>{e.target.onerror=null; e.target.src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&auto=format&fit=crop&q=80";}} alt="Footwear" /></div>
-              <div className="tile-body"><p>Footwear</p><p>Men · Women · Kids</p></div>
-            </a>
-            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&auto=format&fit=crop&q=80" alt="Sunglasses" /></div>
-              <div className="tile-body"><p>Sunglasses</p><p>Ground Floor · Eyewear Studio</p></div>
-            </a>
-            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=600&auto=format&fit=crop&q=80" alt="Belts & Wallets" /></div>
-              <div className="tile-body"><p>Belts & Wallets</p><p>Ground Floor · Leather Lounge</p></div>
-            </a>
-            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=600&auto=format&fit=crop&q=80" alt="Smartwatches" /></div>
-              <div className="tile-body"><p>Smartwatches</p><p>Ground Floor · Smart Tech</p></div>
-            </a>
-            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
-              <div className="tile-img"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop&q=80" alt="Fragrances" /></div>
-              <div className="tile-body"><p>Fragrances</p><p>Ground Floor · Fragrance Bar</p></div>
-            </a>
-          </div>
-        </div>
-      </section>
+.sf-cta-row {
+  display: flex;
+  gap: 16px;
+}
 
-      {/* Flagship Store Section */}
-      <section id="stores" className="sf-section bg-alt">
-        <div className="sf-wrap">
-          <div className="reveal">
-            <div style={{ marginBottom: "48px" }}>
-              <div className="sf-eyebrow-s"><p>Visit Us</p></div>
-              <h2 className="sf-h2">Visit us<br /><em>in person.</em></h2>
-              <p className="sf-sub">Three floors of curated retail. Expert staff, in-store services, and the full collection.</p>
-            </div>
-          </div>
-          <div className="reveal sf-store-feature">
-            <div className="store-img">
-              <img src="/assets/mall-dusk.jpg" onError={(e)=>{e.target.onerror=null; e.target.src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=800&auto=format&fit=crop&q=80";}} alt="Askaran Binjraj Shopping Mall, Dhekiajuli" />
-              <span className="sf-badge" style={{ top: "12px", left: "12px" }}>Flagship Mall</span>
-            </div>
-            <div className="store-body">
-              <h3>Askaran Binjraj Shopping Mall</h3>
-              <p className="store-line">📍 NH 52, Main Road, Dhekiajuli, Assam 784110</p>
-              <p className="store-line">🕐 Mon–Sat 10:00–20:30 · Sun 10:00–20:00</p>
-              <p className="store-line">📞 03712 244 247 · +91 88119 66701</p>
-              <p className="store-hl">↑ 3 floors · Home to The Super Store & The Wedding Studio</p>
-              <div className="store-btns">
-                <a href="https://maps.app.goo.gl/oYK6b4wPu7BUnzGb8" target="_blank" rel="noopener noreferrer" className="b-outline">Directions</a>
-                <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="b-red">Shop Online</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+.sf-btn-red {
+  display: inline-flex;
+  align-items: center;
+  background: var(--red);
+  color: #fff;
+  padding: 13px 28px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border-radius: 4px;
+  text-decoration: none;
+}
 
-      {/* Master 4-Column Footer */}
-      <footer className="sf-footer">
-        <div className="sf-wrap">
-          <div className="sf-footer-grid">
-            <div>
-              <a href="/" className="f-logo">
-                <img 
-                  src="/assets/logo-wide.png" 
-                  onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
-                  alt="Askaran Binjraj" 
-                />
-              </a>
-              <p className="f-desc">Fashion · Ethnic Wear · Travel Gear · Cosmetics · Jewellery · Accessories — all in one place.</p>
-              <p className="f-motto">Quality. Variety. Trust.</p>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="f-shop">Shop Online ↗</a>
-            </div>
-            <div>
-              <h4>Departments</h4>
-              <ul>
-                <li><a href="#fashion">Fashion</a></li>
-                <li><a href="#ethnic">Ethnic Wear</a></li>
-                <li><a href="#travel">Travel Gear</a></li>
-                <li><a href="#cosmetics">Cosmetics</a></li>
-                <li><a href="#jewelry">Jewellery</a></li>
-                <li><a href="#accessories">Accessories</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Collections</h4>
-              <ul>
-                <li><a href="/collections/sarees">Sarees</a></li>
-                <li><a href="/collections/lehengas">Bridal Lehengas</a></li>
-                <li><a href="/collections/womens">Womens</a></li>
-                <li><a href="/collections/mens">Mens</a></li>
-                <li><a href="/collections/footwear">Footwear</a></li>
-                <li><a href="/collections">All Collections</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Company</h4>
-              <ul>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="/careers">Careers</a></li>
-                <li><a href="#stores">Visit Us</a></li>
-                <li><a href="/contact">Contact Us</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Visit Us</h4>
-              <ul>
-                <li><a href="https://maps.app.goo.gl/oYK6b4wPu7BUnzGb8" target="_blank" rel="noopener noreferrer">NH 52, Main Road, Dhekiajuli, Assam 784110</a></li>
-                <li><a href="tel:+91-8811966701">+91 88119 66701</a></li>
-                <li><a href="tel:03712244247">03712 244 247</a></li>
-                <li><a href="mailto:info.askaranbinjraj@gmail.com">info.askaranbinjraj@gmail.com</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="sf-footer-bottom">
-            <p>© 2026 Askaran Binjraj. All rights reserved.</p>
-            <p className="f-est">EST. 1980</p>
-            <div className="f-legal">
-              <a href="/contact">Contact</a>
-              <a href="/careers">Careers</a>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">Online Store</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+.sf-btn-ghost-w {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #fff;
+  padding: 12px 26px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border-radius: 4px;
+  text-decoration: none;
+}
 
-      {/* Floating WhatsApp Action Button */}
-      <a href="https://wa.me/918811966701" target="_blank" rel="noopener noreferrer" className="wa-float" aria-label="Chat on WhatsApp">
-        <svg fill="currentColor" width="28" height="28" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.334 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.334-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-      </a>
-    </div>
-  );
+/* MARQUEE TICKER */
+.sf-ticker {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--paper);
+  padding: 16px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sf-ticker-track {
+  display: inline-flex;
+  gap: 48px;
+  animation: ticker 25s linear infinite;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink);
+}
+
+.sf-ticker-track span span { color: var(--red); margin-right: 12px; }
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* VERTICAL OG STACK CARDS */
+.sf-vertical-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sf-og-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+}
+
+.sf-og-card .card-img-full {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.sf-og-card .card-body-pad {
+  padding: 24px;
+}
+
+.sf-og-card h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  margin: 0 0 6px;
+}
+
+.sf-og-card p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.sf-badge {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 4px 10px;
+  border-radius: 3px;
+  margin-bottom: 12px;
+}
+
+.sf-link-arrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--red);
+}
+
+/* STORE FEATURE CARD & MAP EMBED */
+.sf-store-feature {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 1080px;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+}
+
+@media (min-width: 850px) {
+  .sf-store-feature {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.sf-store-feature .store-img {
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+}
+
+.sf-store-feature .store-body {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sf-store-feature h3 {
+  margin: 0 0 12px;
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.sf-store-feature .store-line {
+  margin: 0 0 8px;
+  font-size: 0.84rem;
+  color: var(--mid);
+}
+
+.sf-store-feature .store-hl {
+  margin: 16px 0 24px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--red);
+}
+
+.sf-store-feature .store-btns {
+  display: flex;
+  gap: 12px;
+}
+
+.sf-store-feature .store-btns a {
+  flex: 1;
+  padding: 12px 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.sf-store-feature .store-btns .b-outline {
+  border: 1px solid var(--border);
+  color: var(--ink);
+}
+
+.sf-store-feature .store-btns .b-red {
+  background: var(--red);
+  color: #ffffff;
+}
+
+/* MASTER FOOTER */
+.sf-footer {
+  background: var(--paper);
+  border-top: 1px solid var(--border);
+  padding: 80px 0 40px;
+}
+
+.sf-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .sf-footer-grid {
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+  }
+}
+
+.sf-footer .f-logo img {
+  height: 38px;
+  width: auto;
+  margin-bottom: 16px;
+  object-fit: contain;
+}
+
+.sf-footer .f-desc {
+  font-size: 0.85rem;
+  color: var(--mid);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.sf-footer .f-motto {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 20px;
+}
+
+.sf-footer .f-shop {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--red);
+  text-transform: uppercase;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  text-decoration: none;
+}
+
+.sf-footer h4 {
+  margin: 0 0 16px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  color: var(--muted);
+}
+
+.sf-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sf-footer li {
+  margin-bottom: 10px;
+}
+
+.sf-footer li a {
+  font-size: 0.85rem;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.sf-footer li a:hover {
+  color: var(--red);
+}
+
+.sf-footer-bottom {
+  margin-top: 56px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sf-footer-bottom p {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.sf-footer-bottom .f-est {
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--red);
+}
+
+.sf-footer-bottom .f-legal {
+  display: flex;
+  gap: 20px;
+}
+
+.sf-footer-bottom .f-legal a {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* REVEAL ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* WHATSAPP FLOAT */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 60;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
 }
