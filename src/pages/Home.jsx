@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-// Hero Banner Carousel mapping directly to public/assets/ with Web Fallbacks
+// Crisp high-definition hero slides with automatic web fallbacks
 const SLIDES = [
   {
     eyebrow: "Heritage Collection",
@@ -162,12 +162,13 @@ export default function Home() {
         </div>
       )}
 
-      {/* Announcement Bar */}
+      {/* Top Red Announcement Bar */}
       <div className="sf-announce">
-        Same-Day & 1-Day Delivery Available · New Ethnic Collection Just Dropped
+        SAME-DAY & 1-DAY DELIVERY AVAILABLE · NEW ETHNIC COLLECTION JUST DROPPED · 
+        <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">SHOP ONLINE &gt;</a>
       </div>
 
-      {/* Header Navbar */}
+      {/* Sticky Primary Header Navbar */}
       <header id="site-header" className="sf-header">
         <div className="sf-header-in">
           <Link to="/" className="sf-logo">
@@ -175,22 +176,24 @@ export default function Home() {
               src="/assets/logo-wide.png" 
               onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
               alt="Askaran Binjraj" 
-              style={{ height: "42px", width: "auto", objectFit: "contain" }}
+              style={{ height: "46px", width: "auto", objectFit: "contain" }}
             />
           </Link>
           <nav className="sf-nav">
-            <a onClick={() => scrollToSection("fashion")}>Fashion</a>
-            <a onClick={() => scrollToSection("ethnic")}>Ethnic Wear</a>
-            <a onClick={() => scrollToSection("travel")}>Travel Gear</a>
-            <a onClick={() => scrollToSection("cosmetics")}>Cosmetics</a>
-            <a onClick={() => scrollToSection("jewelry")}>Jewellery</a>
-            <a onClick={() => scrollToSection("accessories")}>Accessories</a>
-            <a onClick={() => scrollToSection("stores")}>Visit Us</a>
-            <Link to="/careers">Careers</Link>
+            <a onClick={() => scrollToSection("fashion")}>FASHION</a>
+            <a onClick={() => scrollToSection("ethnic")}>ETHNIC WEAR</a>
+            <a onClick={() => scrollToSection("travel")}>TRAVEL GEAR</a>
+            <a onClick={() => scrollToSection("cosmetics")}>COSMETICS</a>
+            <a onClick={() => scrollToSection("jewelry")}>JEWELLERY</a>
+            <a onClick={() => scrollToSection("accessories")}>ACCESSORIES</a>
+            <a onClick={() => scrollToSection("stores")}>VISIT US</a>
+            <a onClick={() => scrollToSection("about")}>ABOUT</a>
+            <a onClick={() => scrollToSection("stores")}>IN STORE</a>
+            <Link to="/careers">CAREERS</Link>
           </nav>
           <div className="sf-header-actions" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-shop-btn">
-              Shop Online ↗
+              SHOP ONLINE ↗
             </a>
             <button className="sf-burger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle Menu">
               <span></span><span></span><span></span>
@@ -198,19 +201,19 @@ export default function Home() {
           </div>
         </div>
         <nav className={`sf-mobile-nav ${mobileMenuOpen ? "open" : ""}`}>
-          <a onClick={() => scrollToSection("fashion")}>Fashion</a>
-          <a onClick={() => scrollToSection("ethnic")}>Ethnic Wear</a>
-          <a onClick={() => scrollToSection("travel")}>Travel Gear</a>
-          <a onClick={() => scrollToSection("cosmetics")}>Cosmetics</a>
-          <a onClick={() => scrollToSection("jewelry")}>Jewellery</a>
-          <a onClick={() => scrollToSection("accessories")}>Accessories</a>
-          <a onClick={() => scrollToSection("stores")}>Visit Us</a>
-          <Link to="/careers" onClick={() => setMobileMenuOpen(false)}>Careers</Link>
-          <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">Shop Online ↗</a>
+          <a onClick={() => scrollToSection("fashion")}>FASHION</a>
+          <a onClick={() => scrollToSection("ethnic")}>ETHNIC WEAR</a>
+          <a onClick={() => scrollToSection("travel")}>TRAVEL GEAR</a>
+          <a onClick={() => scrollToSection("cosmetics")}>COSMETICS</a>
+          <a onClick={() => scrollToSection("jewelry")}>JEWELLERY</a>
+          <a onClick={() => scrollToSection("accessories")}>ACCESSORIES</a>
+          <a onClick={() => scrollToSection("stores")}>VISIT US</a>
+          <Link to="/careers" onClick={() => setMobileMenuOpen(false)}>CAREERS</Link>
+          <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">SHOP ONLINE ↗</a>
         </nav>
       </header>
 
-      {/* Hero 6-Slide Carousel */}
+      {/* Hero Banner Carousel (Matching Screenshot 155911.jpg) */}
       <section id="hero" className="sf-hero">
         {SLIDES.map((slide, idx) => (
           <div key={idx} className={`sf-slide ${idx === currentSlide ? "active" : ""}`}>
@@ -240,29 +243,23 @@ export default function Home() {
         </button>
 
         <div className="sf-counter">
-          <span>0{currentSlide + 1}<small>/ 06</small></span>
-        </div>
-
-        <div className="sf-dots">
-          {SLIDES.map((_, idx) => (
-            <button
-              key={idx}
-              className={idx === currentSlide ? "active" : ""}
-              onClick={() => setCurrentSlide(idx)}
-            />
-          ))}
+          <span>0{currentSlide + 1}<small> / 06</small></span>
         </div>
 
         <div className="sf-hero-content">
           <div className="sf-hero-inner">
             <div className="sf-eyebrow">
-              <p>{SLIDES[currentSlide].eyebrow}</p>
+              <p>— {SLIDES[currentSlide].eyebrow}</p>
             </div>
             <h1 dangerouslySetInnerHTML={{ __html: SLIDES[currentSlide].title }} />
             <p className="sf-hero-sub">{SLIDES[currentSlide].sub}</p>
             <div className="sf-cta-row">
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Online ↗</a>
-              <a onClick={() => scrollToSection("ethnic")} className="sf-btn-ghost-w" style={{ cursor: "pointer" }}>Explore Departments</a>
+              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">
+                SHOP ONLINE ↗
+              </a>
+              <a onClick={() => scrollToSection("ethnic")} className="sf-btn-ghost-w" style={{ cursor: "pointer" }}>
+                EXPLORE DEPARTMENTS
+              </a>
             </div>
           </div>
         </div>
@@ -271,7 +268,7 @@ export default function Home() {
       {/* Marquee Ticker */}
       <div className="sf-ticker">
         <div className="sf-ticker-track">
-          <span><span>◆</span> Dhekiajuli Flagship</span>
+          <span><span>◆</span> Dhekiajuli Flagship Mall</span>
           <span><span>◆</span> Six Generations of Trust</span>
           <span><span>◆</span> Authentic Banarasi Sarees</span>
           <span><span>◆</span> Premium Suitings & Formals</span>
@@ -355,7 +352,7 @@ export default function Home() {
             <div className="sf-og-card">
               <img 
                 src="/assets/assam-silk.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&auto=format&fit=crop&q=80"; }} 
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1200&auto=format&fit=crop&q=80"; }} 
                 alt="Traditional Assam Silk" 
                 className="card-img-full" 
               />
@@ -429,7 +426,7 @@ export default function Home() {
           </div>
           <div className="sf-vertical-stack reveal">
             <div className="sf-og-card">
-              <img src="/assets/cosmetics.jpg" onError={(e)=>{e.target.onerror=null; e.target.src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80";}} alt="Beauty & Skincare Counter" className="card-img-full" />
+              <img src="/assets/cosmetics.jpg" onError={(e)=>{e.target.onerror=null; e.target.src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&auto=format&fit=crop&q=80";}} alt="Beauty & Skincare Counter" className="card-img-full" />
               <div className="card-body-pad">
                 <h3>Beauty & Skincare Counter</h3>
                 <p>Ground Floor · Lakmé, Mamaearth, Sugar, Elle 18</p>
@@ -457,7 +454,7 @@ export default function Home() {
             <div className="sf-og-card">
               <img 
                 src="/assets/jewelry.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&auto=format&fit=crop&q=80"; }} 
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&auto=format&fit=crop&q=80"; }} 
                 alt="Gold & Fine Jewellery Counter" 
                 className="card-img-full" 
               />
@@ -528,7 +525,7 @@ export default function Home() {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3568.513405788737!2d92.48347887616616!3d26.680016570776994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3744c7942e6129cb%3A0xb366cf8d4bebfbfd!2sAskaran%20Binjraj!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
-                style={{ border: 0, minHeight: "340px" }} 
+                style={{ border: 0, minHeight: "360px" }} 
                 allowFullScreen="" 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
@@ -555,13 +552,13 @@ export default function Home() {
         <div className="sf-wrap">
           <div className="sf-footer-grid">
             <div>
-              <a href="/" className="f-logo">
+              <Link to="/" className="f-logo">
                 <img 
                   src="/assets/logo-wide.png" 
                   onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
                   alt="Askaran Binjraj" 
                 />
-              </a>
+              </Link>
               <p className="f-desc">Fashion · Ethnic Wear · Travel Gear · Cosmetics · Jewellery · Accessories — all in one place.</p>
               <p className="f-motto">Quality. Variety. Trust.</p>
               <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="f-shop">Shop Online ↗</a>
@@ -591,7 +588,7 @@ export default function Home() {
               <h4>Company</h4>
               <ul>
                 <li><a onClick={() => scrollToSection("stores")}>Visit Us</a></li>
-                <li><Link to="/careers">Careers</Link></li>
+                <li><Link to="/careers" style={{ color: "var(--red)" }}>Careers</Link></li>
                 <li><a href="/contact">Contact Us</a></li>
               </ul>
             </div>
