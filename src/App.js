@@ -7,12 +7,12 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { WhatsAppFloat } from "./components/WhatsAppFloat";
 
-// 🚀 FIXED: Capitalized file paths to match your actual files on disk (About.jsx, Careers.jsx, etc.)
+// 🚀 Page Imports (Matching exact Linux filesystem casing on disk)
 import Collections from "./pages/Collections";
 import CategoryDetail from "./pages/CategoryDetail";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
-import Contact from "./pages/Contact";
+import Contact from "./pages/contact"; // Lowercase 'c' to match contact.jsx
 
 // 🛡️ Error Boundary to catch any runtime glitches
 class AppErrorBoundary extends React.Component {
