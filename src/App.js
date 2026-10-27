@@ -4,10 +4,10 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-route
 import Lenis from "lenis";
 import { Toaster } from "sonner";
 
-// 🚀 Component Imports (Matching lowercase Linux filesystem casing)
+// 🚀 Component Imports (Matching exact lowercase Linux filesystem casing)
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
-import { WhatsAppFloat } from "./components/whatsappFloat";
+import { WhatsAppFloat } from "./components/whatsappfloat";
 
 // 🚀 Page Imports
 import Collections from "./pages/Collections";
