@@ -1,24 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  useEffect(() => {
-    // Fallback timer for splash screen dismissal if storefront.js runs independently
-    const splash = document.getElementById("splash");
-    if (splash) {
-      setTimeout(() => {
-        splash.classList.add("done");
-        document.body.classList.remove("lock");
-        setTimeout(() => {
-          if (splash.parentNode) splash.parentNode.removeChild(splash);
-        }, 950);
-      }, 4400);
-    }
-  }, []);
-
   return (
-    <div className="storefront bg-[#FAFAF8] text-[#111111] min-h-screen">
-      {/* Cinematic Splash Screen */}
+    <div className="storefront">
+      
+      {/* Splash Screen Gate */}
       <div className="splash" id="splash">
         <div className="sp-dot" style={{ top: "8%", left: "12%", width: "3px", height: "3px", opacity: 0.18 }}></div>
         <div className="sp-dot" style={{ top: "15%", left: "78%", width: "2px", height: "2px", opacity: 0.24 }}></div>
@@ -35,7 +22,7 @@ export default function Home() {
         <div className="sp-line-v" style={{ right: "28px" }}></div>
         <div className="sp-center">
           <div className="sp-logo">
-            <div className="text-3xl sm:text-4xl font-serif font-bold text-[#C8251E] tracking-tight">ASKARAN BINJRAJ</div>
+            <div style={{ fontFamily: "var(--serif)", fontSize: "2rem", fontWeight: "bold", color: "#C8251E", letterSpacing: "-0.01em" }}>ASKARAN BINJRAJ</div>
             <div className="sp-shimmer"></div>
           </div>
           <div className="sp-divider"></div>
@@ -52,46 +39,7 @@ export default function Home() {
         Same-Day & 1-Day Delivery Available · New Ethnic Collection Just Dropped
       </div>
 
-      {/* Header */}
-      <header id="site-header" className="sf-header">
-        <div className="sf-header-in">
-          <Link to="/" className="sf-logo flex items-center gap-3">
-            <div className="font-serif text-2xl font-bold text-[#C8251E] tracking-tight">ASKARAN BINJRAJ</div>
-          </Link>
-          <nav className="sf-nav">
-            <a href="#fashion" data-scroll-to="fashion">Fashion</a>
-            <a href="#ethnic" data-scroll-to="ethnic">Ethnic Wear</a>
-            <a href="#travel" data-scroll-to="travel">Travel Gear</a>
-            <a href="#cosmetics" data-scroll-to="cosmetics">Cosmetics</a>
-            <a href="#jewelry" data-scroll-to="jewelry">Jewellery</a>
-            <a href="#accessories" data-scroll-to="accessories">Accessories</a>
-            <a href="#about" data-scroll-to="about">About</a>
-            <a href="#careers" data-scroll-to="careers">Careers</a>
-            <a href="#blog" data-scroll-to="blog">Journal</a>
-          </nav>
-          <div className="flex items-center gap-4">
-            <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-shop-btn">
-              Shop Online ↗
-            </a>
-            <button className="sf-burger" id="burger" aria-label="Toggle Navigation">
-              <span></span><span></span><span></span>
-            </button>
-          </div>
-        </div>
-        <div className="sf-mobile-nav" id="mobile-nav">
-          <a href="#fashion" data-scroll-to="fashion">Fashion</a>
-          <a href="#ethnic" data-scroll-to="ethnic">Ethnic Wear</a>
-          <a href="#travel" data-scroll-to="travel">Travel Gear</a>
-          <a href="#cosmetics" data-scroll-to="cosmetics">Cosmetics</a>
-          <a href="#jewelry" data-scroll-to="jewelry">Jewellery</a>
-          <a href="#accessories" data-scroll-to="accessories">Accessories</a>
-          <a href="#about" data-scroll-to="about">About</a>
-          <a href="#careers" data-scroll-to="careers">Careers</a>
-          <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">Shop Online ↗</a>
-        </div>
-      </header>
-
-      {/* Hero Section */}
+      {/* Hero Cinematic Section */}
       <section id="hero" className="sf-hero">
         <div className="sf-slide active">
           <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1600" alt="New Season" />
@@ -169,21 +117,21 @@ export default function Home() {
           </div>
           <div className="sf-bento reveal">
             <div className="tall">
-              <div className="sf-card-img h-full">
+              <div className="sf-card-img h-full" style={{ minHeight: "430px" }}>
                 <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop&q=80" alt="Fashion Model" />
                 <div className="sf-card-shade"></div>
                 <div className="sf-card-label"><p>Sharp Everyday Style</p><p>Branded shirts & tailored trousers</p></div>
               </div>
             </div>
             <div>
-              <div className="sf-card-img">
+              <div className="sf-card-img" style={{ minHeight: "210px" }}>
                 <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop&q=80" alt="Midi Dresses" />
                 <div className="sf-card-shade"></div>
                 <div className="sf-card-label"><p>Contemporary Fusion</p><p>Midi dresses & Indo-Western</p></div>
               </div>
             </div>
             <div>
-              <div className="sf-card-img">
+              <div className="sf-card-img" style={{ minHeight: "210px" }}>
                 <img src="https://images.unsplash.com/photo-1502784444187-359ac186c5bb?w=600&auto=format&fit=crop&q=80" alt="Kids Fashion" />
                 <div className="sf-card-shade"></div>
                 <div className="sf-card-label"><p>Little Trendsetters</p><p>Frocks & kids wear</p></div>
@@ -362,13 +310,13 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="sf-section sf-dark text-white">
+      <section id="about" className="sf-section sf-dark text-white" style={{ background: "#111", color: "#fff", padding: "96px 0" }}>
         <div className="sf-wrap">
           <div className="sf-two-col">
             <div>
               <div className="sf-eyebrow-s light"><p>Our Heritage</p></div>
-              <h2 className="sf-h2 light">Where heritage<br /><em>meets trust.</em></h2>
-              <p className="sf-sub light mt-6">For six generations, Askaran Binjraj has been the cornerstone of shopping in Dhekiajuli, Assam. Founded on unwavering trust, quality, and variety.</p>
+              <h2 className="sf-h2 light" style={{ color: "#fafaf8" }}>Where heritage<br /><em>meets trust.</em></h2>
+              <p className="sf-sub light mt-6" style={{ color: "rgba(250,250,248,0.52)" }}>For six generations, Askaran Binjraj has been the cornerstone of shopping in Dhekiajuli, Assam. Founded on unwavering trust, quality, and variety.</p>
             </div>
             <div className="sf-stats">
               <div className="sf-stat"><p>6</p><p>Generations</p></div>
@@ -409,68 +357,13 @@ export default function Home() {
               <div className="job-body">
                 <div className="job-meta"><span className="job-tag">Visual</span><span className="job-dept">Merchandising</span></div>
                 <h3>Store Visual Merchandiser</h3>
-                <p className="job-loc">Dhekiajuli Mall · Full-time</p>
+                <p className="job-loc">DhekiajuliMall · Full-time</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="sf-footer">
-        <div className="sf-wrap">
-          <div className="sf-footer-grid">
-            <div>
-              <div className="font-serif text-xl font-bold text-[#C8251E] mb-2">ASKARAN BINJRAJ</div>
-              <p className="f-desc">Shopping Mall in Dhekiajuli, Assam — offering fashion, ethnic wear, travel gear, cosmetics, and lifestyle items.</p>
-              <p className="f-motto">Quality. Variety. Trust.</p>
-            </div>
-            <div>
-              <h4>Explore</h4>
-              <ul>
-                <li><Link to="/collections">Collections</Link></li>
-                <li><Link to="/about">About Mall</Link></li>
-                <li><Link to="/careers">Careers</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Departments</h4>
-              <ul>
-                <li><a href="#fashion">Fashion</a></li>
-                <li><a href="#ethnic">Ethnic Wear</a></li>
-                <li><a href="#travel">Travel Gear</a></li>
-                <li><a href="#cosmetics">Cosmetics</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Visit Us</h4>
-              <p className="text-xs text-neutral-600 leading-relaxed">
-                Askaran Binjraj Shopping Mall<br />
-                1st Floor, Main Road<br />
-                Dhekiajuli, Assam - 784110
-              </p>
-            </div>
-            <div>
-              <h4>Contact</h4>
-              <p className="text-xs text-neutral-600 leading-relaxed">
-                Phone: 03712 244 247<br />
-                Mobile: +91 88119 66701<br />
-                Email: info.askaranbinjraj@gmail.com
-              </p>
-            </div>
-          </div>
-          <div className="sf-footer-bottom">
-            <p>© 2026 Chandan Retail Private Limited · Shopping Mall in Dhekiajuli, Assam · NH 52</p>
-            <p className="f-est">EST. 1980</p>
-          </div>
-        </div>
-      </footer>
-
-      {/* WhatsApp Float */}
-      <a href="https://wa.me/918811966701" target="_blank" rel="noopener noreferrer" className="wa-float" aria-label="Chat on WhatsApp">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.334 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.334-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-      </a>
     </div>
   );
 }
