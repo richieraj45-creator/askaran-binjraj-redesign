@@ -1,10 +1,11 @@
 import { Reveal, Stagger, StaggerItem } from "../components/reveal";
-import { CategoryCard } from "../components/categorycard";
+import { CategoryCard } from "../components/CategoryCard";
 import { CATEGORIES } from "../Data/sitedata";
 
 export default function Collections() {
   return (
-    <main data-testid="collections-page">
+    <main data-testid="collections-page" className="min-h-screen bg-[#FAFAF8] text-[#111111]">
+      {/* Header Section */}
       <section className="border-b border-brand-border">
         <div className="mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 md:pt-24 md:pb-16 lg:px-12">
           <Reveal>
@@ -18,11 +19,13 @@ export default function Collections() {
           </Reveal>
         </div>
       </section>
+
+      {/* Collections Grid Section */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-12">
-        <Stagger className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <Stagger className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full">
           {CATEGORIES.map((c) => (
-            <StaggerItem key={c.slug}>
-              <CategoryCard category={c} className="h-[320px] w-full" />
+            <StaggerItem key={c.slug} className="w-full block">
+              <CategoryCard category={c} className="h-[320px] w-full block" />
             </StaggerItem>
           ))}
         </Stagger>
