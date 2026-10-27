@@ -6,40 +6,76 @@ const DEPARTMENTS = [
     id: "ecom",
     title: "E-Commerce & Digital",
     icon: "💻",
-    roles: ["E-Commerce Managers", "Website Production", "SEO Specialists"]
+    desc: "Manage our digital storefront, ERP integrations, omnichannel inventory sync, and multimedia product shoots.",
+    roles: ["E-Commerce Managers", "Website Production", "SEO & Digital Marketing Specialists"]
   },
   {
     id: "sales",
     title: "Floor Sales & Customer Experience",
     icon: "🏬",
-    roles: ["Retail Sales Executives", "Department Supervisors", "Customer Service Representatives"]
+    desc: "Deliver world-class assisted retail experiences across our 3 floors of apparel, ethnic wear, and sarees.",
+    roles: ["Retail Sales Executives", "Department Supervisors", "Bridal Consultants"]
   },
   {
     id: "billing",
     title: "Billing & Operations",
     icon: "🧾",
-    roles: ["Cashiers", "Billing Executives", "Store Operations"]
+    desc: "Ensure seamless checkout workflows, GRetail POS management, and daily retail cash/UPI operations.",
+    roles: ["Cashiers", "Billing Executives", "Inventory Controllers"]
   },
   {
     id: "logistics",
     title: "Logistics & Supply Chain",
     icon: "📦",
+    desc: "Coordinate same-day local delivery, warehouse stocking, and dispatch logistics for online orders.",
     roles: ["Dispatch Coordinators", "Fleet Management", "Warehouse Associates"]
   }
 ];
 
 export default function Careers() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedDept, setSelectedDept] = useState("E-Commerce & Digital");
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    experience: "",
+    coverNote: ""
+  });
 
-  // Scroll to top on load
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    
+    // Construct mailto link as direct fallback transmission to hr@crpl.co.in
+    const subject = encodeURIComponent(`Job Application: ${selectedDept} - ${formData.name}`);
+    const body = encodeURIComponent(
+      `Candidate Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Phone: ${formData.phone}\n` +
+      `Department / Role: ${selectedDept}\n` +
+      `Experience: ${formData.experience}\n\n` +
+      `Cover Note / Details:\n${formData.coverNote}\n\n` +
+      `[Please attach resume file before sending]`
+    );
+    
+    window.location.href = `mailto:hr@crpl.co.in?subject=${subject}&body=${body}`;
+
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({ name: "", email: "", phone: "", experience: "", coverNote: "" });
+    }, 4000);
+  };
+
   return (
     <div className="storefront" style={{ background: "#FAFAF8", minHeight: "100vh" }}>
       
-      {/* Sticky Primary Header Navbar */}
+      {/* Sticky Header Navbar */}
       <header id="site-header" className="sf-header">
         <div className="sf-header-in">
           <Link to="/" className="sf-logo">
@@ -78,124 +114,213 @@ export default function Careers() {
           <Link to="/" onClick={() => setMobileMenuOpen(false)}>ACCESSORIES</Link>
           <Link to="/" onClick={() => setMobileMenuOpen(false)}>VISIT US</Link>
           <Link to="/careers" onClick={() => setMobileMenuOpen(false)} style={{ color: "var(--red)" }}>CAREERS</Link>
+          <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">SHOP ONLINE ↗</a>
         </nav>
       </header>
 
-      {/* Careers Hero Section matching OG Design */}
-      <section style={{ padding: '80px 24px 40px', maxWidth: '850px', margin: '0 auto', textAlign: 'left' }}>
-        <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', color: 'var(--muted)', marginBottom: '24px', textTransform: 'uppercase' }}>
-          Careers • Join the Askaran Binjraj Family
+      {/* Hero Section */}
+      <section style={{ padding: "90px 24px 50px", maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
+        <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.25em", color: "var(--red)", marginBottom: "16px", textTransform: "uppercase" }}>
+          Chandan Retail Private Limited (Est. 1980)
         </div>
-        
-        <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(2.8rem, 5vw, 4.2rem)', fontWeight: 400, lineHeight: 1.1, color: 'var(--ink)', marginBottom: '28px' }}>
-          Grow With Assam's <br/>
-          <em style={{ color: 'var(--red)', fontStyle: 'italic' }}>Premier Retail Destination</em>
+        <h1 style={{ fontFamily: "var(--serif)", fontSize: "clamp(2.8rem, 5.5vw, 4.4rem)", fontWeight: 400, lineHeight: 1.12, color: "var(--ink)", marginBottom: "24px" }}>
+          Shape the future of retail <br />
+          <em style={{ color: "var(--red)", fontStyle: "italic" }}>with Assam's finest.</em>
         </h1>
-        
-        <p style={{ fontSize: '1.05rem', color: 'var(--mid)', lineHeight: 1.7, maxWidth: '720px', margin: 0 }}>
-          Chandan Retail Private Limited is expanding both our physical footprint in Dhekiajuli and our new digital storefront. We are looking for dedicated professionals to join our growing team.
+        <p style={{ fontSize: "1.05rem", color: "var(--mid)", lineHeight: 1.7, maxWidth: "700px", margin: "0 auto 36px" }}>
+          We are scaling our iconic 3-floor flagship shopping destination in Dhekiajuli alongside our rapid omnichannel digital expansion. Join a legacy built on six generations of trust.
         </p>
+        <a href="#apply-form" className="sf-btn-red" style={{ padding: "14px 32px", fontSize: "0.75rem", letterSpacing: "0.2em" }}>
+          Submit Your Resume ↓
+        </a>
       </section>
 
-      {/* Departments Section matching OG Design */}
-      <section style={{ padding: '40px 24px 120px', maxWidth: '850px', margin: '0 auto' }}>
-        <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', color: 'var(--red)', marginBottom: '20px', textTransform: 'uppercase' }}>
-          Current Openings
+      {/* Departments Grid */}
+      <section style={{ padding: "40px 24px 80px", maxWidth: "1200px", margin: "0 auto" }}>
+        <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.25em", color: "var(--muted)", marginBottom: "16px", textTransform: "uppercase", textAlign: "center" }}>
+          Open Departments
         </div>
-        
-        <h2 style={{ fontFamily: 'var(--serif)', fontSize: '2.2rem', fontWeight: 400, marginBottom: '48px', color: 'var(--ink)' }}>
-          Open Departments & Roles
+        <h2 style={{ fontFamily: "var(--serif)", fontSize: "2.4rem", fontWeight: 400, textAlign: "center", marginBottom: "48px" }}>
+          Find your role in our <em>growing family.</em>
         </h2>
-        
-        <div style={{ borderTop: '1px solid var(--border)' }}>
-          {DEPARTMENTS.map((dept, index) => (
-            <div key={dept.id} style={{ padding: '40px 0', borderBottom: '1px solid var(--border)', position: 'relative' }}>
-              
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                <span style={{ fontSize: '1.4rem' }}>{dept.icon}</span>
-                <h3 style={{ fontFamily: 'var(--serif)', fontSize: '1.65rem', fontWeight: 500, color: 'var(--ink)', margin: 0 }}>
-                  {dept.title}
-                </h3>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "24px", marginBottom: "64px" }}>
+          {DEPARTMENTS.map((dept) => (
+            <div 
+              key={dept.id} 
+              onClick={() => setSelectedDept(dept.title)}
+              style={{ 
+                background: "#ffffff", 
+                border: selectedDept === dept.title ? "2px solid var(--red)" : "1px solid var(--border)", 
+                borderRadius: "12px", 
+                padding: "32px 24px", 
+                cursor: "pointer",
+                transition: "all 0.25s ease",
+                boxShadow: "0 4px 16px rgba(0,0,0,0.03)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between"
+              }}
+            >
+              <div>
+                <div style={{ fontSize: "2rem", marginBottom: "16px" }}>{dept.icon}</div>
+                <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.35rem", marginBottom: "10px", color: "var(--ink)" }}>{dept.title}</h3>
+                <p style={{ fontSize: "0.85rem", color: "var(--mid)", lineHeight: 1.6, marginBottom: "20px" }}>{dept.desc}</p>
+                <ul style={{ margin: 0, paddingLeft: "16px", fontSize: "0.82rem", color: "var(--muted)" }}>
+                  {dept.roles.map((r, i) => (
+                    <li key={i} style={{ marginBottom: "4px" }}>{r}</li>
+                  ))}
+                </ul>
               </div>
-
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', color: 'var(--mid)', fontSize: '0.95rem' }}>
-                {dept.roles.map((role, rIdx) => (
-                  <li key={rIdx} style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <span style={{ color: 'var(--red)', fontSize: '0.7rem' }}>♦</span> {role}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Direct Mailto HR Integration */}
-              <a 
-                href={`mailto:hr@crpl.co.in?subject=Application for ${dept.title} Department&body=Hi Askaran Binjraj HR Team,%0D%0A%0D%0AI would like to apply for a role in the ${dept.title} department.%0D%0A%0D%0AMy Name: %0D%0AMy Phone Number: %0D%0ARelevant Experience: %0D%0A%0D%0A[Please attach your resume to this email]`}
-                style={{ 
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  fontSize: '0.75rem', 
-                  fontWeight: 700, 
-                  letterSpacing: '0.18em', 
-                  color: 'var(--red)', 
-                  textTransform: 'uppercase', 
-                  textDecoration: 'none' 
-                }}
-              >
-                Apply for this department <span style={{ marginLeft: '6px', fontSize: '1.1rem' }}>↗</span>
-              </a>
-
-              <div style={{ position: 'absolute', top: '40px', right: '10px', fontSize: '0.8rem', color: 'var(--muted)', letterSpacing: '0.1em' }}>
-                0{index + 1}
+              <div style={{ marginTop: "24px", paddingTop: "16px", borderTop: "1px solid var(--border)", fontSize: "0.75rem", fontWeight: 700, color: "var(--red)", textTransform: "uppercase", letterSpacing: "0.15em" }}>
+                {selectedDept === dept.title ? "✓ Selected in Form" : "Select Department →"}
               </div>
             </div>
           ))}
         </div>
+
+        {/* Quick Application Form Box */}
+        <div id="apply-form" style={{ background: "#ffffff", border: "1px solid var(--border)", borderRadius: "16px", padding: "48px 40px", maxWidth: "800px", margin: "0 auto", boxShadow: "0 10px 30px rgba(0,0,0,0.04)" }}>
+          <div style={{ textAlign: "center", marginBottom: "36px" }}>
+            <span className="sf-badge" style={{ marginBottom: "12px" }}>Direct HR Submission</span>
+            <h3 style={{ fontFamily: "var(--serif)", fontSize: "2rem", margin: "0 0 8px" }}>Apply to Askaran Binjraj</h3>
+            <p style={{ fontSize: "0.88rem", color: "var(--muted)", margin: 0 }}>All submissions go directly to our HR team at <strong>hr@crpl.co.in</strong></p>
+          </div>
+
+          {submitted ? (
+            <div style={{ padding: "40px", textAlign: "center", background: "#F2F9F3", borderRadius: "10px", color: "var(--green)" }}>
+              <h4 style={{ fontFamily: "var(--serif)", fontSize: "1.6rem", margin: "0 0 8px" }}>Application Prepared Successfully!</h4>
+              <p style={{ fontSize: "0.9rem", color: "#2E7D32", margin: "0 0 16px" }}>Your email app has opened with your application pre-filled for <strong>hr@crpl.co.in</strong>.</p>
+              <p style={{ fontSize: "0.8rem", color: "var(--muted)", margin: 0 }}>You can also email your resume directly anytime at <strong>hr@crpl.co.in</strong>.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }} className="form-row-grid">
+                <div>
+                  <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Full Name *</label>
+                  <input 
+                    type="text" 
+                    required 
+                    placeholder="e.g. Richiraj Bora"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    style={{ width: "100%", padding: "12px 16px", borderRadius: "6px", border: "1px solid var(--border)", fontSize: "0.92rem", background: "#FAFAF8" }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Selected Department</label>
+                  <input 
+                    type="text" 
+                    readOnly
+                    value={selectedDept}
+                    style={{ width: "100%", padding: "12px 16px", borderRadius: "6px", border: "1px solid var(--border)", fontSize: "0.92rem", background: "#F4F0EA", fontWeight: 600, color: "var(--red)" }}
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }} className="form-row-grid">
+                <div>
+                  <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Email Address *</label>
+                  <input 
+                    type="email" 
+                    required 
+                    placeholder="your@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    style={{ width: "100%", padding: "12px 16px", borderRadius: "6px", border: "1px solid var(--border)", fontSize: "0.92rem", background: "#FAFAF8" }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Phone Number *</label>
+                  <input 
+                    type="tel" 
+                    required 
+                    placeholder="+91 98765 43210"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    style={{ width: "100%", padding: "12px 16px", borderRadius: "6px", border: "1px solid var(--border)", fontSize: "0.92rem", background: "#FAFAF8" }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Relevant Experience & Background</label>
+                <input 
+                  type="text" 
+                  placeholder="e.g. 3 years in retail operations or digital marketing"
+                  value={formData.experience}
+                  onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
+                  style={{ width: "100%", padding: "12px 16px", borderRadius: "6px", border: "1px solid var(--border)", fontSize: "0.92rem", background: "#FAFAF8" }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Cover Note / Additional Details</label>
+                <textarea 
+                  rows="4" 
+                  placeholder="Tell us about yourself and why you'd love to join Askaran Binjraj..."
+                  value={formData.coverNote}
+                  onChange={(e) => setFormData({ ...formData, coverNote: e.target.value })}
+                  style={{ width: "100%", padding: "12px 16px", borderRadius: "6px", border: "1px solid var(--border)", fontSize: "0.92rem", background: "#FAFAF8", resize: "vertical" }}
+                />
+              </div>
+
+              <button 
+                type="submit" 
+                className="sf-btn-red" 
+                style={{ width: "100%", justifyContent: "center", padding: "14px", marginTop: "10px", fontSize: "0.75rem", letterSpacing: "0.2em", cursor: "pointer", border: "none" }}
+              >
+                Send Application to hr@crpl.co.in ↗
+              </button>
+            </form>
+          )}
+        </div>
       </section>
 
-      {/* Master Black Footer matching OG Design */}
-      <footer className="sf-footer" style={{ background: '#111111', borderTop: 'none' }}>
+      {/* Master Dark Footer with Correct Logo */}
+      <footer className="sf-footer" style={{ background: "#111111", borderTop: "none" }}>
         <div className="sf-wrap">
           <div className="sf-footer-grid">
             <div>
               <Link to="/" className="f-logo">
                 <img 
-                  src="/assets/logo-stacked.png" 
-                  onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-wide.png"; }} 
+                  src="/assets/logo-wide.png" 
+                  onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
                   alt="Askaran Binjraj"
-                  style={{ filter: "brightness(0) invert(1)" }} 
+                  style={{ height: "42px", width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)" }} 
                 />
               </Link>
-              <p className="f-desc" style={{ color: '#888', fontStyle: 'italic', fontFamily: 'var(--serif)', fontSize: '1rem', marginTop: '16px' }}>
+              <p className="f-desc" style={{ color: "#888", fontStyle: "italic", fontFamily: "var(--serif)", fontSize: "1rem", marginTop: "16px" }}>
                 Elegance, comfort, and style — timeless fashion crafted for every generation and occasion.
               </p>
             </div>
             <div>
-              <h4 style={{ color: '#ffffff' }}>Explore</h4>
+              <h4 style={{ color: "#ffffff" }}>Explore</h4>
               <ul>
-                <li><Link to="/" style={{ color: '#888' }}>Collections</Link></li>
-                <li><Link to="/about" style={{ color: '#888' }}>About Us</Link></li>
-                <li><Link to="/careers" style={{ color: 'var(--red)' }}>Careers</Link></li>
-                <li><a href="/contact" style={{ color: '#888' }}>Contact</a></li>
-                <li><a href="/terms" style={{ color: '#888' }}>Terms of Use</a></li>
+                <li><Link to="/" style={{ color: "#888" }}>Collections</Link></li>
+                <li><Link to="/" style={{ color: "#888" }}>About Us</Link></li>
+                <li><Link to="/careers" style={{ color: "var(--red)" }}>Careers</Link></li>
+                <li><a href="https://shop.askaranbinjraj.com" target="_blank" rel="noopener noreferrer" style={{ color: "#888" }}>Online Store</a></li>
               </ul>
             </div>
             <div style={{ gridColumn: "span 2" }}>
-              <h4 style={{ color: '#ffffff' }}>Find Us</h4>
-              <ul style={{ color: '#888', fontSize: '0.85rem' }}>
-                <li style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
-                  <span style={{ color: 'var(--red)' }}>📍</span> Askaran Binjraj Shopping Mall<br/>NH 52, Main Road<br/>Dhekiajuli, Assam - 784110
+              <h4 style={{ color: "#ffffff" }}>Find Us</h4>
+              <ul style={{ color: "#888", fontSize: "0.85rem" }}>
+                <li style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
+                  <span style={{ color: "var(--red)" }}>📍</span> Askaran Binjraj Shopping Mall<br/>NH 52, Main Road<br/>Dhekiajuli, Assam - 784110
                 </li>
-                <li style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
-                  <span style={{ color: 'var(--red)' }}>📞</span> <a href="tel:03712244247" style={{ color: '#888' }}>03712 244 247</a> · <a href="tel:+918811966701" style={{ color: '#888' }}>+91 88119 66701</a>
+                <li style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
+                  <span style={{ color: "var(--red)" }}>📞</span> <a href="tel:03712244247" style={{ color: "#888" }}>03712 244 247</a> · <a href="tel:+918811966701" style={{ color: "#888" }}>+91 88119 66701</a>
                 </li>
-                <li style={{ display: 'flex', gap: '8px' }}>
-                  <span style={{ color: 'var(--red)' }}>✉️</span> <a href="mailto:info.askaranbinjraj@gmail.com" style={{ color: '#888' }}>info.askaranbinjraj@gmail.com</a>
+                <li style={{ display: "flex", gap: "8px" }}>
+                  <span style={{ color: "var(--red)" }}>✉️</span> <a href="mailto:info.askaranbinjraj@gmail.com" style={{ color: "#888" }}>info.askaranbinjraj@gmail.com</a>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="sf-footer-bottom" style={{ borderTopColor: '#333', marginTop: '40px', paddingTop: '24px' }}>
-            <p style={{ color: '#666' }}>© 2026 CHANDAN RETAIL PRIVATE LIMITED. ALL RIGHTS RESERVED.</p>
-            <p className="f-est" style={{ color: 'var(--red)' }}>EST. 1980</p>
+          <div className="sf-footer-bottom" style={{ borderTopColor: "#333", marginTop: "40px", paddingTop: "24px" }}>
+            <p style={{ color: "#666" }}>© 2026 CHANDAN RETAIL PRIVATE LIMITED. ALL RIGHTS RESERVED.</p>
+            <p className="f-est" style={{ color: "var(--red)" }}>EST. 1980</p>
           </div>
         </div>
       </footer>
