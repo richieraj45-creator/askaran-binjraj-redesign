@@ -1,29 +1,22 @@
 import { useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Lenis from "lenis";
 import { Toaster } from "sonner";
-import { Navbar } from "./components/navbar";
-import { Footer } from "./components/footer";
-import { WhatsAppFloat } from "./components/whatsappfloat";
+import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
+import { WhatsAppFloat } from "./components/WhatsAppFloat";
 import Collections from "./pages/Collections";
 import CategoryDetail from "./pages/CategoryDetail";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
-import Contact from "./pages/contact";
+import Contact from "./pages/Contact";
 
 const ScrollManager = () => {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  return null;
-};
-
-const HomeRedirect = () => {
-  useEffect(() => {
-    window.location.reload();
-  }, []);
   return null;
 };
 
@@ -54,7 +47,9 @@ function App() {
         <ScrollManager />
         <Navbar />
         <Routes>
-          <Route path="/" element={<HomeRedirect />} />
+          {/* 🚀 FIXED: Smoothly routes to collections instead of forcing a browser crash/reload */}
+          <Route path="/" element={<Navigate to="/collections" replace />} />
+          
           <Route path="/collections" element={<Collections />} />
           <Route path="/collections/:slug" element={<CategoryDetail />} />
           <Route path="/about" element={<About />} />
@@ -64,7 +59,10 @@ function App() {
         <Footer />
         <WhatsAppFloat />
       </BrowserRouter>
-      <Toaster position="bottom-right" toastOptions={{ style: { background: "#111111", color: "#FAFAF8", border: "1px solid #C8251E", borderRadius: 0 } }} />
+      <Toaster 
+        position="bottom-right" 
+        toastOptions={{ style: { background: "#111111", color: "#FAFAF8", border: "1px solid #C8251E", borderRadius: 0 } }} 
+      />
     </div>
   );
 }
