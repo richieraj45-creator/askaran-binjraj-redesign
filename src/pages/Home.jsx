@@ -69,7 +69,7 @@ export default function Home() {
         setSplashRemoved(true);
       }, 950);
       return () => clearTimeout(t2);
-    }, 3800);
+    }, 3500);
     return () => {
       document.body.classList.remove("lock");
       clearTimeout(t1);
@@ -123,13 +123,9 @@ export default function Home() {
                 alt="Askaran Binjraj" 
                 style={{ height: "70px", width: "auto", margin: "0 auto", objectFit: "contain" }}
               />
-              <div className="sp-shimmer"></div>
             </div>
             <div className="sp-divider"></div>
             <div className="sp-tagline">Quality. Variety. Trust.</div>
-            <div className="sp-dots">
-              <div></div><div></div><div></div>
-            </div>
             <p className="sp-since">EST. 1980 · DHEKIAJULI, ASSAM</p>
           </div>
         </div>
@@ -140,7 +136,7 @@ export default function Home() {
         Same-Day & 1-Day Delivery Available · New Ethnic Collection Just Dropped
       </div>
 
-      {/* Header Navbar with Local Logo */}
+      {/* Primary Sticky Header Navbar */}
       <header id="site-header" className="sf-header">
         <div className="sf-header-in">
           <Link to="/" className="sf-logo">
@@ -392,6 +388,214 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Cosmetics Section */}
+      <section id="cosmetics" className="sf-section bg-alt">
+        <div className="sf-wrap">
+          <div className="reveal">
+            <div className="sf-head">
+              <div className="sf-head-text">
+                <div className="sf-eyebrow-s"><p>Beauty & Cosmetics</p></div>
+                <h2 className="sf-h2">Glow,<br /><em>your way.</em></h2>
+                <p className="sf-sub">Lakmé, Mamaearth, Pond's, Sugar, Elle 18 and more trusted brands — skincare, makeup and daily beauty essentials in store at Askaran Binjraj Shopping Mall, Dhekiajuli.</p>
+              </div>
+              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Beauty ↗</a>
+            </div>
+          </div>
+          <div className="sf-grid-3 reveal">
+            <div className="sf-polaroid">
+              <div className="sf-card-img"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&auto=format&fit=crop&q=80" alt="Skincare" /></div>
+              <div className="sf-card-body"><h3>Skincare</h3><p>Mamaearth, Pond's & daily care</p><span className="sf-link-arrow">Shop Now →</span></div>
+            </div>
+            <div className="sf-polaroid">
+              <div className="sf-card-img"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&auto=format&fit=crop&q=80" alt="Makeup" /></div>
+              <div className="sf-card-body"><h3>Makeup & Colour</h3><p>Lakmé, Sugar, Elle 18</p><span className="sf-link-arrow">Shop Now →</span></div>
+            </div>
+            <div className="sf-polaroid">
+              <div className="sf-card-img"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop&q=80" alt="Fragrance" /></div>
+              <div className="sf-card-body"><h3>Fragrance & More</h3><p>Perfumes & wellness</p><span className="sf-link-arrow">Shop Now →</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Jewellery Feature Grid Section */}
+      <section id="jewelry" className="sf-section bg-white">
+        <div className="sf-wrap">
+          <div className="reveal">
+            <div className="sf-head">
+              <div className="sf-head-text">
+                <div className="sf-eyebrow-s"><p>2nd Floor · Jewellery & Lifestyle</p></div>
+                <h2 className="sf-h2">Adorned in<br /><em>pure elegance.</em></h2>
+                <p className="sf-sub">Stunning jewellery styled for weddings, festive pujas, engagements and celebrations. Traditional gold, silver and fashion jewellery on the 2nd Floor.</p>
+              </div>
+              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Jewellery ↗</a>
+            </div>
+          </div>
+          <div className="sf-feature-grid reveal">
+            <div className="sf-feature-main">
+              <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&auto=format&fit=crop&q=80" alt="Jewellery" />
+              <div className="sf-feature-label">
+                <span className="sf-badge">2nd Floor</span>
+                <h3>Jewellery & Lifestyle in Dhekiajuli</h3>
+                <p>Bridal sets, gold-plated necklaces & festive wear.</p>
+                <span className="sf-link-arrow">Explore Jewellery →</span>
+              </div>
+            </div>
+            <div className="sf-mini-tiles">
+              <div className="sf-mini-tile">
+                <div className="tile-img"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&auto=format&fit=crop&q=80" alt="Necklaces" /></div>
+                <div className="tile-body"><p>Bridal Sets</p><p>Traditional gold & polki</p></div>
+              </div>
+              <div className="sf-mini-tile">
+                <div className="tile-img"><img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&auto=format&fit=crop&q=80" alt="Earrings" /></div>
+                <div className="tile-body"><p>Earrings & Jhumkas</p><p>Festive statement pieces</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Accessories Section */}
+      <section id="accessories" className="sf-section bg-alt">
+        <div className="sf-wrap">
+          <div className="reveal">
+            <div className="sf-head">
+              <div className="sf-head-text">
+                <div className="sf-eyebrow-s"><p>Bags, Shoes & More</p></div>
+                <h2 className="sf-h2">The finishing<br /><em>touch.</em></h2>
+                <p className="sf-sub">Footwear, jewellery, cosmetics, bags & home products — finishing touches for every look, all under one roof at Askaran Binjraj.</p>
+              </div>
+              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Accessories ↗</a>
+            </div>
+          </div>
+          <div className="sf-grid-4 reveal">
+            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
+              <div className="tile-img"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80" alt="Handbags" /></div>
+              <div className="tile-body"><p>Handbags</p><p>4th Floor · Bag Boutique</p></div>
+            </a>
+            <a href="/collections/footwear" className="sf-acc-tile">
+              <div className="tile-img"><img src="/assets/footwear-display.jpg" onError={(e)=>{e.target.onerror=null; e.target.src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&auto=format&fit=crop&q=80";}} alt="Footwear" /></div>
+              <div className="tile-body"><p>Footwear</p><p>Men · Women · Kids</p></div>
+            </a>
+            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
+              <div className="tile-img"><img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&auto=format&fit=crop&q=80" alt="Sunglasses" /></div>
+              <div className="tile-body"><p>Sunglasses</p><p>Ground Floor · Eyewear Studio</p></div>
+            </a>
+            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
+              <div className="tile-img"><img src="https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=600&auto=format&fit=crop&q=80" alt="Belts & Wallets" /></div>
+              <div className="tile-body"><p>Belts & Wallets</p><p>Ground Floor · Leather Lounge</p></div>
+            </a>
+            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
+              <div className="tile-img"><img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=600&auto=format&fit=crop&q=80" alt="Smartwatches" /></div>
+              <div className="tile-body"><p>Smartwatches</p><p>Ground Floor · Smart Tech</p></div>
+            </a>
+            <a href="/collections/jewellery-lifestyle" className="sf-acc-tile">
+              <div className="tile-img"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop&q=80" alt="Fragrances" /></div>
+              <div className="tile-body"><p>Fragrances</p><p>Ground Floor · Fragrance Bar</p></div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Flagship Store Section */}
+      <section id="stores" className="sf-section bg-paper">
+        <div className="sf-wrap">
+          <div className="reveal">
+            <div style={{ marginBottom: "48px" }}>
+              <div className="sf-eyebrow-s"><p>Visit Us</p></div>
+              <h2 className="sf-h2">Visit us<br /><em>in person.</em></h2>
+              <p className="sf-sub">Three floors of curated retail. Expert staff, in-store services, and the full collection.</p>
+            </div>
+          </div>
+          <div className="reveal sf-store-feature">
+            <div className="store-img">
+              <img src="/assets/mall-dusk.jpg" onError={(e)=>{e.target.onerror=null; e.target.src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=800&auto=format&fit=crop&q=80";}} alt="Askaran Binjraj Shopping Mall, Dhekiajuli" />
+              <span className="sf-badge" style={{ top: "12px", left: "12px" }}>Flagship Mall</span>
+            </div>
+            <div className="store-body">
+              <h3>Askaran Binjraj Shopping Mall</h3>
+              <p className="store-line">📍 NH 52, Main Road, Dhekiajuli, Assam 784110</p>
+              <p className="store-line">🕐 Mon–Sat 10:00–20:30 · Sun 10:00–20:00</p>
+              <p className="store-line">📞 03712 244 247 · +91 88119 66701</p>
+              <p className="store-hl">↑ 3 floors · Home to The Super Store & The Wedding Studio</p>
+              <div className="store-btns">
+                <a href="https://maps.app.goo.gl/oYK6b4wPu7BUnzGb8" target="_blank" rel="noopener noreferrer" className="b-outline">Directions</a>
+                <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="b-red">Shop Online</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Master 4-Column Footer */}
+      <footer className="sf-footer">
+        <div className="sf-wrap">
+          <div className="sf-footer-grid">
+            <div>
+              <a href="/" className="f-logo">
+                <img 
+                  src="/assets/logo-wide.png" 
+                  onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
+                  alt="Askaran Binjraj" 
+                />
+              </a>
+              <p className="f-desc">Fashion · Ethnic Wear · Travel Gear · Cosmetics · Jewellery · Accessories — all in one place.</p>
+              <p className="f-motto">Quality. Variety. Trust.</p>
+              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="f-shop">Shop Online ↗</a>
+            </div>
+            <div>
+              <h4>Departments</h4>
+              <ul>
+                <li><a href="#fashion">Fashion</a></li>
+                <li><a href="#ethnic">Ethnic Wear</a></li>
+                <li><a href="#travel">Travel Gear</a></li>
+                <li><a href="#cosmetics">Cosmetics</a></li>
+                <li><a href="#jewelry">Jewellery</a></li>
+                <li><a href="#accessories">Accessories</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Collections</h4>
+              <ul>
+                <li><a href="/collections/sarees">Sarees</a></li>
+                <li><a href="/collections/lehengas">Bridal Lehengas</a></li>
+                <li><a href="/collections/womens">Womens</a></li>
+                <li><a href="/collections/mens">Mens</a></li>
+                <li><a href="/collections/footwear">Footwear</a></li>
+                <li><a href="/collections">All Collections</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Company</h4>
+              <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="/careers">Careers</a></li>
+                <li><a href="#stores">Visit Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Visit Us</h4>
+              <ul>
+                <li><a href="https://maps.app.goo.gl/oYK6b4wPu7BUnzGb8" target="_blank" rel="noopener noreferrer">NH 52, Main Road, Dhekiajuli, Assam 784110</a></li>
+                <li><a href="tel:+91-8811966701">+91 88119 66701</a></li>
+                <li><a href="tel:03712244247">03712 244 247</a></li>
+                <li><a href="mailto:info.askaranbinjraj@gmail.com">info.askaranbinjraj@gmail.com</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="sf-footer-bottom">
+            <p>© 2026 Askaran Binjraj. All rights reserved.</p>
+            <p className="f-est">EST. 1980</p>
+            <div className="f-legal">
+              <a href="/contact">Contact</a>
+              <a href="/careers">Careers</a>
+              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">Online Store</a>
+            </div>
+          </div>
+        </div>
+      </footer>
 
       {/* Floating WhatsApp Action Button */}
       <a href="https://wa.me/918811966701" target="_blank" rel="noopener noreferrer" className="wa-float" aria-label="Chat on WhatsApp">
