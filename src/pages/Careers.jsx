@@ -52,7 +52,6 @@ export default function Careers() {
     e.preventDefault();
     setSubmitted(true);
     
-    // Construct mailto link as direct fallback transmission to hr@crpl.co.in
     const subject = encodeURIComponent(`Job Application: ${selectedDept} - ${formData.name}`);
     const body = encodeURIComponent(
       `Candidate Name: ${formData.name}\n` +
@@ -195,7 +194,7 @@ export default function Careers() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }} className="form-row-grid">
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
                 <div>
                   <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Full Name *</label>
                   <input 
@@ -218,7 +217,7 @@ export default function Careers() {
                 </div>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }} className="form-row-grid">
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
                 <div>
                   <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Email Address *</label>
                   <input 
@@ -286,8 +285,8 @@ export default function Careers() {
                 <img 
                   src="/assets/logo-wide.png" 
                   onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
-                  alt="Askaran Binjraj"
-                  style={{ height: "42px", width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)" }} 
+                  alt="Askaran Binjraj" 
+                  style={{ height: "42px", width: "auto", objectFit: "contain", background: "#ffffff", padding: "4px", borderRadius: "4px" }} 
                 />
               </Link>
               <p className="f-desc" style={{ color: "#888", fontStyle: "italic", fontFamily: "var(--serif)", fontSize: "1rem", marginTop: "16px" }}>
