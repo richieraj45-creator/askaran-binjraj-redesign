@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-[#C8251E]";
+import { Link } from "react-router-dom";
 
 // Authentic 6 Hero Slides from Preview Specification
 const SLIDES = [
