@@ -1,32 +1,44 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 
-export const CategoryCard = ({ category, className = "", tall = false }) => (
-  <Link
-    to={`/collections/${category.slug}`}
-    data-testid={`category-card-${category.slug}`}
-    className={`group relative block overflow-hidden border border-brand-border bg-brand-alt ${className}`}
-  >
-    <img
-      src={category.image}
-      alt={category.name}
-      loading="lazy"
-      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/80 via-brand-ink/20 to-transparent" />
-    <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
-      <p className="text-[10px] uppercase tracking-[0.3em] text-white/60">{category.tag}</p>
-      <div className="mt-1.5 flex items-end justify-between gap-3">
-        <h3 className="font-serif text-2xl md:text-3xl font-medium text-white leading-tight">
-          {category.name}
-        </h3>
-        <span className="mb-1 flex h-9 w-9 flex-shrink-0 items-center justify-center border border-white/40 text-white transition-colors duration-300 group-hover:border-brand-red group-hover:bg-brand-red">
-          <ArrowUpRight className="h-4 w-4" />
+export function CategoryCard({ category, className = "h-[320px] w-full" }) {
+  if (!category) return null;
+
+  return (
+    <Link
+      to={`/collections/${category.slug}`}
+      className={`relative group block overflow-hidden rounded-lg bg-neutral-900 border border-[#E5E0D8] transition-all duration-500 hover:shadow-xl ${className}`}
+    >
+      {/* Background Image with Zoom Effect */}
+      {category.image ? (
+        <img
+          src={category.image}
+          alt={category.title || category.name}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-[#F4F0EA]" />
+      )}
+
+      {/* Dark Gradient Overlay for Readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent transition-opacity duration-300" />
+
+      {/* Card Content (Positioned at the bottom cleanly) */}
+      <div className="absolute inset-0 p-6 flex flex-col justify-end text-white z-10">
+        <span className="text-xs uppercase tracking-[0.2em] text-[#D4AF37] font-semibold mb-1">
+          Collection
         </span>
+        <h3 className="font-serif text-2xl font-medium tracking-tight">
+          {category.title || category.name}
+        </h3>
+        {category.description && (
+          <p className="mt-2 text-sm text-gray-200 line-clamp-2">
+            {category.description}
+          </p>
+        )}
+        <div className="mt-4 flex items-center text-xs font-semibold uppercase tracking-widest text-white group-hover:text-[#D4AF37] transition-colors">
+          Explore Floor <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </div>
       </div>
-      <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/70 opacity-0 translate-y-1 transition-all duration-400 group-hover:opacity-100 group-hover:translate-y-0">
-        View More
-      </p>
-    </div>
-  </Link>
-);
+    </Link>
+  );
+}
