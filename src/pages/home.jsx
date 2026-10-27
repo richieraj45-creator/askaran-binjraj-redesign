@@ -2,17 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CATEGORIES } from "../Data/sitedata";
 import { CategoryCard } from "../components/categorycard";
-import { Reveal, Stagger, StaggerItem } from "../components/reveal";
+import { Stagger, StaggerItem } from "../components/reveal";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#FAFAF8] text-[#111111] overflow-x-hidden">
+    <main className="min-h-screen bg-[#FAFAF8] text-[#111111] overflow-x-hidden pt-6">
       {/* Hero Section */}
-      <section className="border-b border-[#E5E0D8] bg-[#FAFAF8] pt-16 pb-20 md:pt-24 md:pb-28 px-4 sm:px-6 lg:px-12">
+      <section className="border-b border-[#E5E0D8] bg-[#FAFAF8] pt-12 pb-20 md:pt-20 md:pb-28 px-4 sm:px-6 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            {/* Left Column: Brand Story */}
+            {/* Left Column: Brand Story & CTAs */}
             <div className="lg:col-span-7 flex flex-col justify-center text-left">
               <div className="flex items-center space-x-4 mb-4">
                 <span className="text-xs uppercase tracking-[0.3em] text-[#C41E3A] font-semibold">Est. 1980</span>
