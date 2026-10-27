@@ -1,92 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const JOBS = [
+const DEPARTMENTS = [
   {
-    id: "ecom-lead",
-    title: "E-Commerce & Digital Operations Executive",
-    dept: "Digital Commerce",
-    location: "Dhekiajuli Flagship / Hybrid",
-    type: "Full-Time",
-    desc: "Oversee enterprise ERP syncing, website catalog management, online orders, digital photography, and marketplace listings for Chandan Retail Private Limited.",
-    reqs: [
-      "Experience with Shopify, ERP middleware, or catalog spreadsheets",
-      "Basic understanding of digital photography, SEO & omnichannel logistics",
-      "Keen eye for fashion merchandising and online store UX"
-    ]
+    id: "ecom",
+    title: "E-Commerce & Digital",
+    icon: "💻",
+    roles: ["E-Commerce Managers", "Website Production", "SEO Specialists"]
   },
   {
-    id: "saree-specialist",
-    title: "Heritage Saree & Ethnic Wear Specialist",
-    dept: "In-Store Retail",
-    location: "Dhekiajuli Shopping Mall (3rd Floor)",
-    type: "Full-Time",
-    desc: "Assist customers with authentic Varanasi Banarasi sarees, bridal lehengas, and traditional Assam Silk Mekhela Chador. Provide personalized bridal consultations.",
-    reqs: [
-      "Proven experience in high-end sarees or handloom ethnic wear",
-      "Fluent in Assamese & Hindi; warm customer service mindset",
-      "Knowledge of saree weaves, silk certifications, and drape styling"
-    ]
+    id: "sales",
+    title: "Floor Sales & Customer Experience",
+    icon: "🏬",
+    roles: ["Retail Sales Executives", "Department Supervisors", "Customer Service Representatives"]
   },
   {
-    id: "suiting-consultant",
-    title: "Menswear Suiting & Formalwear Consultant",
-    dept: "In-Store Retail",
-    location: "Dhekiajuli Shopping Mall (1st Floor)",
-    type: "Full-Time",
-    desc: "Guide clients through custom suitings, branded shirts, blazer fitting, and celebratory menswear styling.",
-    reqs: [
-      "Retail sales experience in branded apparel or suiting",
-      "Good understanding of fabric blends, measurements, and tailoring",
-      "Strong communication and sales closing abilities"
-    ]
+    id: "billing",
+    title: "Billing & Operations",
+    icon: "🧾",
+    roles: ["Cashiers", "Billing Executives", "Store Operations"]
   },
   {
-    id: "billing-cashier",
-    title: "Billing & Store Operations Executive",
-    dept: "Operations",
-    location: "Dhekiajuli Shopping Mall",
-    type: "Full-Time",
-    desc: "Handle daily POS billing, cash/UPI transactions, inventory receipts, customer checkout flow, and ERP bill entries.",
-    reqs: [
-      "Familiarity with POS software or GRetail ERP systems",
-      "High accuracy in numbers, cash handling, and daily reporting",
-      "Punctual, trustworthy, and detail-oriented"
-    ]
+    id: "logistics",
+    title: "Logistics & Supply Chain",
+    icon: "📦",
+    roles: ["Dispatch Coordinators", "Fleet Management", "Warehouse Associates"]
   }
 ];
 
 export default function Careers() {
-  const [selectedJob, setSelectedJob] = useState(null);
-  const [submitted, setSubmitted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    role: "",
-    experience: "",
-    notes: ""
-  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSelectedJob(null);
-      setSubmitted(false);
-      setFormData({ name: "", email: "", phone: "", role: "", experience: "", notes: "" });
-    }, 3000);
-  };
+  // Scroll to top on load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="storefront">
-      {/* Announcement Bar */}
-      <div className="sf-announce">
-        We're Hiring Across Departments · Join Chandan Retail Private Limited (Est. 1980)
-      </div>
-
-      {/* Sticky Header Navbar */}
+    <div className="storefront" style={{ background: "#FAFAF8", minHeight: "100vh" }}>
+      
+      {/* Sticky Primary Header Navbar */}
       <header id="site-header" className="sf-header">
         <div className="sf-header-in">
           <Link to="/" className="sf-logo">
@@ -94,22 +47,22 @@ export default function Careers() {
               src="/assets/logo-wide.png" 
               onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
               alt="Askaran Binjraj" 
-              style={{ height: "42px", width: "auto", objectFit: "contain" }}
+              style={{ height: "46px", width: "auto", objectFit: "contain" }}
             />
           </Link>
           <nav className="sf-nav">
-            <Link to="/">Fashion</Link>
-            <Link to="/">Ethnic Wear</Link>
-            <Link to="/">Travel Gear</Link>
-            <Link to="/">Cosmetics</Link>
-            <Link to="/">Jewellery</Link>
-            <Link to="/">Accessories</Link>
-            <Link to="/">Visit Us</Link>
-            <Link to="/careers" style={{ color: "var(--red)" }}>Careers</Link>
+            <Link to="/">FASHION</Link>
+            <Link to="/">ETHNIC WEAR</Link>
+            <Link to="/">TRAVEL GEAR</Link>
+            <Link to="/">COSMETICS</Link>
+            <Link to="/">JEWELLERY</Link>
+            <Link to="/">ACCESSORIES</Link>
+            <Link to="/">VISIT US</Link>
+            <Link to="/careers" style={{ color: "var(--red)", borderBottom: "2px solid var(--red)", paddingBottom: "2px" }}>CAREERS</Link>
           </nav>
           <div className="sf-header-actions" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-shop-btn">
-              Shop Online ↗
+              SHOP ONLINE ↗
             </a>
             <button className="sf-burger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle Menu">
               <span></span><span></span><span></span>
@@ -117,256 +70,140 @@ export default function Careers() {
           </div>
         </div>
         <nav className={`sf-mobile-nav ${mobileMenuOpen ? "open" : ""}`}>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>Fashion</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>Ethnic Wear</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>Travel Gear</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>Cosmetics</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>Jewellery</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>Accessories</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>Visit Us</Link>
-          <Link to="/careers" onClick={() => setMobileMenuOpen(false)}>Careers</Link>
-          <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">Shop Online ↗</a>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>FASHION</Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>ETHNIC WEAR</Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>TRAVEL GEAR</Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>COSMETICS</Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>JEWELLERY</Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>ACCESSORIES</Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>VISIT US</Link>
+          <Link to="/careers" onClick={() => setMobileMenuOpen(false)} style={{ color: "var(--red)" }}>CAREERS</Link>
         </nav>
       </header>
 
-      {/* Careers Hero Section */}
-      <section className="sf-section bg-paper">
-        <div className="sf-wrap">
-          <div style={{ maxWidth: "760px", margin: "0 auto", textAlign: "center" }}>
-            <div className="sf-eyebrow-s" style={{ justifyContent: "center" }}>
-              <p>Careers at Askaran Binjraj</p>
-            </div>
-            <h1 className="sf-h2" style={{ fontSize: "clamp(2.5rem, 5vw, 3.8rem)", marginBottom: "20px" }}>
-              Build your career with<br /><em>Assam's retail landmark.</em>
-            </h1>
-            <p className="sf-sub" style={{ margin: "0 auto 36px", fontSize: "1rem" }}>
-              For over 45 years, Askaran Binjraj (Chandan Retail Private Limited) has set the gold standard in quality, variety, and customer trust. Join our expanding team in Dhekiajuli as we grow our physical mall footprint and omnichannel digital presence.
-            </p>
-            <div style={{ display: "flex", gap: "16px", justifyContent: "center" }}>
-              <a href="#open-roles" className="sf-btn-red">View Openings ↓</a>
-              <a href="mailto:hr@crpl.co.in" className="sf-btn-ghost-w" style={{ color: "var(--ink)", borderColor: "var(--border)" }}>
-                Email HR Directly ↗
+      {/* Careers Hero Section matching OG Design */}
+      <section style={{ padding: '80px 24px 40px', maxWidth: '850px', margin: '0 auto', textAlign: 'left' }}>
+        <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', color: 'var(--muted)', marginBottom: '24px', textTransform: 'uppercase' }}>
+          Careers • Join the Askaran Binjraj Family
+        </div>
+        
+        <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(2.8rem, 5vw, 4.2rem)', fontWeight: 400, lineHeight: 1.1, color: 'var(--ink)', marginBottom: '28px' }}>
+          Grow With Assam's <br/>
+          <em style={{ color: 'var(--red)', fontStyle: 'italic' }}>Premier Retail Destination</em>
+        </h1>
+        
+        <p style={{ fontSize: '1.05rem', color: 'var(--mid)', lineHeight: 1.7, maxWidth: '720px', margin: 0 }}>
+          Chandan Retail Private Limited is expanding both our physical footprint in Dhekiajuli and our new digital storefront. We are looking for dedicated professionals to join our growing team.
+        </p>
+      </section>
+
+      {/* Departments Section matching OG Design */}
+      <section style={{ padding: '40px 24px 120px', maxWidth: '850px', margin: '0 auto' }}>
+        <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', color: 'var(--red)', marginBottom: '20px', textTransform: 'uppercase' }}>
+          Current Openings
+        </div>
+        
+        <h2 style={{ fontFamily: 'var(--serif)', fontSize: '2.2rem', fontWeight: 400, marginBottom: '48px', color: 'var(--ink)' }}>
+          Open Departments & Roles
+        </h2>
+        
+        <div style={{ borderTop: '1px solid var(--border)' }}>
+          {DEPARTMENTS.map((dept, index) => (
+            <div key={dept.id} style={{ padding: '40px 0', borderBottom: '1px solid var(--border)', position: 'relative' }}>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+                <span style={{ fontSize: '1.4rem' }}>{dept.icon}</span>
+                <h3 style={{ fontFamily: 'var(--serif)', fontSize: '1.65rem', fontWeight: 500, color: 'var(--ink)', margin: 0 }}>
+                  {dept.title}
+                </h3>
+              </div>
+
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px 0', color: 'var(--mid)', fontSize: '0.95rem' }}>
+                {dept.roles.map((role, rIdx) => (
+                  <li key={rIdx} style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ color: 'var(--red)', fontSize: '0.7rem' }}>♦</span> {role}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Direct Mailto HR Integration */}
+              <a 
+                href={`mailto:hr@crpl.co.in?subject=Application for ${dept.title} Department&body=Hi Askaran Binjraj HR Team,%0D%0A%0D%0AI would like to apply for a role in the ${dept.title} department.%0D%0A%0D%0AMy Name: %0D%0AMy Phone Number: %0D%0ARelevant Experience: %0D%0A%0D%0A[Please attach your resume to this email]`}
+                style={{ 
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  fontSize: '0.75rem', 
+                  fontWeight: 700, 
+                  letterSpacing: '0.18em', 
+                  color: 'var(--red)', 
+                  textTransform: 'uppercase', 
+                  textDecoration: 'none' 
+                }}
+              >
+                Apply for this department <span style={{ marginLeft: '6px', fontSize: '1.1rem' }}>↗</span>
               </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Culture & Values */}
-      <section className="sf-section bg-alt">
-        <div className="sf-wrap">
-          <div className="sf-head" style={{ textAlign: "center", display: "block", marginBottom: "48px" }}>
-            <div className="sf-eyebrow-s"><p>Why Join Us</p></div>
-            <h2 className="sf-h2">A heritage of trust,<br /><em>a future of growth.</em></h2>
-          </div>
-          <div className="sf-grid-4">
-            <div className="sf-acc-tile" style={{ padding: "28px" }}>
-              <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.3rem", margin: "0 0 10px", color: "var(--red)" }}>6 Generations</h3>
-              <p style={{ fontSize: "0.85rem", color: "var(--mid)", margin: 0, lineHeight: 1.6 }}>Work alongside legendary heritage in fashion, handloom sarees, and fine retail excellence.</p>
-            </div>
-            <div className="sf-acc-tile" style={{ padding: "28px" }}>
-              <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.3rem", margin: "0 0 10px", color: "var(--green)" }}>Growth & Training</h3>
-              <p style={{ fontSize: "0.85rem", color: "var(--mid)", margin: 0, lineHeight: 1.6 }}>Comprehensive on-the-job mentorship across merchandise, ERP tech, customer service, and store management.</p>
-            </div>
-            <div className="sf-acc-tile" style={{ padding: "28px" }}>
-              <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.3rem", margin: "0 0 10px", color: "var(--ink)" }}>Competitive Pay</h3>
-              <p style={{ fontSize: "0.85rem", color: "var(--mid)", margin: 0, lineHeight: 1.6 }}>Market-leading salary structures, performance incentives, annual bonuses, and career progression.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Open Roles Section */}
-      <section id="open-roles" className="sf-section bg-white">
-        <div className="sf-wrap">
-          <div className="sf-head">
-            <div className="sf-head-text">
-              <div className="sf-eyebrow-s"><p>Current Opportunities</p></div>
-              <h2 className="sf-h2">Explore available<br /><em>positions.</em></h2>
-            </div>
-          </div>
-
-          <div className="sf-vertical-stack">
-            {JOBS.map((job) => (
-              <div key={job.id} className="sf-og-card">
-                <div className="card-body-pad" style={{ padding: "32px" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "12px", marginBottom: "12px" }}>
-                    <div>
-                      <span className="sf-badge" style={{ marginBottom: "8px" }}>{job.dept}</span>
-                      <h3 style={{ fontSize: "1.5rem", margin: "4px 0" }}>{job.title}</h3>
-                      <p style={{ fontSize: "0.82rem", color: "var(--muted)", margin: 0 }}>📍 {job.location} · {job.type}</p>
-                    </div>
-                    <button 
-                      onClick={() => setSelectedJob(job)} 
-                      className="sf-btn-red"
-                      style={{ cursor: "pointer", border: "none" }}
-                    >
-                      Apply Now →
-                    </button>
-                  </div>
-                  <p style={{ fontSize: "0.9rem", color: "var(--mid)", margin: "16px 0", lineHeight: 1.6 }}>{job.desc}</p>
-                  <div style={{ borderTop: "1px dashed var(--border)", paddingTop: "14px", marginTop: "14px" }}>
-                    <p style={{ fontSize: "0.78rem", fontWeight: 700, textTransform: uppercase, letterSpacing: "0.15em", color: "var(--ink)", margin: "0 0 8px" }}>Requirements:</p>
-                    <ul style={{ margin: 0, paddingLeft: "20px", fontSize: "0.84rem", color: "var(--mid)" }}>
-                      {job.reqs.map((req, idx) => (
-                        <li key={idx} style={{ marginBottom: "4px" }}>{req}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+              <div style={{ position: 'absolute', top: '40px', right: '10px', fontSize: '0.8rem', color: 'var(--muted)', letterSpacing: '0.1em' }}>
+                0{index + 1}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Application Modal */}
-      {selectedJob && (
-        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.65)", zIndex: 9999, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
-          <div style={{ background: "#ffffff", borderRadius: "12px", maxWidth: "560px", width: "100%", padding: "36px", position: "relative", boxShadow: "0 20px 40px rgba(0,0,0,0.25)" }}>
-            <button 
-              onClick={() => setSelectedJob(null)} 
-              style={{ position: "absolute", top: "18px", right: "20px", background: "none", border: "none", fontSize: "1.5rem", cursor: "pointer", color: "var(--muted)" }}
-            >
-              ×
-            </button>
-            <span className="sf-badge">{selectedJob.dept}</span>
-            <h3 style={{ fontFamily: "var(--serif)", fontSize: "1.5rem", margin: "8px 0 4px" }}>Apply for {selectedJob.title}</h3>
-            <p style={{ fontSize: "0.82rem", color: "var(--muted)", margin: "0 0 24px" }}>Submit your details directly to Chandan Retail HR team.</p>
-
-            {submitted ? (
-              <div style={{ padding: "32px", textAlign: "center", background: "#F2F9F3", borderRadius: "8px", color: "var(--green)" }}>
-                <h4 style={{ margin: "0 0 8px", fontFamily: "var(--serif)", fontSize: "1.4rem" }}>Application Submitted!</h4>
-                <p style={{ margin: 0, fontSize: "0.88rem" }}>Thank you for applying. Our HR team at hr@crpl.co.in will contact you shortly.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-                <div>
-                  <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "6px" }}>Full Name *</label>
-                  <input 
-                    type="text" 
-                    required 
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: "4px", border: "1px solid var(--border)", fontSize: "0.9rem" }}
-                  />
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-                  <div>
-                    <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "6px" }}>Email Address *</label>
-                    <input 
-                      type="email" 
-                      required 
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      style={{ width: "100%", padding: "10px 14px", borderRadius: "4px", border: "1px solid var(--border)", fontSize: "0.9rem" }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "6px" }}>Phone Number *</label>
-                    <input 
-                      type="tel" 
-                      required 
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      style={{ width: "100%", padding: "10px 14px", borderRadius: "4px", border: "1px solid var(--border)", fontSize: "0.9rem" }}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "6px" }}>Years of Relevant Experience</label>
-                  <input 
-                    type="text" 
-                    placeholder="e.g. 2 years in retail sales" 
-                    value={formData.experience}
-                    onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: "4px", border: "1px solid var(--border)", fontSize: "0.9rem" }}
-                  />
-                </div>
-                <div>
-                  <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "6px" }}>Cover Note / Additional Details</label>
-                  <textarea 
-                    rows="3" 
-                    placeholder="Tell us about yourself..." 
-                    value={formData.notes}
-                    onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: "4px", border: "1px solid var(--border)", fontSize: "0.9rem", resize: "vertical" }}
-                  />
-                </div>
-                <button type="submit" className="sf-btn-red" style={{ width: "100%", justifyContent: "center", marginTop: "8px", cursor: "pointer", border: "none" }}>
-                  Submit Application →
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Master Footer */}
-      <footer className="sf-footer">
+      {/* Master Black Footer matching OG Design */}
+      <footer className="sf-footer" style={{ background: '#111111', borderTop: 'none' }}>
         <div className="sf-wrap">
           <div className="sf-footer-grid">
             <div>
               <Link to="/" className="f-logo">
                 <img 
-                  src="/assets/logo-wide.png" 
-                  onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
-                  alt="Askaran Binjraj" 
+                  src="/assets/logo-stacked.png" 
+                  onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-wide.png"; }} 
+                  alt="Askaran Binjraj"
+                  style={{ filter: "brightness(0) invert(1)" }} 
                 />
               </Link>
-              <p className="f-desc">Fashion · Ethnic Wear · Travel Gear · Cosmetics · Jewellery · Accessories — all in one place.</p>
-              <p className="f-motto">Quality. Variety. Trust.</p>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="f-shop">Shop Online ↗</a>
+              <p className="f-desc" style={{ color: '#888', fontStyle: 'italic', fontFamily: 'var(--serif)', fontSize: '1rem', marginTop: '16px' }}>
+                Elegance, comfort, and style — timeless fashion crafted for every generation and occasion.
+              </p>
             </div>
             <div>
-              <h4>Departments</h4>
+              <h4 style={{ color: '#ffffff' }}>Explore</h4>
               <ul>
-                <li><Link to="/">Fashion</Link></li>
-                <li><Link to="/">Ethnic Wear</Link></li>
-                <li><Link to="/">Travel Gear</Link></li>
-                <li><Link to="/">Cosmetics</Link></li>
-                <li><Link to="/">Jewellery</Link></li>
-                <li><Link to="/">Accessories</Link></li>
+                <li><Link to="/" style={{ color: '#888' }}>Collections</Link></li>
+                <li><Link to="/about" style={{ color: '#888' }}>About Us</Link></li>
+                <li><Link to="/careers" style={{ color: 'var(--red)' }}>Careers</Link></li>
+                <li><a href="/contact" style={{ color: '#888' }}>Contact</a></li>
+                <li><a href="/terms" style={{ color: '#888' }}>Terms of Use</a></li>
               </ul>
             </div>
-            <div>
-              <h4>Collections</h4>
-              <ul>
-                <li><a href="/collections/sarees">Sarees</a></li>
-                <li><a href="/collections/lehengas">Bridal Lehengas</a></li>
-                <li><a href="/collections/womens">Womens</a></li>
-                <li><a href="/collections/mens">Mens</a></li>
-                <li><a href="/collections/footwear">Footwear</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Company</h4>
-              <ul>
-                <li><Link to="/">Visit Us</Link></li>
-                <li><Link to="/careers" style={{ color: "var(--red)" }}>Careers</Link></li>
-                <li><a href="/contact">Contact Us</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Visit Us</h4>
-              <ul>
-                <li><a href="https://maps.app.goo.gl/oYK6b4wPu7BUnzGb8" target="_blank" rel="noopener noreferrer">NH 52, Main Road, Dhekiajuli, Assam 784110</a></li>
-                <li><a href="tel:+91-8811966701">+91 88119 66701</a></li>
-                <li><a href="tel:03712244247">03712 244 247</a></li>
+            <div style={{ gridColumn: "span 2" }}>
+              <h4 style={{ color: '#ffffff' }}>Find Us</h4>
+              <ul style={{ color: '#888', fontSize: '0.85rem' }}>
+                <li style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+                  <span style={{ color: 'var(--red)' }}>📍</span> Askaran Binjraj Shopping Mall<br/>NH 52, Main Road<br/>Dhekiajuli, Assam - 784110
+                </li>
+                <li style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+                  <span style={{ color: 'var(--red)' }}>📞</span> <a href="tel:03712244247" style={{ color: '#888' }}>03712 244 247</a> · <a href="tel:+918811966701" style={{ color: '#888' }}>+91 88119 66701</a>
+                </li>
+                <li style={{ display: 'flex', gap: '8px' }}>
+                  <span style={{ color: 'var(--red)' }}>✉️</span> <a href="mailto:info.askaranbinjraj@gmail.com" style={{ color: '#888' }}>info.askaranbinjraj@gmail.com</a>
+                </li>
               </ul>
             </div>
           </div>
-          <div className="sf-footer-bottom">
-            <p>© 2026 Askaran Binjraj. All rights reserved.</p>
-            <p className="f-est">EST. 1980</p>
-            <div className="f-legal">
-              <a href="/contact">Contact</a>
-              <Link to="/careers">Careers</Link>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">Online Store</a>
-            </div>
+          <div className="sf-footer-bottom" style={{ borderTopColor: '#333', marginTop: '40px', paddingTop: '24px' }}>
+            <p style={{ color: '#666' }}>© 2026 CHANDAN RETAIL PRIVATE LIMITED. ALL RIGHTS RESERVED.</p>
+            <p className="f-est" style={{ color: 'var(--red)' }}>EST. 1980</p>
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Action Button */}
+      <a href="https://wa.me/918811966701" target="_blank" rel="noopener noreferrer" className="wa-float" aria-label="Chat on WhatsApp">
+        <svg fill="currentColor" width="28" height="28" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.334 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.334-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+      </a>
     </div>
   );
 }
