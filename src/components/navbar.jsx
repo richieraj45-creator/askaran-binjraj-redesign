@@ -1,98 +1,83 @@
-import { useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, ArrowUpRight, Phone } from "lucide-react";
-import { CONTACT } from "../Data/sitedata";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-const LINKS = [
-  { label: "Home", path: "/", testId: "nav-link-home" },
-  { label: "Collections", path: "/collections", testId: "nav-link-catalog" },
-  { label: "About Mall", path: "/about", testId: "nav-link-about" },
-  { label: "Careers", path: "/careers", testId: "nav-link-careers" },
-  { label: "Contact", path: "/contact", testId: "nav-link-contact" },
-];
-
-export const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const location = useLocation();
+export function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-border bg-brand-paper/90 backdrop-blur-md">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-12">
-        <Link to="/" aria-label="Askaran Binjraj home">
-          <img src="/assets/logo-horizontal.png" alt="Askaran Binjraj" className="h-11 w-auto" data-testid="nav-logo" />
-        </Link>
-        <nav className="hidden items-center gap-8 lg:flex" data-testid="desktop-nav">
-          {LINKS.map((l) => (
-            <NavLink
-              key={l.path}
-              to={l.path}
-              data-testid={l.testId}
-              className={({ isActive }) =>
-                `link-underline text-xs uppercase tracking-[0.22em] font-medium transition-colors duration-300 ${
-                  isActive ? "text-brand-red" : "text-brand-mid hover:text-brand-ink"
-                }`
-              }
-            >
-              {l.label}
-            </NavLink>
-          ))}
-          <a
-            href={CONTACT.shopUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="nav-cta-shop-online"
-            className="group flex items-center gap-2 bg-brand-red px-5 py-2.5 text-xs uppercase tracking-[0.15em] font-medium text-white transition-colors duration-300 hover:bg-brand-redDark"
-          >
-            Shop Online
-            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
-        </nav>
-        <button
-          className="flex h-11 w-11 items-center justify-center border border-brand-borderMid text-brand-ink lg:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-          data-testid="mobile-menu-toggle"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+    <header className="w-full bg-[#FAFAF8] border-b border-[#E5E0D8] sticky top-0 z-50">
+      {/* Top Announcement Bar */}
+      <div className="bg-[#C41E3A] text-white text-[11px] uppercase tracking-[0.2em] py-1.5 px-4 text-center font-medium">
+        Same-Day & 1-Day Delivery Available · New Ethnic Collection Just Dropped
       </div>
-      <AnimatePresence>
-        {open && (
-          <motion.nav
-            key={location.pathname}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-brand-border bg-brand-paper lg:hidden"
-            data-testid="mobile-nav"
+
+      {/* Main Header Container */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        
+        {/* Brand Logo & Tagline */}
+        <Link to="/" className="flex items-center gap-3 text-left group">
+          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#C41E3A]/10 text-[#C41E3A] font-serif text-xl font-bold">
+            🌸
+          </div>
+          <div>
+            <span className="block font-serif text-2xl sm:text-3xl font-bold tracking-tight text-[#C41E3A]">
+              ASKARAN BINJRAJ
+            </span>
+            <span className="block text-xs uppercase tracking-[0.25em] text-[#2D5A27] font-semibold">
+              Quality. Variety. Trust.
+            </span>
+          </div>
+        </Link>
+
+        {/* Desktop Navigation Links */}
+        <nav className="hidden lg:flex items-center space-x-6 text-xs uppercase tracking-[0.15em] font-semibold text-[#111111]">
+          <Link to="/collections" className="hover:text-[#C41E3A] transition-colors">Fashion</Link>
+          <Link to="/collections" className="hover:text-[#C41E3A] transition-colors">Ethnic Wear</Link>
+          <Link to="/collections" className="hover:text-[#C41E3A] transition-colors">Travel Gear</Link>
+          <Link to="/collections" className="hover:text-[#C41E3A] transition-colors">Cosmetics</Link>
+          <Link to="/collections" className="hover:text-[#C41E3A] transition-colors">Jewellery</Link>
+          <Link to="/collections" className="hover:text-[#C41E3A] transition-colors">Accessories</Link>
+          <Link to="/about" className="hover:text-[#C41E3A] transition-colors">About</Link>
+          <Link to="/contact" className="hover:text-[#C41E3A] transition-colors">Contact</Link>
+          <Link to="/careers" className="hover:text-[#C41E3A] transition-colors">Careers</Link>
+        </nav>
+
+        {/* Shop Online CTA */}
+        <div className="flex items-center gap-3">
+          <Link
+            to="/collections"
+            className="hidden sm:inline-flex items-center justify-center px-6 py-2.5 bg-[#C41E3A] text-white text-xs uppercase tracking-[0.2em] font-semibold rounded hover:bg-[#A01830] transition-colors shadow-sm"
           >
-            <div className="flex flex-col px-6 py-6 gap-5">
-              {LINKS.map((l) => (
-                <NavLink
-                  key={l.path}
-                  to={l.path}
-                  onClick={() => setOpen(false)}
-                  data-testid={`mobile-${l.testId}`}
-                  className={({ isActive }) =>
-                    `font-serif text-2xl ${isActive ? "italic text-brand-red" : "text-brand-ink"}`
-                  }
-                >
-                  {l.label}
-                </NavLink>
-              ))}
-              <a
-                href={CONTACT.phoneMobileHref}
-                className="mt-2 flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-brand-mid"
-                data-testid="mobile-nav-phone"
-              >
-                <Phone className="h-4 w-4 text-brand-red" /> {CONTACT.phoneMobile}
-              </a>
-            </div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
+            Shop Online →
+          </Link>
+          
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 text-neutral-800 hover:text-[#C41E3A] focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-t border-[#E5E0D8] px-4 py-4 space-y-3 text-xs uppercase tracking-[0.15em] font-semibold">
+          <Link to="/collections" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-neutral-800 hover:text-[#C41E3A]">Fashion</Link>
+          <Link to="/collections" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-neutral-800 hover:text-[#C41E3A]">Ethnic Wear</Link>
+          <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-neutral-800 hover:text-[#C41E3A]">About</Link>
+          <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-neutral-800 hover:text-[#C41E3A]">Contact</Link>
+          <Link to="/careers" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-neutral-800 hover:text-[#C41E3A]">Careers</Link>
+        </div>
+      )}
     </header>
   );
-};
+}
