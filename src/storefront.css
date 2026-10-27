@@ -1,87 +1,164 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-    :root {
-        --red: #C8251E;
-        --red-dark: #8B1512;
-        --green: #2E7D32;
-        --ink: #111111;
-        --paper: #FAFAF8;
-        --alt: #F4F0EA;
-        --border-mid: #CBC6BE;
-        --mid: #6B6560;
-        --navlink: #5A5550;
-        --serif: "Playfair Display", serif;
-        --sans: "Outfit", sans-serif;
-        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --radius: 0.5rem;
-    }
-
-    * {
-        border-color: hsl(var(--border));
-        scrollbar-width: none;
-    }
-    *::-webkit-scrollbar {
-        display: none;
-    }
-    html {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        scroll-behavior: smooth;
-    }
-    body {
-        @apply bg-brand-paper text-brand-ink font-sans;
-        overflow-x: hidden;
-    }
-    ::selection {
-        background: #c8251e;
-        color: #fafaf8;
-    }
+/* Askaran Binjraj — Storefront (plain CSS, matches reference design exactly) */
+:root {
+    --red: #C8251E;
+    --red-dark: #8B1512;
+    --green: #2E7D32;
+    --ink: #111111;
+    --paper: #FAFAF8;
+    --alt: #F4F0EA;
+    --border: #E5E0D8;
+    --border-mid: #CBC6BE;
+    --muted: #9A9590;
+    --mid: #6B6560;
+    --navlink: #5A5550;
+    --serif: "Playfair Display", serif;
+    --sans: "Outfit", sans-serif;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@layer components {
-    .eyebrow {
-        @apply font-sans uppercase text-xs tracking-[0.28em] text-brand-redDark font-semibold;
-    }
-    .eyebrow-light {
-        @apply font-sans uppercase text-xs tracking-[0.28em] text-white/60 font-semibold;
-    }
-    .link-underline {
-        @apply relative inline-block;
-    }
-    .link-underline::after {
-        content: "";
-        @apply absolute left-0 -bottom-0.5 h-px w-0 bg-current transition-all duration-300;
-    }
-    .link-underline:hover::after {
-        @apply w-full;
-    }
-    .img-frame {
-        @apply border border-brand-border bg-brand-alt;
-    }
+body.storefront {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
-.lenis.lenis-smooth {
-    scroll-behavior: auto !important;
+body.storefront.lock {
+    overflow: hidden;
 }
+
+body.storefront * {
+    box-sizing: border-box;
+}
+
+body.storefront img {
+    display: block;
+}
+
+:where(body.storefront) a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body.storefront button {
+    font-family: var(--sans);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* ============ KEYFRAMES ============ */
+@keyframes dot-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(2.1); opacity: 0.45; }
+}
+
+@keyframes ring-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes intro-line-h {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+@keyframes intro-line-v {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+}
+
+@keyframes divider-expand {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+@keyframes shimmer {
+    from { background-position: -400px 0; }
+    to { background-position: calc(100% + 400px) 0; }
+}
+
+@keyframes counter-fill {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@keyframes wa-ping {
+    0% { transform: scale(1); opacity: 0.4; }
+    80%, 100% { transform: scale(1.55); opacity: 0; }
+}
+
+/* ============ SPLASH ============ */
+.splash {
+    position: fixed; inset: 0; z-index: 9999; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    background: #ffffff;
+    transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.splash.done { opacity: 0; pointer-events: none; }
+.splash .sp-dot { position: absolute; border-radius: 50%; background: var(--red); pointer-events: none; }
+.splash .sp-ring { position: absolute; width: 500px; height: 500px; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+.splash .sp-ring svg { animation: ring-rotate 18s linear infinite; }
+.splash .sp-line-h { position: absolute; left: 28px; right: 28px; height: 1px; background: #E2DDD5; pointer-events: none; animation: intro-line-h 1s cubic-bezier(0.76, 0, 0.24, 1) both; }
+.splash .sp-line-v { position: absolute; top: 28px; bottom: 28px; width: 1px; background: #E2DDD5; pointer-events: none; animation: intro-line-v 1s cubic-bezier(0.76, 0, 0.24, 1) both; }
+.splash .sp-center { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 32px; max-width: 420px; }
+.splash .sp-logo { position: relative; width: min(280px, 62vw); margin-bottom: 28px; animation: fade-in-up 0.85s var(--ease-out) 0.5s both; }
+.splash .sp-logo img { width: 100%; height: auto; }
+.splash .sp-divider { width: 64px; height: 1px; background: var(--red); margin-bottom: 20px; animation: divider-expand 0.65s cubic-bezier(0.76, 0, 0.24, 1) 0.95s both; }
+.splash .sp-tagline { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--green); letter-spacing: 0.04em; margin: 0 0 14px; animation: fade-in-up 0.7s var(--ease-out) 1.15s both; }
+.splash .sp-since { font-size: 0.56rem; font-weight: 700; letter-spacing: 0.36em; color: var(--muted); text-transform: uppercase; margin: 0; animation: fade-in-up 0.6s ease 1.65s both; }
+
+/* ============ ANNOUNCE BAR ============ */
+.sf-announce { background: var(--red); color: #fff; padding: 10px 16px; text-align: center; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.22em; }
+
+/* ============ HEADER ============ */
+.sf-header { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid #EBE7E0; transition: box-shadow 0.3s; }
+.sf-header.scrolled { box-shadow: 0 8px 30px rgba(17, 17, 17, 0.06); }
+.sf-header-in { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.sf-logo img { height: 44px; width: auto; object-fit: contain; }
+.sf-nav { display: none; align-items: center; gap: 28px; }
+.sf-nav a { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--navlink); transition: color 0.25s; }
+.sf-nav a:hover { color: var(--red); }
+.sf-shop-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: #fff; padding: 10px 20px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; }
+
+@media (min-width: 1024px) { .sf-nav { display: flex; } }
+
+/* ============ HERO ============ */
+.sf-hero { position: relative; overflow: hidden; height: 100vh; min-height: 560px; background: var(--ink); }
+.sf-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1000ms; z-index: 0; }
+.sf-slide.active { opacity: 1; z-index: 2; }
+.sf-slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.58; transform: scale(1); transition: transform 6s ease-out; }
+.sf-slide.active img { transform: scale(1.04); }
+.sf-hero-shade { position: absolute; inset: 0; z-index: 10; pointer-events: none; background: linear-gradient(108deg, rgba(10, 8, 6, 0.85) 28%, rgba(10, 8, 6, 0.35) 62%, rgba(10, 8, 6, 0.45) 100%); }
+.sf-hero-content { position: absolute; inset: 0; z-index: 20; display: flex; flex-direction: column; justify-content: center; padding: 0 32px; max-width: 1280px; margin: 0 auto; left: 0; right: 0; }
+.sf-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+.sf-eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--red); }
+.sf-eyebrow p { margin: 0; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.32em; color: var(--red); }
+.sf-hero h1 { margin: 0 0 16px; font-family: var(--serif); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 400; line-height: 1.05; color: var(--paper); }
+.sf-hero h1 em { font-style: italic; }
+.sf-hero .sf-hero-sub { margin: 0 0 40px; font-size: 0.875rem; line-height: 1.7; max-width: 384px; color: rgba(250, 250, 248, 0.58); }
+.sf-btn-red { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: #fff; padding: 14px 30px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; }
+.sf-btn-ghost-w { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255, 255, 255, 0.45); color: #fff; padding: 13px 28px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; }
+.sf-dots { position: absolute; z-index: 30; bottom: 8%; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; }
+.sf-dots button { width: 6px; height: 2px; background: rgba(250, 250, 248, 0.3); transition: width 0.4s, background 0.3s; }
+.sf-dots button.active { width: 26px; background: var(--red); }
+.sf-counter { position: absolute; z-index: 30; top: 8%; right: 6%; text-align: right; }
+.sf-counter span { font-family: var(--serif); font-size: 2.2rem; font-weight: 400; color: rgba(250, 250, 248, 0.5); }
+
+/* ============ WHATSAPP FLOAT ============ */
+.wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35); }
+
+html { scroll-behavior: smooth; }
