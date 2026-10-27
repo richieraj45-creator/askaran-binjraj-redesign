@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-// Stunner High-Definition Hero Slides with Updated First 3 Banners
 const SLIDES = [
   {
     eyebrow: "Royal Heritage & Weaves",
@@ -21,7 +20,7 @@ const SLIDES = [
     eyebrow: "Kids & Family Wear",
     title: "Joyful style for<br><em>the little ones.</em>",
     sub: "Adorable festive ethnic wear, party frocks, smart tailoring, and comfortable everyday clothing for kids.",
-    localImg: "https://images.unsplash.com/photo-1503944583267-73c7326d45e5?auto=format&fit=crop&q=80&w=1600",
+    localImg: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&q=80&w=1600",
     fallbackImg: "/assets/4237-768x427.jpg"
   },
   {
@@ -152,10 +151,10 @@ export default function Home() {
           </div>
 
           <div className="sp-bottom-nav">
+            <span onClick={() => scrollToSection("ethnic")}>ETHNIC</span>
+            <span onClick={() => scrollToSection("kids")}>KIDS</span>
+            <span className="active" onClick={() => scrollToSection("home")}>HOME</span>
             <span onClick={() => scrollToSection("fashion")}>FASHION</span>
-            <span onClick={() => scrollToSection("ethnic")}>ETHNIC WEAR</span>
-            <span className="active" onClick={() => scrollToSection("kids")}>KIDS</span>
-            <span onClick={() => scrollToSection("home")}>HOME & LIVING</span>
             <span onClick={() => scrollToSection("travel")}>TRAVEL</span>
             <span onClick={() => scrollToSection("jewelry")}>JEWELLERY</span>
           </div>
@@ -180,10 +179,10 @@ export default function Home() {
             />
           </Link>
           <nav className="sf-nav">
-            <a onClick={() => scrollToSection("fashion")}>FASHION</a>
             <a onClick={() => scrollToSection("ethnic")}>ETHNIC WEAR</a>
             <a onClick={() => scrollToSection("kids")}>KIDS WEAR</a>
             <a onClick={() => scrollToSection("home")}>HOME & LIVING</a>
+            <a onClick={() => scrollToSection("fashion")}>FASHION</a>
             <a onClick={() => scrollToSection("travel")}>TRAVEL GEAR</a>
             <a onClick={() => scrollToSection("cosmetics")}>COSMETICS</a>
             <a onClick={() => scrollToSection("jewelry")}>JEWELLERY</a>
@@ -200,10 +199,10 @@ export default function Home() {
           </div>
         </div>
         <nav className={`sf-mobile-nav ${mobileMenuOpen ? "open" : ""}`}>
-          <a onClick={() => scrollToSection("fashion")}>FASHION</a>
           <a onClick={() => scrollToSection("ethnic")}>ETHNIC WEAR</a>
           <a onClick={() => scrollToSection("kids")}>KIDS WEAR</a>
           <a onClick={() => scrollToSection("home")}>HOME & LIVING</a>
+          <a onClick={() => scrollToSection("fashion")}>FASHION</a>
           <a onClick={() => scrollToSection("travel")}>TRAVEL GEAR</a>
           <a onClick={() => scrollToSection("cosmetics")}>COSMETICS</a>
           <a onClick={() => scrollToSection("jewelry")}>JEWELLERY</a>
@@ -213,7 +212,7 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* Hero Banner Carousel with Stunning New First 3 Images */}
+      {/* Hero Banner Carousel */}
       <section id="hero" className="sf-hero">
         {SLIDES.map((slide, idx) => (
           <div key={idx} className={`sf-slide ${idx === currentSlide ? "active" : ""}`}>
@@ -293,8 +292,7 @@ export default function Home() {
           <div className="sf-vertical-stack reveal">
             <div className="sf-og-card">
               <img 
-                src="/assets/Banarasi.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1200&auto=format&fit=crop&q=80"; }} 
+                src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1200&auto=format&fit=crop&q=80" 
                 alt="Authentic Banarsi Sarees" 
                 className="card-img-full" 
               />
@@ -307,8 +305,7 @@ export default function Home() {
             </div>
             <div className="sf-og-card">
               <img 
-                src="/assets/assam-silk.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=1200&auto=format&fit=crop&q=80"; }} 
+                src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=1200&auto=format&fit=crop&q=80" 
                 alt="Traditional Assam Silk" 
                 className="card-img-full" 
               />
@@ -322,7 +319,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Kids Section */}
+      {/* Kids Section (Fixed Image & High Aesthetic) */}
       <section id="kids" className="sf-section bg-alt">
         <div className="sf-wrap">
           <div className="reveal">
@@ -338,7 +335,7 @@ export default function Home() {
           <div className="sf-vertical-stack reveal">
             <div className="sf-og-card">
               <img 
-                src="https://images.unsplash.com/photo-1503944583267-73c7326d45e5?w=1200&auto=format&fit=crop&q=80" 
+                src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=1200&auto=format&fit=crop&q=80" 
                 alt="Kids Festive & Casual Wear" 
                 className="card-img-full" 
               />
@@ -399,8 +396,7 @@ export default function Home() {
           <div className="sf-vertical-stack reveal">
             <div className="sf-og-card">
               <img 
-                src="/assets/womens.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/4237-768x427.jpg"; }} 
+                src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&auto=format&fit=crop&q=80" 
                 alt="Womens Collection" 
                 className="card-img-full" 
               />
@@ -412,8 +408,7 @@ export default function Home() {
             </div>
             <div className="sf-og-card">
               <img 
-                src="/assets/mens.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/2148401436-768x768.jpg"; }} 
+                src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=1200&auto=format&fit=crop&q=80" 
                 alt="Mens Suiting & Shirts" 
                 className="card-img-full" 
               />
@@ -443,8 +438,7 @@ export default function Home() {
           <div className="sf-vertical-stack reveal">
             <div className="sf-og-card">
               <img 
-                src="/assets/BEST-GEAR-FOR-TRAVEL-8125-2x1-1-768x384.webp" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/BEST-GEAR-FOR-TRAVEL-8125-2x1-1-768x384.webp"; }} 
+                src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=1200&auto=format&fit=crop&q=80" 
                 alt="Travel Gear in Dhekiajuli" 
                 className="card-img-full" 
               />
@@ -474,7 +468,7 @@ export default function Home() {
           </div>
           <div className="sf-vertical-stack reveal">
             <div className="sf-og-card">
-              <img src="/assets/cosmetics.jpg" onError={(e)=>{e.target.onerror=null; e.target.src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&auto=format&fit=crop&q=80";}} alt="Beauty & Skincare Counter" className="card-img-full" />
+              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&auto=format&fit=crop&q=80" alt="Beauty & Skincare Counter" className="card-img-full" />
               <div className="card-body-pad">
                 <h3>Beauty & Skincare Counter</h3>
                 <p>Ground Floor · Lakmé, Mamaearth, Sugar, Elle 18</p>
@@ -501,8 +495,7 @@ export default function Home() {
           <div className="sf-vertical-stack reveal">
             <div className="sf-og-card">
               <img 
-                src="/assets/jewelry.jpg" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&auto=format&fit=crop&q=80"; }} 
+                src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&auto=format&fit=crop&q=80" 
                 alt="Gold & Fine Jewellery Counter" 
                 className="card-img-full" 
               />

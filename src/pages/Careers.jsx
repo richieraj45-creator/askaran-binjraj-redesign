@@ -41,7 +41,8 @@ export default function Careers() {
     email: "",
     phone: "",
     experience: "",
-    coverNote: ""
+    coverNote: "",
+    resumeFile: null
   });
 
   useEffect(() => {
@@ -52,23 +53,25 @@ export default function Careers() {
     e.preventDefault();
     setSubmitted(true);
     
+    const fileName = formData.resumeFile ? formData.resumeFile.name : "No file attached";
     const subject = encodeURIComponent(`Job Application: ${selectedDept} - ${formData.name}`);
     const body = encodeURIComponent(
       `Candidate Name: ${formData.name}\n` +
       `Email: ${formData.email}\n` +
       `Phone: ${formData.phone}\n` +
       `Department / Role: ${selectedDept}\n` +
-      `Experience: ${formData.experience}\n\n` +
+      `Experience: ${formData.experience}\n` +
+      `Attached Resume: ${fileName}\n\n` +
       `Cover Note / Details:\n${formData.coverNote}\n\n` +
-      `[Please attach resume file before sending]`
+      `[Note: Please ensure you attach your CV file to this email before hitting send to hr@crpl.co.in]`
     );
     
     window.location.href = `mailto:hr@crpl.co.in?subject=${subject}&body=${body}`;
 
     setTimeout(() => {
       setSubmitted(false);
-      setFormData({ name: "", email: "", phone: "", experience: "", coverNote: "" });
-    }, 4000);
+      setFormData({ name: "", email: "", phone: "", experience: "", coverNote: "", resumeFile: null });
+    }, 4500);
   };
 
   return (
@@ -86,12 +89,12 @@ export default function Careers() {
             />
           </Link>
           <nav className="sf-nav">
-            <Link to="/">FASHION</Link>
             <Link to="/">ETHNIC WEAR</Link>
+            <Link to="/">KIDS WEAR</Link>
+            <Link to="/">HOME & LIVING</Link>
+            <Link to="/">FASHION</Link>
             <Link to="/">TRAVEL GEAR</Link>
-            <Link to="/">COSMETICS</Link>
             <Link to="/">JEWELLERY</Link>
-            <Link to="/">ACCESSORIES</Link>
             <Link to="/">VISIT US</Link>
             <Link to="/careers" style={{ color: "var(--red)", borderBottom: "2px solid var(--red)", paddingBottom: "2px" }}>CAREERS</Link>
           </nav>
@@ -105,12 +108,12 @@ export default function Careers() {
           </div>
         </div>
         <nav className={`sf-mobile-nav ${mobileMenuOpen ? "open" : ""}`}>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>FASHION</Link>
           <Link to="/" onClick={() => setMobileMenuOpen(false)}>ETHNIC WEAR</Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>KIDS WEAR</Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>HOME & LIVING</Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>FASHION</Link>
           <Link to="/" onClick={() => setMobileMenuOpen(false)}>TRAVEL GEAR</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>COSMETICS</Link>
           <Link to="/" onClick={() => setMobileMenuOpen(false)}>JEWELLERY</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>ACCESSORIES</Link>
           <Link to="/" onClick={() => setMobileMenuOpen(false)}>VISIT US</Link>
           <Link to="/careers" onClick={() => setMobileMenuOpen(false)} style={{ color: "var(--red)" }}>CAREERS</Link>
           <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">SHOP ONLINE ↗</a>
@@ -120,14 +123,14 @@ export default function Careers() {
       {/* Hero Section */}
       <section style={{ padding: "90px 24px 50px", maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
         <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.25em", color: "var(--red)", marginBottom: "16px", textTransform: "uppercase" }}>
-          Chandan Retail Private Limited (Est. 1980)
+          Chandan Retail Private Limited (Est. 1980)[cite: 4]
         </div>
         <h1 style={{ fontFamily: "var(--serif)", fontSize: "clamp(2.8rem, 5.5vw, 4.4rem)", fontWeight: 400, lineHeight: 1.12, color: "var(--ink)", marginBottom: "24px" }}>
           Shape the future of retail <br />
           <em style={{ color: "var(--red)", fontStyle: "italic" }}>with Assam's finest.</em>
         </h1>
         <p style={{ fontSize: "1.05rem", color: "var(--mid)", lineHeight: 1.7, maxWidth: "700px", margin: "0 auto 36px" }}>
-          We are scaling our iconic 3-floor flagship shopping destination in Dhekiajuli alongside our rapid omnichannel digital expansion. Join a legacy built on six generations of trust.
+          We are scaling our iconic 3-floor flagship shopping destination in Dhekiajuli alongside our rapid omnichannel digital expansion. Join a legacy built on six generations of trust[cite: 1, 3].
         </p>
         <a href="#apply-form" className="sf-btn-red" style={{ padding: "14px 32px", fontSize: "0.75rem", letterSpacing: "0.2em" }}>
           Submit Your Resume ↓
@@ -178,19 +181,19 @@ export default function Careers() {
           ))}
         </div>
 
-        {/* Quick Application Form Box */}
+        {/* Quick Application Form Box with CV Upload */}
         <div id="apply-form" style={{ background: "#ffffff", border: "1px solid var(--border)", borderRadius: "16px", padding: "48px 40px", maxWidth: "800px", margin: "0 auto", boxShadow: "0 10px 30px rgba(0,0,0,0.04)" }}>
           <div style={{ textAlign: "center", marginBottom: "36px" }}>
             <span className="sf-badge" style={{ marginBottom: "12px" }}>Direct HR Submission</span>
             <h3 style={{ fontFamily: "var(--serif)", fontSize: "2rem", margin: "0 0 8px" }}>Apply to Askaran Binjraj</h3>
-            <p style={{ fontSize: "0.88rem", color: "var(--muted)", margin: 0 }}>All submissions go directly to our HR team at <strong>hr@crpl.co.in</strong></p>
+            <p style={{ fontSize: "0.88rem", color: "var(--muted)", margin: 0 }}>All applications route securely to <strong>hr@crpl.co.in</strong></p>
           </div>
 
           {submitted ? (
             <div style={{ padding: "40px", textAlign: "center", background: "#F2F9F3", borderRadius: "10px", color: "var(--green)" }}>
               <h4 style={{ fontFamily: "var(--serif)", fontSize: "1.6rem", margin: "0 0 8px" }}>Application Prepared Successfully!</h4>
-              <p style={{ fontSize: "0.9rem", color: "#2E7D32", margin: "0 0 16px" }}>Your email app has opened with your application pre-filled for <strong>hr@crpl.co.in</strong>.</p>
-              <p style={{ fontSize: "0.8rem", color: "var(--muted)", margin: 0 }}>You can also email your resume directly anytime at <strong>hr@crpl.co.in</strong>.</p>
+              <p style={{ fontSize: "0.9rem", color: "#2E7D32", margin: "0 0 16px" }}>Your mail app has opened with your details pre-filled for <strong>hr@crpl.co.in</strong>[cite: 5, 16].</p>
+              <p style={{ fontSize: "0.8rem", color: "var(--muted)", margin: 0 }}>Please attach your resume file before sending.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -242,15 +245,26 @@ export default function Careers() {
                 </div>
               </div>
 
-              <div>
-                <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Relevant Experience & Background</label>
-                <input 
-                  type="text" 
-                  placeholder="e.g. 3 years in retail operations or digital marketing"
-                  value={formData.experience}
-                  onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                  style={{ width: "100%", padding: "12px 16px", borderRadius: "6px", border: "1px solid var(--border)", fontSize: "0.92rem", background: "#FAFAF8" }}
-                />
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+                <div>
+                  <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Relevant Experience</label>
+                  <input 
+                    type="text" 
+                    placeholder="e.g. 3 years in retail operations"
+                    value={formData.experience}
+                    onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
+                    style={{ width: "100%", padding: "12px 16px", borderRadius: "6px", border: "1px solid var(--border)", fontSize: "0.92rem", background: "#FAFAF8" }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Attach CV / Resume (PDF / DOC)</label>
+                  <input 
+                    type="file" 
+                    accept=".pdf,.doc,.docx"
+                    onChange={(e) => setFormData({ ...formData, resumeFile: e.target.files[0] })}
+                    style={{ width: "100%", padding: "9px 12px", borderRadius: "6px", border: "1px solid var(--border)", fontSize: "0.85rem", background: "#FAFAF8" }}
+                  />
+                </div>
               </div>
 
               <div>
@@ -269,14 +283,14 @@ export default function Careers() {
                 className="sf-btn-red" 
                 style={{ width: "100%", justifyContent: "center", padding: "14px", marginTop: "10px", fontSize: "0.75rem", letterSpacing: "0.2em", cursor: "pointer", border: "none" }}
               >
-                Send Application to hr@crpl.co.in ↗
+                Send Application to hr@crpl.co.in ↗[cite: 5, 16]
               </button>
             </form>
           )}
         </div>
       </section>
 
-      {/* Master Dark Footer with Correct Logo */}
+      {/* Master Dark Footer */}
       <footer className="sf-footer" style={{ background: "#111111", borderTop: "none" }}>
         <div className="sf-wrap">
           <div className="sf-footer-grid">
@@ -306,20 +320,20 @@ export default function Careers() {
               <h4 style={{ color: "#ffffff" }}>Find Us</h4>
               <ul style={{ color: "#888", fontSize: "0.85rem" }}>
                 <li style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
-                  <span style={{ color: "var(--red)" }}>📍</span> Askaran Binjraj Shopping Mall<br/>NH 52, Main Road<br/>Dhekiajuli, Assam - 784110
+                  <span style={{ color: "var(--red)" }}>📍</span> Askaran Binjraj Shopping Mall[cite: 1, 4]<br/>NH 52, Main Road[cite: 1, 4]<br/>Dhekiajuli, Assam - 784110[cite: 1, 4]
                 </li>
                 <li style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
-                  <span style={{ color: "var(--red)" }}>📞</span> <a href="tel:03712244247" style={{ color: "#888" }}>03712 244 247</a> · <a href="tel:+918811966701" style={{ color: "#888" }}>+91 88119 66701</a>
+                  <span style={{ color: "var(--red)" }}>📞</span> <a href="tel:03712244247" style={{ color: "#888" }}>03712 244 247</a>[cite: 4] · <a href="tel:+918811966701" style={{ color: "#888" }}>+91 88119 66701</a>[cite: 4]
                 </li>
                 <li style={{ display: "flex", gap: "8px" }}>
-                  <span style={{ color: "var(--red)" }}>✉️</span> <a href="mailto:info.askaranbinjraj@gmail.com" style={{ color: "#888" }}>info.askaranbinjraj@gmail.com</a>
+                  <span style={{ color: "var(--red)" }}>✉️</span> <a href="mailto:info.askaranbinjraj@gmail.com" style={{ color: "#888" }}>info.askaranbinjraj@gmail.com</a>[cite: 4]
                 </li>
               </ul>
             </div>
           </div>
           <div className="sf-footer-bottom" style={{ borderTopColor: "#333", marginTop: "40px", paddingTop: "24px" }}>
-            <p style={{ color: "#666" }}>© 2026 CHANDAN RETAIL PRIVATE LIMITED. ALL RIGHTS RESERVED.</p>
-            <p className="f-est" style={{ color: "var(--red)" }}>EST. 1980</p>
+            <p style={{ color: "#666" }}>© 2026 CHANDAN RETAIL PRIVATE LIMITED. ALL RIGHTS RESERVED.[cite: 4]</p>
+            <p className="f-est" style={{ color: "var(--red)" }}>EST. 1980[cite: 4]</p>
           </div>
         </div>
       </footer>
