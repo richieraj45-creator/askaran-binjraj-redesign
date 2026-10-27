@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-// Authentic 6 Hero Slides from Preview Specification
+// 6 Carousel Slides
 const SLIDES = [
   {
     eyebrow: "New Season",
@@ -41,27 +41,23 @@ const SLIDES = [
   }
 ];
 
-// Reusable Authentic Lotus Brand Logo SVG Component
+// Authentic Lotus SVG Logo
 const BrandLogo = () => (
-  <div className="flex items-center gap-3">
-    <svg className="w-9 h-9 text-[#C8251E]" viewBox="0 0 64 64" fill="none" stroke="currentColor">
+  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+    <svg width="36" height="36" viewBox="0 0 64 64" fill="none" stroke="#C8251E">
       <path d="M32 8 C36 20 48 28 58 30 C48 34 40 44 32 56 C24 44 16 34 6 30 C16 28 28 20 32 8 Z" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
       <path d="M32 18 C35 26 42 31 50 33 C42 36 36 43 32 50 C28 43 22 36 14 33 C22 31 29 26 32 18 Z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
-    <div className="text-left">
-      <div className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#C8251E] leading-none">ASKARAN BINJRAJ</div>
-      <div className="text-[9px] uppercase tracking-[0.25em] text-[#2E7D32] font-semibold mt-0.5">Quality. Variety. Trust.</div>
+    <div style={{ textAlign: "left" }}>
+      <div style={{ fontFamily: "var(--serif)", fontSize: "1.35rem", fontWeight: "bold", color: "#C8251E", lineHeight: 1, letterSpacing: "-0.01em" }}>ASKARAN BINJRAJ</div>
+      <div style={{ fontSize: "9px", textTransform: "uppercase", letterSpacing: "0.25em", color: "#2E7D32", fontWeight: 700, marginTop: "3px" }}>Quality. Variety. Trust.</div>
     </div>
   </div>
 );
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [splashDone, setSplashDone] = useState(false);
-  const [splashRemoved, setSplashRemoved] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Auto Slider Carousel Timer (6 Seconds per slide)
   useEffect(() => {
     const slideTimer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
@@ -69,24 +65,6 @@ export default function Home() {
     return () => clearInterval(slideTimer);
   }, []);
 
-  // Splash Screen Gate Dismissal Timer (4.4 seconds)
-  useEffect(() => {
-    document.body.classList.add("lock");
-    const t1 = setTimeout(() => {
-      setSplashDone(true);
-      document.body.classList.remove("lock");
-      const t2 = setTimeout(() => {
-        setSplashRemoved(true);
-      }, 950);
-      return () => clearTimeout(t2);
-    }, 4400);
-    return () => {
-      document.body.classList.remove("lock");
-      clearTimeout(t1);
-    };
-  }, []);
-
-  // Intersection Observer for Scroll Reveals (.reveal animation)
   useEffect(() => {
     const revealEls = document.querySelectorAll(".reveal");
     if ("IntersectionObserver" in window) {
@@ -111,36 +89,6 @@ export default function Home() {
   return (
     <div className="storefront">
       
-      {/* Animated Splash Screen Gate */}
-      {!splashRemoved && (
-        <div className={`splash ${splashDone ? "done" : ""}`} id="splash">
-          <div className="sp-dot" style={{ top: "8%", left: "12%", width: "3px", height: "3px", opacity: 0.18 }}></div>
-          <div className="sp-dot" style={{ top: "15%", left: "78%", width: "2px", height: "2px", opacity: 0.24 }}></div>
-          <div className="sp-ring">
-            <svg width="500" height="500" viewBox="0 0 500 500" fill="none">
-              <circle cx="250" cy="250" r="248" stroke="#E8E3DA" strokeWidth="1"></circle>
-              <path d="M 250 2 A 248 248 0 0 1 497 223" stroke="#C8251E" strokeWidth="1.5" fill="none" opacity="0.55"></path>
-            </svg>
-          </div>
-          <div className="sp-line-h" style={{ top: "28px" }}></div>
-          <div className="sp-line-h" style={{ bottom: "28px" }}></div>
-          <div className="sp-line-v" style={{ left: "28px" }}></div>
-          <div className="sp-line-v" style={{ right: "28px" }}></div>
-          <div className="sp-center">
-            <div className="sp-logo mb-4">
-              <BrandLogo />
-              <div className="sp-shimmer"></div>
-            </div>
-            <div className="sp-divider"></div>
-            <div className="sp-tagline">Quality. Variety. Trust.</div>
-            <div className="sp-dots">
-              <div></div><div></div><div></div>
-            </div>
-            <p className="sp-since">EST. 1980 · DHEKIAJULI, ASSAM</p>
-          </div>
-        </div>
-      )}
-
       {/* Top Announcement Bar */}
       <div className="sf-announce">
         Same-Day & 1-Day Delivery Available · New Ethnic Collection Just Dropped
@@ -149,9 +97,9 @@ export default function Home() {
       {/* Primary Header Navbar */}
       <header id="site-header" className="sf-header">
         <div className="sf-header-in">
-          <a href="/" className="sf-logo">
+          <Link to="/" className="sf-logo">
             <BrandLogo />
-          </a>
+          </Link>
           <nav className="sf-nav">
             <a href="#fashion">Fashion</a>
             <a href="#ethnic">Ethnic Wear</a>
@@ -165,25 +113,11 @@ export default function Home() {
             <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-shop-btn">
               Shop Online ↗
             </a>
-            <button className="sf-burger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              <span></span><span></span><span></span>
-            </button>
           </div>
         </div>
-        {mobileMenuOpen && (
-          <div className="sf-mobile-nav open">
-            <a href="#fashion" onClick={() => setMobileMenuOpen(false)}>Fashion</a>
-            <a href="#ethnic" onClick={() => setMobileMenuOpen(false)}>Ethnic Wear</a>
-            <a href="#travel" onClick={() => setMobileMenuOpen(false)}>Travel Gear</a>
-            <a href="#cosmetics" onClick={() => setMobileMenuOpen(false)}>Cosmetics</a>
-            <a href="#jewelry" onClick={() => setMobileMenuOpen(false)}>Jewellery</a>
-            <a href="#accessories" onClick={() => setMobileMenuOpen(false)}>Accessories</a>
-            <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">Shop Online ↗</a>
-          </div>
-        )}
       </header>
 
-      {/* 6-Slide Automatic Hero Carousel */}
+      {/* Hero 6-Slide Carousel */}
       <section id="hero" className="sf-hero">
         {SLIDES.map((slide, idx) => (
           <div key={idx} className={`sf-slide ${idx === currentSlide ? "active" : ""}`}>
@@ -192,28 +126,12 @@ export default function Home() {
         ))}
 
         <div className="sf-hero-shade"></div>
-        <div className="sf-hero-fade"></div>
 
-        <button 
-          className="sf-arrow prev" 
-          onClick={() => setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length)}
-          aria-label="Previous Slide"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button 
-          className="sf-arrow next" 
-          onClick={() => setCurrentSlide((prev) => (prev + 1) % SLIDES.length)}
-          aria-label="Next Slide"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-
-        <div className="sf-counter" id="hero-counter">
+        <div className="sf-counter">
           <span>0{currentSlide + 1}<small>/ 06</small></span>
         </div>
 
-        <div className="sf-dots" id="hero-dots">
+        <div className="sf-dots">
           {SLIDES.map((_, idx) => (
             <button
               key={idx}
@@ -224,7 +142,7 @@ export default function Home() {
         </div>
 
         <div className="sf-hero-content">
-          <div className="sf-hero-inner sf-hero-text-fade" id="hero-text">
+          <div className="sf-hero-inner">
             <div className="sf-eyebrow">
               <p>{SLIDES[currentSlide].eyebrow}</p>
             </div>
@@ -247,12 +165,10 @@ export default function Home() {
           <span><span>◆</span> Premium Suitings & Formals</span>
           <span><span>◆</span> Luxury Travel Gear</span>
           <span><span>◆</span> Same-Day Delivery Available</span>
-          <span><span>◆</span> Dhekiajuli Flagship</span>
-          <span><span>◆</span> Six Generations of Trust</span>
         </div>
       </div>
 
-      {/* Fashion Bento Grid Section */}
+      {/* Fashion Bento Section */}
       <section id="fashion" className="sf-section bg-paper">
         <div className="sf-wrap">
           <div className="reveal">
@@ -266,7 +182,7 @@ export default function Home() {
             </div>
           </div>
           <div className="sf-bento reveal">
-            <div className="tall">
+            <div>
               <div className="sf-card-img" style={{ minHeight: "430px" }}>
                 <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop&q=80" alt="Fashion Model" />
                 <div className="sf-card-shade"></div>
@@ -274,14 +190,14 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <div className="sf-card-img" style={{ minHeight: "210px" }}>
+              <div className="sf-card-img" style={{ minHeight: "430px" }}>
                 <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop&q=80" alt="Midi Dresses" />
                 <div className="sf-card-shade"></div>
                 <div className="sf-card-label"><p>Contemporary Fusion</p><p>Midi dresses & Indo-Western</p></div>
               </div>
             </div>
             <div>
-              <div className="sf-card-img" style={{ minHeight: "210px" }}>
+              <div className="sf-card-img" style={{ minHeight: "430px" }}>
                 <img src="https://images.unsplash.com/photo-1502784444187-359ac186c5bb?w=600&auto=format&fit=crop&q=80" alt="Kids Fashion" />
                 <div className="sf-card-shade"></div>
                 <div className="sf-card-label"><p>Little Trendsetters</p><p>Frocks & kids wear</p></div>
@@ -291,7 +207,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ethnic 3-Polaroid Grid Section */}
+      {/* Ethnic 3-Polaroid Section */}
       <section id="ethnic" className="sf-section bg-alt">
         <div className="sf-wrap">
           <div className="reveal">
@@ -321,7 +237,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Travel Feature Grid Section */}
+      {/* Travel Gear Section */}
       <section id="travel" className="sf-section bg-white">
         <div className="sf-wrap">
           <div className="reveal">
@@ -329,7 +245,7 @@ export default function Home() {
               <div className="sf-head-text">
                 <div className="sf-eyebrow-s"><p>4th Floor · Travel Gear</p></div>
                 <h2 className="sf-h2">Pack smart,<br /><em>travel far.</em></h2>
-                <p className="sf-sub">Elevate your journey with luxury luggage and travel accessories — suitcases, duffle bags, rucksacks, and laptop bags on the 4th Floor of Askaran Binjraj Shopping Mall.</p>
+                <p className="sf-sub">Elevate your journey with luxury luggage and travel accessories — suitcases, duffle bags, rucksacks, and laptop bags on the 4th Floor.</p>
               </div>
               <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Travel Gear ↗</a>
             </div>
@@ -358,74 +274,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Cosmetics Section */}
-      <section id="cosmetics" className="sf-section bg-alt">
-        <div className="sf-wrap">
-          <div className="reveal">
-            <div className="sf-head">
-              <div className="sf-head-text">
-                <div className="sf-eyebrow-s"><p>Beauty & Cosmetics</p></div>
-                <h2 className="sf-h2">Glow,<br /><em>your way.</em></h2>
-                <p className="sf-sub">Lakmé, Mamaearth, Pond's, Sugar, Elle 18 and more trusted brands — skincare, makeup and daily beauty essentials in store at Askaran Binjraj Shopping Mall, Dhekiajuli.</p>
-              </div>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Beauty ↗</a>
-            </div>
-          </div>
-          <div className="sf-grid-3 reveal">
-            <div className="sf-polaroid">
-              <div className="sf-card-img"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&auto=format&fit=crop&q=80" alt="Skincare" /></div>
-              <div className="sf-card-body"><h3>Skincare</h3><p>Mamaearth, Pond's & daily care</p><span className="sf-link-arrow">Shop Now →</span></div>
-            </div>
-            <div className="sf-polaroid">
-              <div className="sf-card-img"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&auto=format&fit=crop&q=80" alt="Makeup" /></div>
-              <div className="sf-card-body"><h3>Makeup & Colour</h3><p>Lakmé, Sugar, Elle 18</p><span className="sf-link-arrow">Shop Now →</span></div>
-            </div>
-            <div className="sf-polaroid">
-              <div className="sf-card-img"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop&q=80" alt="Fragrance" /></div>
-              <div className="sf-card-body"><h3>Fragrance & More</h3><p>Perfumes & wellness</p><span className="sf-link-arrow">Shop Now →</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Jewellery Feature Grid Section */}
-      <section id="jewelry" className="sf-section bg-white">
-        <div className="sf-wrap">
-          <div className="reveal">
-            <div className="sf-head">
-              <div className="sf-head-text">
-                <div className="sf-eyebrow-s"><p>2nd Floor · Jewellery & Lifestyle</p></div>
-                <h2 className="sf-h2">Adorned in<br /><em>pure elegance.</em></h2>
-                <p className="sf-sub">Stunning jewellery styled for weddings, festive pujas, engagements and celebrations. Traditional gold, silver and fashion jewellery on the 2nd Floor.</p>
-              </div>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Jewellery ↗</a>
-            </div>
-          </div>
-          <div className="sf-feature-grid reveal">
-            <div className="sf-feature-main">
-              <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&auto=format&fit=crop&q=80" alt="Jewellery" />
-              <div className="sf-feature-label">
-                <span className="sf-badge">2nd Floor</span>
-                <h3>Jewellery & Lifestyle in Dhekiajuli</h3>
-                <p>Bridal sets, gold-plated necklaces & festive wear.</p>
-                <span className="sf-link-arrow">Explore Jewellery →</span>
-              </div>
-            </div>
-            <div className="sf-mini-tiles">
-              <div className="sf-mini-tile">
-                <div className="tile-img"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&auto=format&fit=crop&q=80" alt="Necklaces" /></div>
-                <div className="tile-body"><p>Bridal Sets</p><p>Traditional gold & polki</p></div>
-              </div>
-              <div className="sf-mini-tile">
-                <div className="tile-img"><img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&auto=format&fit=crop&q=80" alt="Earrings" /></div>
-                <div className="tile-body"><p>Earrings & Jhumkas</p><p>Festive statement pieces</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Accessories 4-Tile Grid Section */}
+      {/* Accessories 4-Tile Grid */}
       <section id="accessories" className="sf-section bg-alt">
         <div className="sf-wrap">
           <div className="reveal">
@@ -459,36 +308,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Heritage Dark Section */}
-      <section id="about" className="sf-section sf-dark" style={{ background: "#111", color: "#fff", padding: "96px 0" }}>
-        <div className="sf-wrap">
-          <div className="sf-two-col">
-            <div>
-              <div className="sf-eyebrow-s light"><p>Our Heritage</p></div>
-              <h2 className="sf-h2 light" style={{ color: "#fafaf8" }}>Where heritage<br /><em>meets trust.</em></h2>
-              <p className="sf-sub light mt-6" style={{ color: "rgba(250,250,248,0.52)" }}>For six generations, Askaran Binjraj has been the cornerstone of shopping in Dhekiajuli, Assam. Founded on unwavering trust, quality, and variety.</p>
-            </div>
-            <div className="sf-stats">
-              <div className="sf-stat"><p>6</p><p>Generations</p></div>
-              <div className="sf-stat"><p>45+</p><p>Years Trust</p></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="sf-footer">
-        <div className="sf-wrap">
-          <div className="sf-footer-bottom">
-            <p>© 2026 Chandan Retail Private Limited · Shopping Mall in Dhekiajuli, Assam</p>
-            <p className="f-est">EST. 1980</p>
-          </div>
-        </div>
-      </footer>
-
-      {/* Floating WhatsApp Action */}
+      {/* Floating WhatsApp Action Button */}
       <a href="https://wa.me/918811966701" target="_blank" rel="noopener noreferrer" className="wa-float" aria-label="Chat on WhatsApp">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.334 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.334-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        <svg fill="currentColor" width="28" height="28" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.334 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.334-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
       </a>
     </div>
   );
