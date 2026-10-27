@@ -6,13 +6,15 @@ import { Toaster } from "sonner";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { WhatsAppFloat } from "./components/WhatsAppFloat";
-import Collections from "./pages/Collections";
-import CategoryDetail from "./pages/CategoryDetail";
-import About from "./pages/About";
-import Careers from "./pages/Careers";
-import Contact from "./pages/Contact";
 
-// 🛡️ Error Boundary to catch the exact crash instead of showing a white screen
+// 🚀 FIXED: Lowercase file paths to match Linux filesystem casing on Render
+import Collections from "./pages/collections";
+import CategoryDetail from "./pages/categoryDetail";
+import About from "./pages/about";
+import Careers from "./pages/careers";
+import Contact from "./pages/contact";
+
+// 🛡️ Error Boundary to catch any runtime glitches
 class AppErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +31,6 @@ class AppErrorBoundary extends React.Component {
           <div className="bg-white p-6 border border-gray-200 shadow-sm max-w-2xl w-full text-left font-mono text-sm overflow-auto text-red-600">
             {this.state.errorMsg}
           </div>
-          <p className="mt-6 text-sm font-semibold uppercase tracking-widest">Share this exact error with Michael</p>
         </div>
       );
     }
@@ -45,11 +46,10 @@ const ScrollManager = () => {
   return null;
 };
 
-// ⏱️ Failsafe Splash Screen to ensure data loads before routing
 const SplashRedirect = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000);
+    const timer = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
