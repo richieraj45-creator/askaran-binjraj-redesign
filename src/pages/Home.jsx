@@ -69,7 +69,7 @@ export default function Home() {
         setSplashRemoved(true);
       }, 950);
       return () => clearTimeout(t2);
-    }, 3500);
+    }, 3800);
     return () => {
       document.body.classList.remove("lock");
       clearTimeout(t1);
@@ -100,33 +100,61 @@ export default function Home() {
   return (
     <div className="storefront">
       
-      {/* Animated Splash Screen Gate */}
+      {/* AUTHENTIC OG SPLASH SCREEN GATE (1:1 with Screenshot 150410.png) */}
       {!splashRemoved && (
         <div className={`splash ${splashDone ? "done" : ""}`} id="splash">
-          <div className="sp-dot" style={{ top: "8%", left: "12%", width: "3px", height: "3px", opacity: 0.18 }}></div>
-          <div className="sp-dot" style={{ top: "15%", left: "78%", width: "2px", height: "2px", opacity: 0.24 }}></div>
-          <div className="sp-ring">
-            <svg width="500" height="500" viewBox="0 0 500 500" fill="none">
-              <circle cx="250" cy="250" r="248" stroke="#E8E3DA" strokeWidth="1"></circle>
-              <path d="M 250 2 A 248 248 0 0 1 497 223" stroke="#C8251E" strokeWidth="1.5" fill="none" opacity="0.55"></path>
-            </svg>
+          {/* Corner tick marks */}
+          <div className="sp-corner top-left"></div>
+          <div className="sp-corner top-right"></div>
+          <div className="sp-corner bottom-left"></div>
+          <div className="sp-corner bottom-right"></div>
+
+          {/* Floating subtle red dots */}
+          <div className="sp-floating-dot" style={{ top: "8%", left: "12%" }}></div>
+          <div className="sp-floating-dot" style={{ top: "22%", left: "34%" }}></div>
+          <div className="sp-floating-dot" style={{ top: "14%", right: "20%" }}></div>
+          <div className="sp-floating-dot" style={{ top: "30%", right: "8%" }}></div>
+          <div className="sp-floating-dot" style={{ bottom: "36%", left: "21%" }}></div>
+          <div className="sp-floating-dot" style={{ bottom: "24%", right: "32%" }}></div>
+          <div className="sp-floating-dot" style={{ bottom: "12%", left: "14%" }}></div>
+          <div className="sp-floating-dot" style={{ bottom: "18%", right: "18%" }}></div>
+
+          {/* Top header meta */}
+          <div className="sp-top-meta">
+            <span>EST. 1980</span>
+            <span>6TH GENERATION</span>
           </div>
-          <div className="sp-line-h" style={{ top: "28px" }}></div>
-          <div className="sp-line-h" style={{ bottom: "28px" }}></div>
-          <div className="sp-line-v" style={{ left: "28px" }}></div>
-          <div className="sp-line-v" style={{ right: "28px" }}></div>
-          <div className="sp-center">
-            <div className="sp-logo mb-4">
-              <img 
-                src="/assets/logo-stacked.png" 
-                onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-wide.png"; }} 
-                alt="Askaran Binjraj" 
-                style={{ height: "70px", width: "auto", margin: "0 auto", objectFit: "contain" }}
-              />
+
+          {/* Center Circular Stage with Logo */}
+          <div className="sp-center-stage">
+            <div className="sp-circle-ring"></div>
+            <div className="sp-center-line"></div>
+            
+            <img 
+              src="/assets/logo-stacked.png" 
+              onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-wide.png"; }} 
+              alt="Askaran Binjraj" 
+              className="sp-logo-img"
+            />
+            
+            <div className="sp-motto-green">Quality. Variety. Trust.</div>
+            
+            <div className="sp-dots-trio">
+              <span></span><span></span><span></span>
             </div>
-            <div className="sp-divider"></div>
-            <div className="sp-tagline">Quality. Variety. Trust.</div>
-            <p className="sp-since">EST. 1980 · DHEKIAJULI, ASSAM</p>
+            
+            <div className="sp-sub-meta">SINCE 1980 · SIX GENERATIONS OF TRUST</div>
+            <div className="sp-brand-name">ASKARAN BINJRAJ</div>
+          </div>
+
+          {/* Bottom navigation categories bar */}
+          <div className="sp-bottom-nav">
+            <span className="active">FASHION</span>
+            <span>ETHNIC WEAR</span>
+            <span>TRAVEL GEAR</span>
+            <span>COSMETICS</span>
+            <span>JEWELLERY</span>
+            <span>ACCESSORIES</span>
           </div>
         </div>
       )}
@@ -136,7 +164,7 @@ export default function Home() {
         Same-Day & 1-Day Delivery Available · New Ethnic Collection Just Dropped
       </div>
 
-      {/* Primary Sticky Header Navbar */}
+      {/* Primary Header Navbar */}
       <header id="site-header" className="sf-header">
         <div className="sf-header-in">
           <Link to="/" className="sf-logo">
@@ -248,7 +276,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Fashion Bento Section */}
+      {/* Fashion Section (Matches Layout in OG Screenshot) */}
       <section id="fashion" className="sf-section bg-paper">
         <div className="sf-wrap">
           <div className="reveal">
@@ -261,45 +289,38 @@ export default function Home() {
               <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Fashion ↗</a>
             </div>
           </div>
-          <div className="sf-bento reveal">
-            <div className="tall">
-              <div className="sf-card-img" style={{ minHeight: "430px" }}>
-                <img 
-                  src="/assets/4237-768x427.jpg" 
-                  onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/4237-768x427.jpg"; }} 
-                  alt="Womens Fashion" 
-                />
-                <div className="sf-card-shade"></div>
-                <div className="sf-card-label"><p>Womens Collection</p><p>1st & 2nd Floor · Latest styles</p></div>
+          <div className="sf-vertical-stack reveal">
+            <div className="sf-og-card">
+              <img 
+                src="/assets/womens.jpg" 
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/4237-768x427.jpg"; }} 
+                alt="Womens Collection" 
+                className="card-img-full" 
+              />
+              <div className="card-body-pad">
+                <h3>Womens Collection</h3>
+                <p>1st & 2nd Floor · Latest styles and seasonal picks</p>
+                <span className="sf-link-arrow">Explore Womens →</span>
               </div>
             </div>
-            <div>
-              <div className="sf-card-img" style={{ minHeight: "205px" }}>
-                <img 
-                  src="/assets/2148401436-768x768.jpg" 
-                  onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/2148401436-768x768.jpg"; }} 
-                  alt="Mens Fashion" 
-                />
-                <div className="sf-card-shade"></div>
-                <div className="sf-card-label"><p>Mens Suiting & Shirts</p><p>Branded formals & casuals</p></div>
-              </div>
-            </div>
-            <div>
-              <div className="sf-card-img" style={{ minHeight: "205px" }}>
-                <img 
-                  src="/assets/kids.jpg" 
-                  onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?w=600&auto=format&fit=crop&q=80"; }} 
-                  alt="Kids Fashion" 
-                />
-                <div className="sf-card-shade"></div>
-                <div className="sf-card-label"><p>Kids Wear</p><p>Frocks & kids apparel</p></div>
+            <div className="sf-og-card">
+              <img 
+                src="/assets/mens.jpg" 
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/2148401436-768x768.jpg"; }} 
+                alt="Mens Suiting & Shirts" 
+                className="card-img-full" 
+              />
+              <div className="card-body-pad">
+                <h3>Mens Suiting & Shirts</h3>
+                <p>Branded formals, trousers & casual wear</p>
+                <span className="sf-link-arrow">Explore Mens →</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Ethnic 3-Polaroid Section */}
+      {/* Ethnic Section (Vertical Card Stack 1:1 with OG Screenshot) */}
       <section id="ethnic" className="sf-section bg-alt">
         <div className="sf-wrap">
           <div className="reveal">
@@ -312,37 +333,46 @@ export default function Home() {
               <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Ethnic Wear ↗</a>
             </div>
           </div>
-          <div className="sf-grid-3 reveal">
-            <div className="sf-polaroid">
-              <div className="sf-card-img">
-                <img 
-                  src="/assets/Banarasi.jpg" 
-                  onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/Banarasi.jpg"; }} 
-                  alt="Banarasi Sarees" 
-                />
+          <div className="sf-vertical-stack reveal">
+            <div className="sf-og-card">
+              <img 
+                src="/assets/Banarasi.jpg" 
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/Banarasi.jpg"; }} 
+                alt="Authentic Banarsi Sarees" 
+                className="card-img-full" 
+              />
+              <div className="card-body-pad">
                 <span className="sf-badge">Bestseller</span>
+                <h3>Authentic Banarsi Sarees</h3>
+                <p>3rd Floor · Royal Handlooms sourced directly from Varanasi</p>
+                <span className="sf-link-arrow">Explore Sarees →</span>
               </div>
-              <div className="sf-card-body"><h3>Authentic Banarsi Sarees</h3><p>3rd Floor · Royal Handlooms</p><span className="sf-link-arrow">Explore →</span></div>
             </div>
-            <div className="sf-polaroid">
-              <div className="sf-card-img">
-                <img 
-                  src="/assets/assam-silk.jpg" 
-                  onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&auto=format&fit=crop&q=80"; }} 
-                  alt="Assam Silk" 
-                />
+            <div className="sf-og-card">
+              <img 
+                src="/assets/assam-silk.jpg" 
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&auto=format&fit=crop&q=80"; }} 
+                alt="Traditional Assam Silk" 
+                className="card-img-full" 
+              />
+              <div className="card-body-pad">
+                <h3>Traditional Assam Silk</h3>
+                <p>3rd Floor · Pure Muga & Silk Mekhela Chador</p>
+                <span className="sf-link-arrow">Explore Silk →</span>
               </div>
-              <div className="sf-card-body"><h3>Traditional Assam Silk</h3><p>3rd Floor · Heritage Assam</p><span className="sf-link-arrow">Explore →</span></div>
             </div>
-            <div className="sf-polaroid">
-              <div className="sf-card-img">
-                <img 
-                  src="/assets/Morni_Banner_600x600.webp" 
-                  onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/Morni_Banner_600x600.webp"; }} 
-                  alt="Bridal Lehengas" 
-                />
+            <div className="sf-og-card">
+              <img 
+                src="/assets/Morni_Banner_600x600.webp" 
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://askaranbinjraj.com/wp-content/uploads/2025/11/Morni_Banner_600x600.webp"; }} 
+                alt="Designer Bridal Lehengas" 
+                className="card-img-full" 
+              />
+              <div className="card-body-pad">
+                <h3>Designer Bridal Lehengas</h3>
+                <p>The Wedding Studio · Hand-embroidered bridal wear</p>
+                <span className="sf-link-arrow">Explore Lehengas →</span>
               </div>
-              <div className="sf-card-body"><h3>Designer Bridal Lehengas</h3><p>The Wedding Studio</p><span className="sf-link-arrow">Explore →</span></div>
             </div>
           </div>
         </div>
@@ -389,38 +419,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Cosmetics Section */}
-      <section id="cosmetics" className="sf-section bg-alt">
-        <div className="sf-wrap">
-          <div className="reveal">
-            <div className="sf-head">
-              <div className="sf-head-text">
-                <div className="sf-eyebrow-s"><p>Beauty & Cosmetics</p></div>
-                <h2 className="sf-h2">Glow,<br /><em>your way.</em></h2>
-                <p className="sf-sub">Lakmé, Mamaearth, Pond's, Sugar, Elle 18 and more trusted brands — skincare, makeup and daily beauty essentials in store at Askaran Binjraj Shopping Mall, Dhekiajuli.</p>
-              </div>
-              <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Beauty ↗</a>
-            </div>
-          </div>
-          <div className="sf-grid-3 reveal">
-            <div className="sf-polaroid">
-              <div className="sf-card-img"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&auto=format&fit=crop&q=80" alt="Skincare" /></div>
-              <div className="sf-card-body"><h3>Skincare</h3><p>Mamaearth, Pond's & daily care</p><span className="sf-link-arrow">Shop Now →</span></div>
-            </div>
-            <div className="sf-polaroid">
-              <div className="sf-card-img"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&auto=format&fit=crop&q=80" alt="Makeup" /></div>
-              <div className="sf-card-body"><h3>Makeup & Colour</h3><p>Lakmé, Sugar, Elle 18</p><span className="sf-link-arrow">Shop Now →</span></div>
-            </div>
-            <div className="sf-polaroid">
-              <div className="sf-card-img"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop&q=80" alt="Fragrance" /></div>
-              <div className="sf-card-body"><h3>Fragrance & More</h3><p>Perfumes & wellness</p><span className="sf-link-arrow">Shop Now →</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Jewellery Feature Grid Section */}
-      <section id="jewelry" className="sf-section bg-white">
+      {/* Jewellery & Lifestyle Store Section (1:1 with OG Screenshot Interior Cards) */}
+      <section id="jewelry" className="sf-section bg-alt">
         <div className="sf-wrap">
           <div className="reveal">
             <div className="sf-head">
@@ -432,24 +432,31 @@ export default function Home() {
               <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer" className="sf-btn-red">Shop Jewellery ↗</a>
             </div>
           </div>
-          <div className="sf-feature-grid reveal">
-            <div className="sf-feature-main">
-              <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&auto=format&fit=crop&q=80" alt="Jewellery" />
-              <div className="sf-feature-label">
-                <span className="sf-badge">2nd Floor</span>
-                <h3>Jewellery & Lifestyle in Dhekiajuli</h3>
-                <p>Bridal sets, gold-plated necklaces & festive wear.</p>
+          <div className="sf-vertical-stack reveal">
+            <div className="sf-og-card">
+              <img 
+                src="/assets/jewellery-store-1.jpg" 
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&auto=format&fit=crop&q=80"; }} 
+                alt="Gold & Diamond Display" 
+                className="card-img-full" 
+              />
+              <div className="card-body-pad">
+                <h3>Gold & Fine Jewellery Counter</h3>
+                <p>2nd Floor · Curated bridal sets, gold bangles & necklaces</p>
                 <span className="sf-link-arrow">Explore Jewellery →</span>
               </div>
             </div>
-            <div className="sf-mini-tiles">
-              <div className="sf-mini-tile">
-                <div className="tile-img"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&auto=format&fit=crop&q=80" alt="Necklaces" /></div>
-                <div className="tile-body"><p>Bridal Sets</p><p>Traditional gold & polki</p></div>
-              </div>
-              <div className="sf-mini-tile">
-                <div className="tile-img"><img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&auto=format&fit=crop&q=80" alt="Earrings" /></div>
-                <div className="tile-body"><p>Earrings & Jhumkas</p><p>Festive statement pieces</p></div>
+            <div className="sf-og-card">
+              <img 
+                src="/assets/jewellery-store-2.jpg" 
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&auto=format&fit=crop&q=80"; }} 
+                alt="Boutique Showroom Interior" 
+                className="card-img-full" 
+              />
+              <div className="card-body-pad">
+                <h3>Boutique Showroom Interior</h3>
+                <p>Exclusive engagement rings and fine silver ornaments</p>
+                <span className="sf-link-arrow">View Showroom →</span>
               </div>
             </div>
           </div>
@@ -457,7 +464,7 @@ export default function Home() {
       </section>
 
       {/* Accessories Section */}
-      <section id="accessories" className="sf-section bg-alt">
+      <section id="accessories" className="sf-section bg-paper">
         <div className="sf-wrap">
           <div className="reveal">
             <div className="sf-head">
@@ -499,7 +506,7 @@ export default function Home() {
       </section>
 
       {/* Flagship Store Section */}
-      <section id="stores" className="sf-section bg-paper">
+      <section id="stores" className="sf-section bg-alt">
         <div className="sf-wrap">
           <div className="reveal">
             <div style={{ marginBottom: "48px" }}>

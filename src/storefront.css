@@ -1,4 +1,4 @@
-/* Askaran Binjraj — Standalone Master Storefront CSS */
+/* Askaran Binjraj — Authentic OG Storefront & Splash Styles */
 :root {
   --red: #C8251E;
   --red-dark: #8B1512;
@@ -32,7 +32,179 @@ body.storefront * {
   box-sizing: border-box;
 }
 
-/* Containers & Section Layout */
+/* AUTHENTIC OG SPLASH SCREEN GATE (Matches Screenshot 150410.png) */
+.splash {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px 48px;
+  transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.splash.done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Corner ticks */
+.sp-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--red);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.sp-corner.top-left { top: 20px; left: 20px; border-width: 1.5px 0 0 1.5px; }
+.sp-corner.top-right { top: 20px; right: 20px; border-width: 1.5px 1.5px 0 0; }
+.sp-corner.bottom-left { bottom: 20px; left: 20px; border-width: 0 0 1.5px 1.5px; }
+.sp-corner.bottom-right { bottom: 20px; right: 20px; border-width: 0 1.5px 1.5px 0; }
+
+.sp-top-meta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.sp-center-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sp-circle-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 37, 30, 0.25);
+  pointer-events: none;
+}
+
+.sp-center-line {
+  position: absolute;
+  top: 50%;
+  left: -140px;
+  right: -140px;
+  height: 1px;
+  background: rgba(200, 37, 30, 0.3);
+  pointer-events: none;
+}
+
+.sp-logo-img {
+  height: 95px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 5;
+}
+
+.sp-motto-green {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--green);
+  margin: 16px 0 10px;
+}
+
+.sp-dots-trio {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.sp-dots-trio span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(200, 37, 30, 0.5);
+}
+
+.sp-sub-meta {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--ink);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.sp-brand-name {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.sp-bottom-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  border-top: 1px solid #EAE6DF;
+  padding-top: 16px;
+  z-index: 10;
+}
+
+.sp-bottom-nav span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.sp-bottom-nav span.active {
+  color: var(--red);
+}
+
+.sp-bottom-nav span.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--red);
+}
+
+.sp-floating-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--red);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* LAYOUT & CONTAINER CSS */
 .sf-wrap {
   max-width: 1280px;
   margin: 0 auto;
@@ -46,97 +218,6 @@ body.storefront * {
 .bg-paper { background: var(--paper); }
 .bg-alt { background: var(--alt); }
 .bg-white { background: #ffffff; }
-
-/* SPLASH SCREEN GATE */
-.splash {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 99999;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
-
-.splash.done {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.splash .sp-dot {
-  position: absolute;
-  border-radius: 50%;
-  background: var(--red);
-  pointer-events: none;
-}
-
-.splash .sp-ring {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.splash .sp-line-h {
-  position: absolute;
-  left: 28px;
-  right: 28px;
-  height: 1px;
-  background: #E2DDD5;
-  pointer-events: none;
-}
-
-.splash .sp-line-v {
-  position: absolute;
-  top: 28px;
-  bottom: 28px;
-  width: 1px;
-  background: #E2DDD5;
-  pointer-events: none;
-}
-
-.splash .sp-center {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0 32px;
-  max-width: 420px;
-}
-
-.splash .sp-divider {
-  width: 64px;
-  height: 1px;
-  background: var(--red);
-  margin: 16px 0;
-}
-
-.splash .sp-tagline {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--green);
-  letter-spacing: 0.04em;
-  margin-bottom: 12px;
-}
-
-.splash .sp-since {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.3em;
-  color: var(--muted);
-  text-transform: uppercase;
-}
 
 /* Announcement Bar */
 .sf-announce {
@@ -472,102 +553,42 @@ body.storefront * {
   line-height: 1.6;
 }
 
-/* BENTO GRID (Fashion) */
-.sf-bento {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+/* VERTICAL OG STACK CARDS (Matches binjraj-products.preview.emergentagent.com__4.jpg) */
+.sf-vertical-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-@media (min-width: 768px) {
-  .sf-bento {
-    grid-template-columns: 1.8fr 1fr 1fr;
-  }
-}
-
-.sf-card-img {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  display: block;
-  text-decoration: none;
-  height: 100%;
-}
-
-.sf-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  transition: transform 0.6s ease;
-}
-
-.sf-card-img:hover img {
-  transform: scale(1.04);
-}
-
-.sf-card-shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
-  border-radius: 12px;
-}
-
-.sf-card-label {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  color: #ffffff;
-  z-index: 10;
-}
-
-.sf-card-label p:first-child {
-  font-family: var(--serif);
-  font-size: 1.4rem;
-  margin: 0 0 4px;
-}
-
-.sf-card-label p:last-child {
-  font-size: 0.75rem;
-  opacity: 0.8;
-  margin: 0;
-}
-
-/* 3-POLAROID GRID (Ethnic & Cosmetics) */
-.sf-grid-3 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-
-@media (min-width: 768px) {
-  .sf-grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.sf-polaroid {
+.sf-og-card {
   background: #ffffff;
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sf-polaroid:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+.sf-og-card .card-img-full {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
 }
 
-.sf-polaroid .sf-card-img {
-  height: 280px;
-  border-radius: 0;
+.sf-og-card .card-body-pad {
+  padding: 24px;
 }
 
-.sf-polaroid .sf-card-img img {
-  border-radius: 0;
+.sf-og-card h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  margin: 0 0 6px;
+}
+
+.sf-og-card p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0 0 16px;
 }
 
 .sf-badge {
@@ -583,22 +604,6 @@ body.storefront * {
   padding: 4px 10px;
   border-radius: 3px;
   z-index: 10;
-}
-
-.sf-card-body {
-  padding: 20px;
-}
-
-.sf-card-body h3 {
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  margin: 0 0 6px;
-}
-
-.sf-card-body p {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin: 0 0 14px;
 }
 
 .sf-link-arrow {
@@ -674,11 +679,6 @@ body.storefront * {
   gap: 16px;
   padding: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-  transition: transform 0.2s ease;
-}
-
-.sf-mini-tile:hover {
-  transform: translateX(4px);
 }
 
 .tile-img {
@@ -707,7 +707,7 @@ body.storefront * {
   margin: 0;
 }
 
-/* 6-TILE GRID (Accessories) */
+/* ACCESSORIES GRID */
 .sf-grid-4 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -725,19 +725,13 @@ body.storefront * {
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
-  text-align: left;
-  transition: transform 0.3s ease;
-  display: block;
   text-decoration: none;
-}
-
-.sf-acc-tile:hover {
-  transform: translateY(-4px);
+  display: block;
 }
 
 .sf-acc-tile .tile-img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   border-radius: 0;
 }
 
@@ -989,9 +983,4 @@ body.storefront * {
   align-items: center;
   justify-content: center;
   box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
-  transition: transform 0.2s ease;
-}
-
-.wa-float:hover {
-  transform: scale(1.08);
 }
