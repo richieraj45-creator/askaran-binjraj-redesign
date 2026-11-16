@@ -35,7 +35,7 @@ const SLIDES = [
     title: "Adorned in<br><em>pure elegance.</em>",
     sub: "Stunning jewellery styled for weddings, festive pujas, engagements and celebrations.",
     localImg: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600",
-    fallbackImg: "/assets/photo-1605100804763-247f67b3557e"
+    fallbackImg: "/assets/jewellery-fallback.avif"
   },
   {
     eyebrow: "Beauty & Wellness",
