@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
@@ -65,6 +66,10 @@ export default function Contact() {
 
   return (
     <main data-testid="contact-page">
+      <SEO
+        title="Contact Askaran Binjraj | Dhekiajuli, Assam"
+        description="Contact Askaran Binjraj Shopping Mall in Dhekiajuli, Assam for store information, department enquiries, directions and customer support."
+      />
       <section className="border-b border-brand-border">
         <div className="mx-auto max-w-7xl px-4 pt-16 pb-14 sm:px-6 md:pt-24 lg:px-12">
           <Reveal>
