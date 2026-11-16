@@ -70,17 +70,20 @@ export default function Home() {
 
   useEffect(() => {
     document.body.classList.add("lock");
+    let t2;
+
     const t1 = setTimeout(() => {
       setSplashDone(true);
       document.body.classList.remove("lock");
-      const t2 = setTimeout(() => {
+      t2 = setTimeout(() => {
         setSplashRemoved(true);
       }, 950);
-      return () => clearTimeout(t2);
     }, 3800);
+
     return () => {
       document.body.classList.remove("lock");
       clearTimeout(t1);
+      if (t2) clearTimeout(t2);
     };
   }, []);
 
