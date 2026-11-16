@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "../components/reveal";
@@ -37,6 +38,10 @@ const SECTIONS = [
 export default function About() {
   return (
     <main data-testid="about-page">
+      <SEO
+        title="About Askaran Binjraj | Shopping Mall in Dhekiajuli, Assam"
+        description="Learn about Askaran Binjraj, a family retail destination serving Dhekiajuli and Sonitpur, Assam since 1980."
+      />
       <section className="border-b border-brand-border">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 pt-16 pb-14 sm:px-6 md:pt-24 lg:grid-cols-12 lg:px-12">
           <div className="lg:col-span-7">
