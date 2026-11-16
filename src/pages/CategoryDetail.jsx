@@ -29,6 +29,10 @@ export default function CategoryDetail() {
 
   return (
     <main data-testid={`category-page-${category.slug}`}>
+      <SEO
+        title={`${category.title || category.name} | Askaran Binjraj, Dhekiajuli`}
+        description={category.tagline || category.intro?.[0] || `Explore ${category.name} at Askaran Binjraj Shopping Mall in Dhekiajuli, Assam.`}
+      />
       <section className="relative flex h-[52vh] min-h-[380px] items-end overflow-hidden">
         <img src={category.heroImage || category.image} alt={category.name} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/85 via-brand-ink/30 to-brand-ink/10" />
