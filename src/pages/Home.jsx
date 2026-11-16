@@ -578,8 +578,8 @@ export default function Home() {
               <ul>
                 <li><a href="/collections/sarees">Sarees</a></li>
                 <li><a href="/collections/lehengas">Bridal Lehengas</a></li>
-                <li><a href="/collections/kids">Kids Festive</a></li>
-                <li><a href="/collections/furnishing">Home Furnishing</a></li>
+                <li><a href="/collections">Kids & Family</a></li>
+                <li><a href="/collections/furnishing-decor">Home Furnishing</a></li>
               </ul>
             </div>
             <div>
