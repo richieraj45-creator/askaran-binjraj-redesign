@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -106,6 +107,10 @@ export default function Home() {
 
   return (
     <div className="storefront">
+      <SEO
+        title="Askaran Binjraj Shopping Mall | Dhekiajuli, Assam"
+        description="Visit Askaran Binjraj, a family shopping destination in Dhekiajuli, Assam. Explore fashion, ethnic wear, kidswear, home essentials, travel gear and jewellery."
+      />
       
       {/* AUTHENTIC OG SPLASH SCREEN GATE */}
       {!splashRemoved && (
