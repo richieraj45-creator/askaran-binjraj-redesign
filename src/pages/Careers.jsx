@@ -177,7 +177,7 @@ export default function Careers() {
         </div>
 
         {/* Quick Application Form Box with CV Upload */}
-        <div id="apply-form" style={{ background: "#ffffff", border: "1px solid var(--border)", borderRadius: "16px", padding: "48px 40px", maxWidth: "800px", margin: "0 auto", boxShadow: "0 10px 30px rgba(0,0,0,0.04)" }}>
+        <div id="apply-form" style={{ background: "#ffffff", border: "1px solid var(--border)", borderRadius: "16px", padding: "clamp(24px, 5vw, 48px) clamp(16px, 4vw, 40px)", maxWidth: "800px", margin: "0 auto", boxShadow: "0 10px 30px rgba(0,0,0,0.04)" }}>
           <div style={{ textAlign: "center", marginBottom: "36px" }}>
             <span className="sf-badge" style={{ marginBottom: "12px" }}>Direct HR Submission</span>
             <h3 style={{ fontFamily: "var(--serif)", fontSize: "2rem", margin: "0 0 8px" }}>Apply to Askaran Binjraj</h3>
@@ -193,7 +193,7 @@ export default function Careers() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: "20px" }}>
                 <div>
                   <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Full Name *</label>
                   <input 
@@ -216,7 +216,7 @@ export default function Careers() {
                 </div>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: "20px" }}>
                 <div>
                   <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Email Address *</label>
                   <input 
@@ -241,7 +241,7 @@ export default function Careers() {
                 </div>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", gap: "20px" }}>
                 <div>
                   <label style={{ display: "block", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "8px" }}>Relevant Experience</label>
                   <input 
