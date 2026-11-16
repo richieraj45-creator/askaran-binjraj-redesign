@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
@@ -15,6 +16,7 @@ export default function CategoryDetail() {
   if (!category) {
     return (
       <main className="mx-auto max-w-7xl px-4 py-32 text-center" data-testid="category-not-found">
+        <SEO title="Collection Not Found | Askaran Binjraj" description="This collection could not be found. Explore all shopping collections at Askaran Binjraj, Dhekiajuli, Assam." />
         <h1 className="font-serif text-4xl">Collection not found</h1>
         <Link to="/collections" className="mt-6 inline-block text-xs uppercase tracking-[0.22em] text-brand-red">
           Back to Collections
