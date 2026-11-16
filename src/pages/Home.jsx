@@ -594,6 +594,7 @@ export default function Home() {
               <h4>Company</h4>
               <ul>
                 <li><a onClick={() => scrollToSection("stores")}>Visit Us</a></li>
+                <li><a href="/about">About Us</a></li>
                 <li><Link to="/careers">Careers</Link></li>
                 <li><a href="/contact">Contact Us</a></li>
               </ul>
