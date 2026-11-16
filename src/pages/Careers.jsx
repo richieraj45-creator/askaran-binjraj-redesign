@@ -67,11 +67,6 @@ export default function Careers() {
     );
     
     window.location.href = `mailto:hr@crpl.co.in?subject=${subject}&body=${body}`;
-
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", phone: "", experience: "", coverNote: "", resumeFile: null });
-    }, 4500);
   };
 
   return (
@@ -82,7 +77,7 @@ export default function Careers() {
         <div className="sf-header-in">
           <Link to="/" className="sf-logo">
             <img 
-              src="/assets/logo-wide.png" 
+              src="/assets/logo-horizontal.png" 
               onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
               alt="Askaran Binjraj" 
               style={{ height: "46px", width: "auto", objectFit: "contain" }}
@@ -186,14 +181,15 @@ export default function Careers() {
           <div style={{ textAlign: "center", marginBottom: "36px" }}>
             <span className="sf-badge" style={{ marginBottom: "12px" }}>Direct HR Submission</span>
             <h3 style={{ fontFamily: "var(--serif)", fontSize: "2rem", margin: "0 0 8px" }}>Apply to Askaran Binjraj</h3>
-            <p style={{ fontSize: "0.88rem", color: "var(--muted)", margin: 0 }}>All applications route securely to <strong>hr@crpl.co.in</strong>[cite: 5, 16]</p>
+            <p style={{ fontSize: "0.88rem", color: "var(--muted)", margin: 0 }}>Your email app will open with your details pre-filled. Please attach your CV before sending to <strong>hr@crpl.co.in</strong>[cite: 5, 16].</p>
           </div>
 
           {submitted ? (
             <div style={{ padding: "40px", textAlign: "center", background: "#F2F9F3", borderRadius: "10px", color: "var(--green)" }}>
-              <h4 style={{ fontFamily: "var(--serif)", fontSize: "1.6rem", margin: "0 0 8px" }}>Application Prepared Successfully!</h4>
-              <p style={{ fontSize: "0.9rem", color: "#2E7D32", margin: "0 0 16px" }}>Your mail app has opened with your details pre-filled for <strong>hr@crpl.co.in</strong>[cite: 5, 16].</p>
-              <p style={{ fontSize: "0.8rem", color: "var(--muted)", margin: 0 }}>Please attach your resume file before sending.</p>
+              <h4 style={{ fontFamily: "var(--serif)", fontSize: "1.6rem", margin: "0 0 8px" }}>Email Draft Requested</h4>
+              <p style={{ fontSize: "0.9rem", color: "#2E7D32", margin: "0 0 16px" }}>Your email app should open with your details pre-filled. Your application is not submitted until you review the draft and press Send.</p>
+              <p style={{ fontSize: "0.8rem", color: "var(--muted)", margin: "0 0 18px" }}>The resume is not attached automatically. Attach the selected file in your email app, then press Send. If no email app opens, email hr@crpl.co.in directly.</p>
+              <button type="button" onClick={() => setSubmitted(false)} style={{ border: "1px solid var(--border)", borderRadius: "6px", padding: "10px 16px", background: "#fff", color: "var(--ink)", cursor: "pointer" }}>Back to application form</button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -297,7 +293,7 @@ export default function Careers() {
             <div>
               <Link to="/" className="f-logo">
                 <img 
-                  src="/assets/logo-wide.png" 
+                  src="/assets/logo-horizontal.png" 
                   onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
                   alt="Askaran Binjraj" 
                   style={{ height: "42px", width: "auto", objectFit: "contain", background: "#ffffff", padding: "4px", borderRadius: "4px" }} 
