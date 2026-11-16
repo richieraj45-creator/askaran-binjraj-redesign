@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -71,6 +72,10 @@ export default function Careers() {
 
   return (
     <div className="storefront" style={{ background: "#FAFAF8", minHeight: "100vh" }}>
+      <SEO
+        title="Careers at Askaran Binjraj | Retail Jobs in Dhekiajuli, Assam"
+        description="Explore career opportunities at Askaran Binjraj and join our retail, e-commerce, operations, customer experience and logistics teams in Assam."
+      />
       
       {/* Sticky Header Navbar */}
       <header id="site-header" className="sf-header">
