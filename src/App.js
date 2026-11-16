@@ -7,6 +7,7 @@ import CategoryDetail from "./pages/CategoryDetail";
 import Contact from "./pages/contact";
 import Careers from "./pages/Careers";
 import { Toaster } from "sonner";
+import SiteLayout from "./components/SiteLayout";
 import "./storefront.css";
 
 function NotFound() {
@@ -44,10 +45,10 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/collections" element={<Collections />} />
-        <Route path="/collections/:slug" element={<CategoryDetail />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<SiteLayout><About /></SiteLayout>} />
+        <Route path="/collections" element={<SiteLayout><Collections /></SiteLayout>} />
+        <Route path="/collections/:slug" element={<SiteLayout><CategoryDetail /></SiteLayout>} />
+        <Route path="/contact" element={<SiteLayout><Contact /></SiteLayout>} />
         <Route path="/careers" element={<Careers />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
