@@ -5,7 +5,8 @@ import { MapPin, Phone, Mail, Clock, ArrowUpRight, Send } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "../components/reveal";
 import { CONTACT, CONTACT_LOCATION_IMG } from "../Data/sitedata";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = BACKEND_URL ? `${BACKEND_URL.replace(/\/$/, "")}/api` : null;
 
 const INFO_CARDS = [
   {
@@ -37,13 +38,24 @@ export default function Contact() {
 
   const submit = async (e) => {
     e.preventDefault();
+
+    if (!API) {
+      const subject = encodeURIComponent(`Website enquiry from ${form.name}`);
+      const body = encodeURIComponent(
+        `Name: ${form.name}\nPhone: ${form.phone}\nEmail: ${form.email || "Not provided"}\n\nEnquiry:\n${form.message}`
+      );
+      window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
+      toast.info("Your email app should open with the enquiry details. Press Send to submit your message.");
+      return;
+    }
+
     setSending(true);
     try {
       await axios.post(`${API}/enquiries`, form);
       toast.success("Thank you! Our team will reach out during shopping hours.");
       setForm({ name: "", phone: "", email: "", message: "" });
     } catch {
-      toast.error("Could not send your enquiry. Please call us directly.");
+      toast.error("Could not send your enquiry. Please call us directly or use the email link.");
     } finally {
       setSending(false);
     }
