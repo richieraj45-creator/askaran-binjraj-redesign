@@ -6,6 +6,7 @@ import Collections from "./pages/Collections";
 import CategoryDetail from "./pages/CategoryDetail";
 import Contact from "./pages/contact";
 import Careers from "./pages/Careers";
+import { Toaster } from "sonner";
 import "./storefront.css";
 
 function NotFound() {
@@ -50,6 +51,7 @@ export default function App() {
         <Route path="/careers" element={<Careers />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Toaster position="top-right" />
     </Router>
   );
 }
