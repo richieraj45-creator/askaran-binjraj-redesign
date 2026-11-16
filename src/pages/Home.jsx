@@ -35,14 +35,14 @@ const SLIDES = [
     title: "Adorned in<br><em>pure elegance.</em>",
     sub: "Stunning jewellery styled for weddings, festive pujas, engagements and celebrations.",
     localImg: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600",
-    fallbackImg: "/assets/jewelry.jpg"
+    fallbackImg: "/assets/photo-1605100804763-247f67b3557e"
   },
   {
     eyebrow: "Beauty & Wellness",
     title: "Your best self,<br><em>every single day.</em>",
     sub: "Lakmé, Mamaearth, Pond's, Sugar, Elle 18 and more trusted beauty brands in-store.",
     localImg: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1600",
-    fallbackImg: "/assets/cosmetics.jpg"
+    fallbackImg: "/assets/hero-beauty.jpg"
   }
 ];
 
@@ -135,7 +135,7 @@ export default function Home() {
             
             <img 
               src="/assets/logo-stacked.png" 
-              onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-wide.png"; }} 
+              onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-horizontal.png"; }} 
               alt="Askaran Binjraj" 
               className="sp-logo-img"
             />
@@ -172,7 +172,7 @@ export default function Home() {
         <div className="sf-header-in">
           <Link to="/" className="sf-logo">
             <img 
-              src="/assets/logo-wide.png" 
+              src="/assets/logo-horizontal.png" 
               onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
               alt="Askaran Binjraj" 
               style={{ height: "46px", width: "auto", objectFit: "contain" }}
@@ -553,7 +553,7 @@ export default function Home() {
             <div>
               <Link to="/" className="f-logo">
                 <img 
-                  src="/assets/logo-wide.png" 
+                  src="/assets/logo-horizontal.png" 
                   onError={(e) => { e.target.onerror = null; e.target.src = "/assets/logo-stacked.png"; }} 
                   alt="Askaran Binjraj" 
                 />
