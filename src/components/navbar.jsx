@@ -1,63 +1,57 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { CONTACT } from "../Data/sitedata";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <header className="w-full bg-[#FAFAF8] border-b border-[#E5E0D8] sticky top-0 z-50">
-      {/* Top Announcement Bar */}
-      <div className="bg-[#C41E3A] text-white text-[11px] uppercase tracking-[0.2em] py-1.5 px-4 text-center font-medium">
+    <header className="sticky top-0 z-50 w-full border-b border-[#E5E0D8] bg-[#FAFAF8]">
+      <div className="bg-[#C41E3A] px-4 py-1.5 text-center text-[10px] font-medium uppercase tracking-[0.16em] text-white sm:text-[11px]">
         Same-Day & 1-Day Delivery Available · New Ethnic Collection Just Dropped
       </div>
 
-      {/* Main Header Container */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
-        
-        {/* Brand Logo & Tagline */}
-        <Link to="/" className="flex items-center gap-3 text-left group">
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#C41E3A] text-white font-serif font-bold text-lg shadow-sm">
-            AB
-          </div>
-          <div>
-            <span className="block font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#C41E3A]">
-              ASKARAN BINJRAJ
-            </span>
-            <span className="block text-[10px] uppercase tracking-[0.2em] text-[#2D5A27] font-semibold">
-              Quality. Variety. Trust.
-            </span>
-          </div>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+        <Link to="/" onClick={closeMobileMenu} className="flex min-w-0 items-center">
+          <img
+            src="/assets/logo-horizontal.png"
+            alt="Askaran Binjraj"
+            className="h-9 w-auto max-w-[42vw] object-contain sm:h-10 sm:max-w-[210px]"
+          />
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden xl:flex items-center space-x-5 text-[11px] uppercase tracking-[0.15em] font-semibold text-[#111111]">
-          <Link to="/collections" className="hover:text-[#C41E3A] transition-colors">Fashion</Link>
-          <Link to="/collections" className="hover:text-[#C41E3A] transition-colors">Ethnic Wear</Link>
-          <Link to="/collections" className="hover:text-[#C41E3A] transition-colors">Travel Gear</Link>
-          <Link to="/collections" className="hover:text-[#C41E3A] transition-colors">Cosmetics</Link>
-          <Link to="/collections" className="hover:text-[#C41E3A] transition-colors">Jewellery</Link>
-          <Link to="/collections" className="hover:text-[#C41E3A] transition-colors">Accessories</Link>
-          <Link to="/about" className="hover:text-[#C41E3A] transition-colors">Visit Us</Link>
-          <Link to="/about" className="hover:text-[#C41E3A] transition-colors">About</Link>
-          <Link to="/careers" className="hover:text-[#C41E3A] transition-colors">Careers</Link>
-          <Link to="/contact" className="hover:text-[#C41E3A] transition-colors">Contact</Link>
+        <nav className="hidden items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#111111] xl:flex">
+          <a href="/#fashion" className="transition-colors hover:text-[#C41E3A]">Fashion</a>
+          <a href="/#ethnic" className="transition-colors hover:text-[#C41E3A]">Ethnic Wear</a>
+          <a href="/#travel" className="transition-colors hover:text-[#C41E3A]">Travel Gear</a>
+          <a href="/#cosmetics" className="transition-colors hover:text-[#C41E3A]">Cosmetics</a>
+          <a href="/#jewelry" className="transition-colors hover:text-[#C41E3A]">Jewellery</a>
+          <Link to="/collections" className="transition-colors hover:text-[#C41E3A]">Collections</Link>
+          <Link to="/about" className="transition-colors hover:text-[#C41E3A]">About</Link>
+          <Link to="/careers" className="transition-colors hover:text-[#C41E3A]">Careers</Link>
+          <Link to="/contact" className="transition-colors hover:text-[#C41E3A]">Contact</Link>
         </nav>
 
-        {/* Shop Online CTA */}
-        <div className="flex items-center gap-3">
-          <Link
-            to="/collections"
-            className="inline-flex items-center justify-center px-5 py-2.5 bg-[#C41E3A] text-white text-[11px] uppercase tracking-[0.2em] font-semibold rounded hover:bg-[#A01830] transition-colors shadow-sm"
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <a
+            href={CONTACT.shopUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded bg-[#C41E3A] px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.08em] text-white shadow-sm transition-colors hover:bg-[#A01830] sm:px-4 sm:text-[10px] sm:tracking-[0.12em]"
           >
             Shop Online ↗
-          </Link>
-          
+          </a>
+
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden p-2 text-neutral-800 hover:text-[#C41E3A] focus:outline-none"
-            aria-label="Toggle Menu"
+            type="button"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            className="p-2 text-neutral-800 transition-colors hover:text-[#C41E3A] focus:outline-none xl:hidden"
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               {mobileMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -67,6 +61,24 @@ export function Navbar() {
           </button>
         </div>
       </div>
+
+      <nav
+        id="mobile-navigation"
+        className={`${mobileMenuOpen ? "block" : "hidden"} border-t border-[#E5E0D8] bg-[#FAFAF8] px-5 py-3 shadow-lg xl:hidden`}
+        aria-label="Mobile navigation"
+      >
+        <div className="flex flex-col">
+          <a href="/#fashion" onClick={closeMobileMenu} className="border-b border-[#E5E0D8] py-3 text-xs font-semibold uppercase tracking-[0.14em]">Fashion</a>
+          <a href="/#ethnic" onClick={closeMobileMenu} className="border-b border-[#E5E0D8] py-3 text-xs font-semibold uppercase tracking-[0.14em]">Ethnic Wear</a>
+          <a href="/#travel" onClick={closeMobileMenu} className="border-b border-[#E5E0D8] py-3 text-xs font-semibold uppercase tracking-[0.14em]">Travel Gear</a>
+          <a href="/#cosmetics" onClick={closeMobileMenu} className="border-b border-[#E5E0D8] py-3 text-xs font-semibold uppercase tracking-[0.14em]">Cosmetics</a>
+          <a href="/#jewelry" onClick={closeMobileMenu} className="border-b border-[#E5E0D8] py-3 text-xs font-semibold uppercase tracking-[0.14em]">Jewellery</a>
+          <Link to="/collections" onClick={closeMobileMenu} className="border-b border-[#E5E0D8] py-3 text-xs font-semibold uppercase tracking-[0.14em]">Collections</Link>
+          <Link to="/about" onClick={closeMobileMenu} className="border-b border-[#E5E0D8] py-3 text-xs font-semibold uppercase tracking-[0.14em]">About</Link>
+          <Link to="/careers" onClick={closeMobileMenu} className="border-b border-[#E5E0D8] py-3 text-xs font-semibold uppercase tracking-[0.14em]">Careers</Link>
+          <Link to="/contact" onClick={closeMobileMenu} className="py-3 text-xs font-semibold uppercase tracking-[0.14em]">Contact</Link>
+        </div>
+      </nav>
     </header>
   );
 }
