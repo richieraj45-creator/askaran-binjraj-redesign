@@ -8,7 +8,6 @@ import Contact from "./pages/contact";
 import Careers from "./pages/Careers";
 import { Toaster } from "sonner";
 import SiteLayout from "./components/SiteLayout";
-import "./storefront.css";
 
 function NotFound() {
   return (
