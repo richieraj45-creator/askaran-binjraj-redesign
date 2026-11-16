@@ -84,13 +84,13 @@ export default function Careers() {
             />
           </Link>
           <nav className="sf-nav">
-            <Link to="/">ETHNIC WEAR</Link>
-            <Link to="/">KIDS WEAR</Link>
-            <Link to="/">HOME & LIVING</Link>
-            <Link to="/">FASHION</Link>
-            <Link to="/">TRAVEL GEAR</Link>
-            <Link to="/">JEWELLERY</Link>
-            <Link to="/">VISIT US</Link>
+            <a href="/#ethnic">ETHNIC WEAR</a>
+            <a href="/#kids">KIDS WEAR</a>
+            <a href="/#home">HOME & LIVING</a>
+            <a href="/#fashion">FASHION</a>
+            <a href="/#travel">TRAVEL GEAR</a>
+            <a href="/#jewelry">JEWELLERY</a>
+            <a href="/#stores">VISIT US</a>
             <Link to="/careers" style={{ color: "var(--red)", borderBottom: "2px solid var(--red)", paddingBottom: "2px" }}>CAREERS</Link>
           </nav>
           <div className="sf-header-actions" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -103,13 +103,13 @@ export default function Careers() {
           </div>
         </div>
         <nav className={`sf-mobile-nav ${mobileMenuOpen ? "open" : ""}`}>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>ETHNIC WEAR</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>KIDS WEAR</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>HOME & LIVING</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>FASHION</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>TRAVEL GEAR</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>JEWELLERY</Link>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>VISIT US</Link>
+          <a href="/#ethnic" onClick={() => setMobileMenuOpen(false)}>ETHNIC WEAR</a>
+          <a href="/#kids" onClick={() => setMobileMenuOpen(false)}>KIDS WEAR</a>
+          <a href="/#home" onClick={() => setMobileMenuOpen(false)}>HOME & LIVING</a>
+          <a href="/#fashion" onClick={() => setMobileMenuOpen(false)}>FASHION</a>
+          <a href="/#travel" onClick={() => setMobileMenuOpen(false)}>TRAVEL GEAR</a>
+          <a href="/#jewelry" onClick={() => setMobileMenuOpen(false)}>JEWELLERY</a>
+          <a href="/#stores" onClick={() => setMobileMenuOpen(false)}>VISIT US</a>
           <Link to="/careers" onClick={() => setMobileMenuOpen(false)} style={{ color: "var(--red)" }}>CAREERS</Link>
           <a href="https://shop.askaranbinjraj.com/" target="_blank" rel="noopener noreferrer">SHOP ONLINE ↗</a>
         </nav>
