@@ -1,3 +1,4 @@
+import SEO from "../components/SEO";
 import { Reveal, Stagger, StaggerItem } from "../components/reveal";
 import { CategoryCard } from "../components/categorycard"; // Lowercase 'c' to match categorycard.jsx
 import { CATEGORIES } from "../Data/sitedata";
@@ -5,6 +6,10 @@ import { CATEGORIES } from "../Data/sitedata";
 export default function Collections() {
   return (
     <main data-testid="collections-page" className="min-h-screen bg-[#FAFAF8] text-[#111111]">
+      <SEO
+        title="Explore Shopping Collections | Askaran Binjraj, Assam"
+        description="Explore clothing, ethnic wear, footwear, home furnishing, travel gear, toys, jewellery and lifestyle collections at Askaran Binjraj in Dhekiajuli."
+      />
       {/* Header Section */}
       <section className="border-b border-brand-border">
         <div className="mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 md:pt-24 md:pb-16 lg:px-12">
